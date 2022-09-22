@@ -14,7 +14,7 @@ const formItemLayoutWithOutLabel = {
     },
     sm: {
       span: 20,
-      offset: 4,
+      offset: 3,
     },
   },
 };
@@ -36,10 +36,8 @@ function AddMethod() {
     <Form.Item>
       <h1 className={classes.title}>Add Method</h1>
 
-      <div className={classes.components}>
-
         <Form.Item>
-            <span> 1 </span>
+            <span className={classes.index}> 1 </span>
           <Form.Item
             className={classes.defaultInput}
             name="default_method"
@@ -49,9 +47,6 @@ function AddMethod() {
                 message: 'Insert at least one step.',
               },
             ]}
-            style={{
-              display:'block',
-            }}
           >
 
             <TextArea 
@@ -63,7 +58,7 @@ function AddMethod() {
             </Form.Item>
         </Form.Item>
 
-        <div>
+        
         <Form.List
           className={classes.dynamicInput}
           name="methods"
@@ -72,7 +67,7 @@ function AddMethod() {
             <>
               {fields.map((field, index) => (
                 <Form.Item required={false} key={field.key}>
-                  <span>
+                  <span className={classes.index}>
                     {index + 2 + ' '}
                   </span>
                   <div>
@@ -86,7 +81,6 @@ function AddMethod() {
                         message: 'Please insert a step or delete this field.',
                       },
                     ]}
-                    style={{display: "block"}}
                   >
                   <TextArea 
                     className={classes.input}
@@ -122,8 +116,7 @@ function AddMethod() {
             </>
           )}
         </Form.List>
-        </div>
-      </div>
+      
       </Form.Item>
     </Form>
   );

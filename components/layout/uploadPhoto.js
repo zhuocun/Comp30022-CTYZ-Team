@@ -3,13 +3,16 @@ import { ImageUploader } from 'antd-mobile';
 import { PictureOutline } from 'antd-mobile-icons'
 import classes from './uploadPhoto.module.css';
 
-function UploadPhoto() {
-    
-    const [fileList, setFileList] = useState();
 
-    return (
-    <ImageUploader value={fileList} 
+
+function UploadPhoto() {
+  const [fileList, setFileList] = useState();
+
+  return (
+    <ImageUploader 
+    value={fileList} 
     onChange={setFileList} 
+    maxCount={1}
     className={classes.upload}>
 
     <div

@@ -1,101 +1,103 @@
 import { MinusCircleOutlined } from '@ant-design/icons';
-import { Button, Form, Input } from 'antd';
+import { Button, Form, Input, Row, Col } from 'antd';
 import React from 'react';
 import classes from './addIngredients.module.css';
 
+const formItemLayoutWithOutLabel = {
+  wrapperCol: {
+    xs: {
+      span: 24,
+      offset: 0,
+    },
+    sm: {
+      span: 20,
+      offset: 3,
+    },
+  },
+};
+
 function addIngredients() {
+
   const onFinish = (values) => {
     console.log('Received values of form:', values);
   };
 
   return (
-    <Form name="ingredients_list" onFinish={onFinish} layout="inline" autoComplete="off">
-      <div className={classes.mainLayout}>
+    <Form
+      name="ingredients_form"
+      {...formItemLayoutWithOutLabel}
+      onFinish={onFinish}
+      autoComplete="off"
+    >
         <Form.Item>
           <h1 className={classes.title}>Add Ingredients</h1>
-        
-        <div className={classes.defaultLine}>
           <Form.Item
             className={classes.defaultInput}
-            name="default_ingredient"
             rules={[
               {
                 required: true,
-                message: 'Missing Ingredient',
+                whitespace: true,
               },
-            ]}
-          >
-            <Input placeholder="Ingredient" className={classes.input} />
+          ]}>
+            <Input.Group size="medium" >
+              <Row gutter={13}>
+                <Col span={11}>
+                  <Input placeholder="Ingredient" className={classes.input}/>
+                </Col>
+                <Col span={11}>
+                  <Input placeholder="Amount" className={classes.input} />
+                </Col>
+              </Row>
+            </Input.Group>
           </Form.Item>
-          <Form.Item
-            name="default_amount"
-            rules={[
-              {
-                required: true,
-                message: 'Missing Amount',
-              },
-            ]}
-            style={{
-              display: 'inline-block',
-            }}
-            className={classes.defaultInput}
-          >
-            <Input placeholder="Amount" className={classes.input} />
-          </Form.Item>
-        </div>
-
+      
         <Form.List name="ingredients">
-          {(fields, { add, remove }) => (
-            <div>
-              {fields.map(({ key, name, ...restField }) => (
-                <div className={classes.formlist}>
+          {(fields, { add, remove }, { errors }) => (
+                <>
+                  {fields.map((field) => (
+                    <Form.Item required={false} key={field.key}>
+
+                      <>
                   <Form.Item
-                    {...restField}
-                    name={[name, 'ingredient']}
-                    rules={[
-                      {
-                        required: true,
-                        message: 'Missing Ingredient Name',
-                      },
-                    ]}
-                    style={{
-                      display: 'inline-block',
-                    }}
+                    {...field}
+                    validateTrigger={['onChange', 'onBlur']}
                   >
-                    <Input placeholder="Ingredient" className={classes.input} />
-                  </Form.Item>
-                  <Form.Item
-                    {...restField}
-                    name={[name, 'amount']}
-                    rules={[
-                      {
-                        required: true,
-                        message: 'Missing Amount',
-                      },
-                    ]}
-                    style={{
-                      display: 'inline-block',
-                    }}
-                  >
-                    <Input placeholder="Amount" className={classes.input} />
-                  </Form.Item>
-                  <MinusCircleOutlined onClick={() => remove(name)} className={classes.deleteButton} />
-                </div>
+                          <Input.Group size="medium">
+                            <Row gutter={13}>
+                              <Col span={11}>
+                                <Input placeholder="Ingredient" className={classes.input}/>
+                              </Col>
+                              <Col span={11}>
+                                <Input placeholder="Amount" className={classes.input}/>
+                              </Col>
+                            </Row>
+                          </Input.Group>
+                          </Form.Item>
+                  {/* </Form.Item> */}
+                  <MinusCircleOutlined onClick={() => remove(field.name)} className={classes.deleteButton} />
+                </>
+                </Form.Item>
               ))}
-              <div className={classes.a}>
+              {/* <div className={classes.a}> */}
                 <Form.Item>
 
-                  <Button type="normal" onClick={() => add()} className={classes.addButton}>
+                <Button
+                  className={classes.addButton}
+                  type="dashed"
+                  onClick={() => add()}
+                  style={{
+                    width: '60%',
+                  }}
+                >
                     + ADD MORE INGREDIENTS
                   </Button>
-
+                  <Form.ErrorList errors={errors} />
                 </Form.Item>
-              </div>
-            </div>
+                </>
+
           )}
         </Form.List>
         </Form.Item>
-      </div>
     </Form>
 
   );

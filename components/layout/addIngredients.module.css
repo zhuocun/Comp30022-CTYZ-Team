@@ -1,16 +1,11 @@
 .title {
-	color: #c98474;
-	font-size: 17px;
+	color: #c98474 !important;
+	font-size: 20px !important;
 	font-weight: 500 !important;
 }
 
-.mainLayout {
-	display: flex !important;
-	flex-direction: column !important;
-}
-
-.defaultLine {
-	display: flex !important;
+.defaultInput {
+	margin-bottom: 40px !important;
 }
 
 .input {
@@ -19,19 +14,14 @@
 	border-bottom: 2px dotted !important;
 	border-color: #c98474 !important;
 	background-color: #69643100 !important;
-	width: 112px !important;
-}
-
-.formlist {
-	display: flex inline !important;
-	justify-content: baseline !important;
 }
 
 .deleteButton {
 	font-size: 17px !important;
 	color: #fea42a !important;
-	position: absolute;
-	
+	position: absolute !important;
+	right: 0px !important;
+	bottom: 30px !important;
 }
 
 .addButton {
@@ -39,9 +29,6 @@
 	background: #69643100 !important;
 	color: #c98474 !important;
 	font-weight: 600 !important;
-}
-
-.a {
-	display: flex;
-	margin-left: 12.8%;
+	position: absolute !important;
+	left: 2.25rem !important;
 }

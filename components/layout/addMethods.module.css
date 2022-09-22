@@ -1,17 +1,6 @@
 .title {
 	color: #c98474;
-	font-size: 17px !important;
-	font-weight: 500 !important;
-}
-
-.components {
-	display: flex;
-	flex-flow: column wrap;
-}
-
-.title {
-	color: #c98474;
-	font-size: 17px !important;
+	font-size: 20px !important;
 	font-weight: 500 !important;
 }
 
@@ -28,8 +17,8 @@
 	font-size: 17px !important;
 	color: #fea42a !important;
 	position: absolute !important;
-	right: 10px;
-	bottom: 30px;
+	right: 0px !important;
+	bottom: 30px !important;
 }
 
 .addButton {
@@ -40,4 +29,9 @@
 	position: absolute !important;
 	left: 3.2rem !important;
 
+}
+
+.index{
+	font-size: large;
+	font-weight: 490;
 }
