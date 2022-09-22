@@ -1,6 +1,6 @@
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { Toaster } from 'react-hot-toast';
-import EditPage from '../components/layout/EditPage';
+import EditPage from '../components/createPage/EditPage';
 import 'antd/dist/antd.css';
 
 // import '../styles/globals.css';
