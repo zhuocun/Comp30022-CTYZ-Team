@@ -1,0 +1,47 @@
+.title {
+	color: #c98474;
+	font-size: 17px;
+	font-weight: 500 !important;
+}
+
+.mainLayout {
+	display: flex !important;
+	flex-direction: column !important;
+}
+
+.defaultLine {
+	display: flex !important;
+}
+
+.input {
+	font-size: 13px !important;
+	border: 0px !important;
+	border-bottom: 2px dotted !important;
+	border-color: #c98474 !important;
+	background-color: #69643100 !important;
+	width: 112px !important;
+}
+
+.formlist {
+	display: flex inline !important;
+	justify-content: baseline !important;
+}
+
+.deleteButton {
+	font-size: 17px !important;
+	color: #fea42a !important;
+	position: absolute;
+	
+}
+
+.addButton {
+	border: 0px !important;
+	background: #69643100 !important;
+	color: #c98474 !important;
+	font-weight: 600 !important;
+}
+
+.a {
+	display: flex;
+	margin-left: 12.8%;
+}

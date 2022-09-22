@@ -9,12 +9,31 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@ant-design/colors": "^6.0.0",
+    "@tanstack/react-query": "^4.3.9",
+    "antd": "^4.23.2",
+    "antd-mobile": "^5.23.0",
+    "antd-mobile-icons": "^0.3.0",
     "next": "12.3.1",
     "react": "18.2.0",
-    "react-dom": "18.2.0"
+    "react-dom": "18.2.0",
+    "react-hot-toast": "^2.4.0",
+    "react-tag-input-component": "^1.1.1",
+    "sass": "^1.54.9"
   },
   "devDependencies": {
-    "eslint": "8.23.1",
-    "eslint-config-next": "12.3.1"
+    "@svgr/webpack": "^6.3.1",
+    "@typescript-eslint/eslint-plugin": "^5.0.0",
+    "eslint-config-airbnb": "19.0.4",
+    "eslint-config-next": "12.3.1",
+    "eslint-config-standard-with-typescript": "^23.0.0",
+    "eslint-plugin-import": "2.25.3",
+    "eslint-plugin-jsx-a11y": "6.5.1",
+    "eslint-plugin-n": "^15.0.0",
+    "eslint-plugin-promise": "^6.0.0",
+    "eslint-plugin-react": "7.28.0",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "next-transpile-modules": "^9.0.0",
+    "typescript": "*"
   }
 }
