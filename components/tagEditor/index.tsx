@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { TagsInput } from "react-tag-input-component";
-import classes from './editTags.module.css';
+import classes from './index.module.css';
 
-function EditTags(){
+function tagEditor(){
 const [selected, setSelected] = useState(["dinner"]);
 return (
 
@@ -17,9 +17,9 @@ return (
 	</div>
 
 );
-};
+}
 
 
-export default EditTags;
+export default tagEditor;
 
 

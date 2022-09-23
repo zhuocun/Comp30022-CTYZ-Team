@@ -1,0 +1,8 @@
+.navigation {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    list-style: none;
+    padding: 0 20px 0 20px;
+    align-items: center;
+}

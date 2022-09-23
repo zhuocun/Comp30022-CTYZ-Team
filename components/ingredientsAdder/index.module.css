@@ -1,0 +1,34 @@
+.title {
+    color: #c98474 !important;
+    font-size: 20px !important;
+    font-weight: 500 !important;
+}
+
+.defaultInput {
+    margin-bottom: 40px !important;
+}
+
+.input {
+    font-size: 13px !important;
+    border: 0 !important;
+    border-bottom: 2px dotted !important;
+    border-color: #c98474 !important;
+    background-color: #69643100 !important;
+}
+
+.deleteButton {
+    font-size: 17px !important;
+    color: #fea42a !important;
+    position: absolute !important;
+    right: 0 !important;
+    bottom: 30px !important;
+}
+
+.addButton {
+    border: 0 !important;
+    background: #69643100 !important;
+    color: #c98474 !important;
+    font-weight: 600 !important;
+    position: absolute !important;
+    left: 2.25rem !important;
+}
