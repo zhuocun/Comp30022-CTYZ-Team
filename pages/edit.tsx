@@ -7,10 +7,11 @@ import PicUploader from "../components/picUploader";
 import AddIngredients from "../components/ingredientsAdder";
 import AddMethod from "../components/methodAdder";
 import styles from "../styles/recipeEditor.module.css";
+import { NextPage } from "next";
 
 const { Header, Content, Footer } = Layout;
 
-const RecipeEditor = () => {
+const RecipeEditor: NextPage = () => {
     return (
         <Layout>
             <Header className={styles.header}>
