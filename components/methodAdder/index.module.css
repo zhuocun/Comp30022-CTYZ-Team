@@ -6,7 +6,7 @@
 
 .input {
 	font-size: 13px !important;
-	border: 0px !important;
+	border: 0 !important;
 	border-bottom: 2px dotted !important;
 	border-color: #c98474 !important;
 	background-color: #69643100 !important;
@@ -17,12 +17,12 @@
 	font-size: 17px !important;
 	color: #fea42a !important;
 	position: absolute !important;
-	right: 0px !important;
+	right: 0 !important;
 	bottom: 30px !important;
 }
 
 .addButton {
-	border: 0px !important;
+	border: 0 !important;
 	background: #69643100 !important;
 	color: #c98474 !important;
 	font-weight: 600 !important;
