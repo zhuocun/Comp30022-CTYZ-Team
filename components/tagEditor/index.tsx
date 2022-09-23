@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { TagsInput } from "react-tag-input-component";
 import classes from './index.module.css';
 
-function tagEditor(){
+const TagEditor: React.FC = () => {
 const [selected, setSelected] = useState(["dinner"]);
 return (
 
@@ -20,6 +20,6 @@ return (
 }
 
 
-export default tagEditor;
+export default TagEditor;
 
 

@@ -20,7 +20,7 @@ const formItemLayoutWithOutLabel = {
 };
 
 
-function AddMethod() {
+const AddMethod: React.FC = () => {
     const onFinish = (values) => {
         console.log("Received values of form:", values);
     };

@@ -1,8 +1,8 @@
 import { Layout } from "antd";
 import React from "react";
 import EditorNavBar from "../components/editorNavBar";
-import tagEditor from "../components/tagEditor";
-import titleEditor from "../components/titleEditor";
+import TagEditor from "../components/tagEditor";
+import TitleEditor from "../components/titleEditor";
 import PicUploader from "../components/picUploader";
 import AddIngredients from "../components/ingredientsAdder";
 import AddMethod from "../components/methodAdder";
@@ -21,10 +21,10 @@ const RecipeEditor = () => {
                 <div>
                     <div className={styles.components}>
                         <PicUploader />
-                        <titleEditor />
+                        <TitleEditor />
                     </div>
                     <div>
-                        <tagEditor />
+                        <TagEditor />
                     </div>
                     <div className={styles.ingredients}>
                         <AddIngredients />

@@ -7,7 +7,7 @@ const onChange = (e) => {
 };
 
 
-function titleEditor() {
+const TitleEditor: React.FC = () => {
 
     return (
         <>
@@ -19,6 +19,6 @@ function titleEditor() {
             <br />
         </>
     );
-}
+};
 
-export default titleEditor;
+export default TitleEditor;
