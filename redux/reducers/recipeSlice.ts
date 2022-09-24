@@ -5,12 +5,14 @@ interface RecipeState {
     loading: boolean;
     error: string | null;
     recipe: Recipe | null;
+    recipeList: Recipe[] | null;
 }
 
 const initialState: RecipeState = {
     loading: false,
     error: null,
-    recipe: null
+    recipe: null,
+    recipeList: null
 };
 
 export const createRecipe = createAsyncThunk(
@@ -23,6 +25,23 @@ export const createRecipe = createAsyncThunk(
             {
                 recipe: parameters.recipe
             },
+            {
+                headers: {
+                    tokens: `${parameters.jwtToken}`
+                }
+            }
+        );
+        return axiosResponse.data.token;
+    }
+);
+
+export const getRecipeList = createAsyncThunk(
+    "recipe/getRecipeList",
+    async (parameters: {
+        jwtToken: string | null
+    }) => {
+        const axiosResponse = await axios.get(
+            ``,
             {
                 headers: {
                     tokens: `${parameters.jwtToken}`
@@ -125,6 +144,21 @@ export const recipeSlice = createSlice({
         ) => {
             state.loading = false;
             state.recipe = null;
+        },
+        [getRecipeList.pending.type]: (state) => {
+            state.loading = true;
+        },
+        [getRecipeList.fulfilled.type]: (state, action) => {
+            state.loading = false;
+            state.error = null;
+            state.recipe = action.payload;
+        },
+        [getRecipeList.rejected.type]: (
+            state,
+            action: PayloadAction<Recipe[] | null>
+        ) => {
+            state.loading = false;
+            state.recipeList = action.payload;
         }
 
     }
