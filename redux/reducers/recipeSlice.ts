@@ -6,13 +6,15 @@ interface RecipeState {
     error: string | null;
     recipe: Recipe | null;
     recipeList: Recipe[] | null;
+    recipeCache: Recipe | null;
 }
 
 const initialState: RecipeState = {
     loading: false,
     error: null,
     recipe: null,
-    recipeList: null
+    recipeList: null,
+    recipeCache: null
 };
 
 export const createRecipe = createAsyncThunk(

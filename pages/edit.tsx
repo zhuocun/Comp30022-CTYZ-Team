@@ -1,17 +1,21 @@
 import { Layout } from "antd";
-import React from "react";
+import React, { useState } from "react";
 import EditorNavBar from "../components/editorNavBar";
 import TagEditor from "../components/tagEditor";
 import TitleEditor from "../components/titleEditor";
 import PicUploader from "../components/picUploader";
-import AddIngredients from "../components/ingredientsAdder";
-import AddMethod from "../components/methodAdder";
+import IngredientsAdder from "../components/ingredientsAdder";
+import MethodAdder from "../components/methodAdder";
 import styles from "../styles/recipeEditor.module.css";
 import { NextPage } from "next";
 
 const { Header, Content, Footer } = Layout;
 
 const RecipeEditor: NextPage = () => {
+    const [title, setTitle] = useState<string>("");
+    const [tag, setTag] = useState<string[]>([]);
+    const [ingredient, setIngredient] = useState();
+
     return (
         <Layout>
             <Header className={styles.header}>
@@ -22,16 +26,16 @@ const RecipeEditor: NextPage = () => {
                 <div>
                     <div className={styles.components}>
                         <PicUploader />
-                        <TitleEditor />
+                        <TitleEditor setTitle={setTitle} />
                     </div>
                     <div>
-                        <TagEditor />
+                        <TagEditor setTag={setTag}/>
                     </div>
                     <div className={styles.ingredients}>
-                        <AddIngredients />
+                        <IngredientsAdder setIngredient={setIngredient}/>
                     </div>
                     <div className={styles.methods}>
-                        <AddMethod />
+                        <MethodAdder />
                     </div>
                 </div>
             </Content>

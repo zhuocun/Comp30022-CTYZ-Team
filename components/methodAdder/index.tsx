@@ -20,7 +20,7 @@ const formItemLayoutWithOutLabel = {
 };
 
 
-const AddMethod: React.FC = () => {
+const MethodAdder: React.FC = () => {
     const onFinish = (values) => {
         console.log("Received values of form:", values);
     };
@@ -118,6 +118,6 @@ const AddMethod: React.FC = () => {
             </Form.Item>
         </Form>
     );
-}
+};
 
-export default AddMethod;
+export default MethodAdder;

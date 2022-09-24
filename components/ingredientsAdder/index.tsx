@@ -1,6 +1,6 @@
 import { MinusCircleOutlined } from "@ant-design/icons";
 import { Button, Form, Input, Row, Col } from "antd";
-import React from "react";
+import React, { Dispatch, SetStateAction } from "react";
 import styles from "./index.module.css";
 
 const formItemLayoutWithOutLabel = {
@@ -16,7 +16,9 @@ const formItemLayoutWithOutLabel = {
     }
 };
 
-const IngredientsAdder: React.FC = () => {
+const IngredientsAdder: React.FC<{
+    setIngredient: Dispatch<SetStateAction<any>>
+}> = () => {
 
     const onFinish = (values) => {
         console.log("Received values of form:", values);
@@ -42,7 +44,9 @@ const IngredientsAdder: React.FC = () => {
                     <Input.Group size="default">
                         <Row gutter={13}>
                             <Col span={11}>
-                                <Input placeholder="Ingredient" className={styles.input} />
+                                <Input
+                                    placeholder="Ingredient"
+                                    className={styles.input} />
                             </Col>
                             <Col span={11}>
                                 <Input placeholder="Amount" className={styles.input} />
@@ -63,11 +67,15 @@ const IngredientsAdder: React.FC = () => {
                                         <Input.Group size="default">
                                             <Row gutter={13}>
                                                 <Col span={11}>
-                                                    <Input placeholder="Ingredient" className={styles.input} />
+                                                    <Input
+                                                        placeholder="Ingredient"
+                                                        className={styles.input}
+                                                    />
                                                 </Col>
                                                 <Col span={11}>
                                                     <Input placeholder="Amount" className={styles.input} />
                                                 </Col>
+                                                <Button htmlType="submit">ok</Button>
                                             </Row>
                                         </Input.Group>
                                     </Form.Item>
@@ -78,7 +86,6 @@ const IngredientsAdder: React.FC = () => {
                             ))}
                             {/* <div className={styles.a}> */}
                             <Form.Item>
-
                                 <Button
                                     className={styles.addButton}
                                     type="dashed"
@@ -92,13 +99,14 @@ const IngredientsAdder: React.FC = () => {
                                 <Form.ErrorList errors={errors} />
                             </Form.Item>
                         </>
-
                     )}
                 </Form.List>
             </Form.Item>
+            <Form.Item>
+                <Button htmlType="submit">Finish</Button>
+            </Form.Item>
         </Form>
-
     );
-}
+};
 
 export default IngredientsAdder;
