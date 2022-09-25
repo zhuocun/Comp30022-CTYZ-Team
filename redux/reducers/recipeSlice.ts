@@ -54,6 +54,25 @@ export const getRecipeList = createAsyncThunk(
     }
 );
 
+export const searchForRecipe = createAsyncThunk(
+    "recipe/searchForRecipe",
+    async (
+        parameters: {
+            jwtToken: string | null, keywords: string | string[] | undefined
+        }
+    ) => {
+        const axiosResponse = await axios.get(
+            ``,
+            {
+                headers: {
+                    tokens: `${parameters.jwtToken}`
+                }
+            }
+        );
+        return axiosResponse.data.token;
+    }
+);
+
 export const updateRecipe = createAsyncThunk(
     "recipe/updateRecipe",
     async (parameters: {
@@ -146,6 +165,21 @@ export const recipeSlice = createSlice({
         ) => {
             state.loading = false;
             state.recipe = null;
+        },
+        [getRecipeList.pending.type]: (state) => {
+            state.loading = true;
+        },
+        [getRecipeList.fulfilled.type]: (state, action) => {
+            state.loading = false;
+            state.error = null;
+            state.recipe = action.payload;
+        },
+        [getRecipeList.rejected.type]: (
+            state,
+            action: PayloadAction<Recipe[] | null>
+        ) => {
+            state.loading = false;
+            state.recipeList = action.payload;
         },
         [getRecipeList.pending.type]: (state) => {
             state.loading = true;
