@@ -15,6 +15,7 @@ import { createRecipe } from "../redux/reducers/recipeSlice";
 const { Header, Content, Footer } = Layout;
 
 const RecipeEditor: NextPage = () => {
+    const [pic, setPic] = useState<string>("");
     const [title, setTitle] = useState<string>("");
     const [tags, setTags] = useState<string[]>([]);
     const [ingredients, setIngredients] = useState<string[]>([]);
@@ -26,7 +27,7 @@ const RecipeEditor: NextPage = () => {
 
     const recipe: Recipe = {
         id: "",
-        pic: "",
+        pic: pic,
         title: title,
         tags: tags,
         ingredients: ingredients,
@@ -52,7 +53,7 @@ const RecipeEditor: NextPage = () => {
             <Content className={styles.content}>
                 <div>
                     <div className={styles.components}>
-                        <PicUploader />
+                        <PicUploader setPic={setPic}/>
                         <TitleEditor setTitle={setTitle} />
                     </div>
                     <div>
