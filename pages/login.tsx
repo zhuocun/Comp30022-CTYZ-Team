@@ -1,6 +1,7 @@
 import { Layout } from "antd";
 import React from "react";
 import ECookLogo from "/public/logoMedium.svg";
+import { LoginForm } from "../components/loginForm";
 import styles from "../styles/loginPage.module.css";
 import { NextPage } from "next";
 
@@ -15,6 +16,7 @@ const LoginPage: NextPage = () => {
 
             <Content className={styles.content}>
                 <ECookLogo />
+                <LoginForm />
             </Content>
             <Footer className={styles.footer}></Footer>
         </Layout>

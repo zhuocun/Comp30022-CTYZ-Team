@@ -1,4 +1,5 @@
 import React from "react";
+import ECookLogo from "/public/logoMedium.svg";
 import styles from "./index.module.css";
 import { Layout } from "antd";
 import Link from "next/link";
@@ -20,7 +21,7 @@ export const AuthLayout: React.FC<PropsType> = (props) => {
                     <div className={styles["content-header"]}>
                         <img alt="logo" className={styles["logo"]} src={logo} />
                         <Link href="/">
-                            <span className={styles["title"]}>CookBook</span>
+                            return
                         </Link>
                     </div>
                     <div className={styles["desc"]}>
