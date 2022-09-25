@@ -33,7 +33,7 @@ export const createRecipe = createAsyncThunk(
                 }
             }
         );
-        return axiosResponse.data.token;
+        return axiosResponse.data;
     }
 );
 
@@ -50,7 +50,7 @@ export const getRecipeList = createAsyncThunk(
                 }
             }
         );
-        return axiosResponse.data.token;
+        return axiosResponse.data;
     }
 );
 
@@ -62,7 +62,7 @@ export const searchForRecipe = createAsyncThunk(
         const axiosResponse = await axios.get(
             `${keywords}`
         );
-        return axiosResponse.data.token;
+        return axiosResponse.data;
     }
 );
 
@@ -83,7 +83,7 @@ export const updateRecipe = createAsyncThunk(
                 }
             }
         );
-        return axiosResponse.data.token;
+        return axiosResponse.data;
     }
 );
 
@@ -100,7 +100,7 @@ export const deleteRecipe = createAsyncThunk(
                 }
             }
         );
-        return axiosResponse.data.token;
+        return axiosResponse;
     }
 );
 
