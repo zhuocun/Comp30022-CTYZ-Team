@@ -39,14 +39,14 @@ export const createRecipe = createAsyncThunk(
 
 export const getRecipeList = createAsyncThunk(
     "recipe/getRecipeList",
-    async (parameters: {
+    async (
         jwtToken: string | null
-    }) => {
+    ) => {
         const axiosResponse = await axios.get(
             ``,
             {
                 headers: {
-                    tokens: `${parameters.jwtToken}`
+                    tokens: `${jwtToken}`
                 }
             }
         );
