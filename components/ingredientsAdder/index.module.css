@@ -29,6 +29,6 @@
     background: #69643100 !important;
     color: #c98474 !important;
     font-weight: 600 !important;
-    position: absolute !important;
-    left: 2.25rem !important;
+    position: center !important;
+    margin-left: 15%;
 }

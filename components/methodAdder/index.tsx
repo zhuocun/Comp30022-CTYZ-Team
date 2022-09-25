@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Dispatch, SetStateAction } from "react";
 import "antd/dist/antd.css";
 import { MinusCircleOutlined } from "@ant-design/icons";
 import { Button, Form, Input } from "antd";
@@ -20,9 +20,12 @@ const formItemLayoutWithOutLabel = {
 };
 
 
-const AddMethod: React.FC = () => {
-    const onFinish = (values) => {
-        console.log("Received values of form:", values);
+const MethodAdder: React.FC<{
+    setMethod: Dispatch<SetStateAction<string[]>>
+}> = ({ setMethod }) => {
+
+    const onFinish = (values: string[]) => {
+        setMethod(values);
     };
 
     return (
@@ -34,12 +37,12 @@ const AddMethod: React.FC = () => {
         >
             <Form.Item>
                 <h1 className={styles.title}>Add Method</h1>
-
+                {/*
                 <Form.Item>
                     <span className={styles.index}> 1 </span>
                     <Form.Item
                         className={styles.defaultInput}
-                        name="default_method"
+                        name="step 1"
                         rules={[
                             {
                                 required: true,
@@ -47,7 +50,6 @@ const AddMethod: React.FC = () => {
                             }
                         ]}
                     >
-
                         <TextArea
                             className={styles.input}
                             placeholder="Insert Step Here"
@@ -56,18 +58,14 @@ const AddMethod: React.FC = () => {
                         />
                     </Form.Item>
                 </Form.Item>
-
-
+                */}
                 <Form.List
-                    name="methods"
+                    name="steps"
                 >
                     {(fields, { add, remove }, { errors }) => (
                         <>
                             {fields.map((field, index) => (
                                 <Form.Item required={false} key={field.key}>
-                  <span className={styles.index}>
-                    {index + 2 + " "}
-                  </span>
                                     <div>
                                         <Form.Item
                                             {...field}
@@ -82,7 +80,7 @@ const AddMethod: React.FC = () => {
                                         >
                                             <TextArea
                                                 className={styles.input}
-                                                placeholder="Insert Step Here"
+                                                placeholder={"Step " + (index + 1)}
                                                 autoSize maxLength={200}
                                                 style={{ background: "#69643100" }}
                                             />
@@ -91,7 +89,6 @@ const AddMethod: React.FC = () => {
                                             <MinusCircleOutlined
                                                 className={styles.deleteButton}
                                                 onClick={() => remove(field.name)}
-
                                             />
                                         ) : null}
                                     </div>
@@ -107,17 +104,19 @@ const AddMethod: React.FC = () => {
                                     }}
 
                                 >
-                                    + ADD MORE STEPS
+                                    + ADD STEPS
                                 </Button>
                                 <Form.ErrorList errors={errors} />
                             </Form.Item>
                         </>
                     )}
                 </Form.List>
-
+                <Form.Item>
+                    <Button htmlType="submit">Finish</Button>
+                </Form.Item>
             </Form.Item>
         </Form>
     );
-}
+};
 
-export default AddMethod;
+export default MethodAdder;
