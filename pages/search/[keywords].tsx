@@ -8,16 +8,13 @@ import { useRouter } from "next/router";
 const SearchResult: NextPage = () => {
     const router = useRouter();
     const { keywords } = router.query;
-    const jwtToken = useReduxSelector(s => s.authentication.jwtToken);
     const loading = useReduxSelector(s => s.recipe.loading);
     const recipeList = useReduxSelector(s => s.recipe.recipeList);
     const dispatch = useReduxDispatch();
 
     useEffect(() => {
-        if (jwtToken) {
-            dispatch(searchForRecipe({ jwtToken, keywords }));
-        }
-    }, [jwtToken]);
+        dispatch(searchForRecipe(keywords));
+    }, [keywords]);
 
     return (
         <RecipeList loading={loading} recipeList={recipeList} />

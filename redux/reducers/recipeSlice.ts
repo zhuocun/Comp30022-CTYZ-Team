@@ -57,17 +57,10 @@ export const getRecipeList = createAsyncThunk(
 export const searchForRecipe = createAsyncThunk(
     "recipe/searchForRecipe",
     async (
-        parameters: {
-            jwtToken: string | null, keywords: string | string[] | undefined
-        }
+        keywords: string | string[] | undefined
     ) => {
         const axiosResponse = await axios.get(
-            ``,
-            {
-                headers: {
-                    tokens: `${parameters.jwtToken}`
-                }
-            }
+            `${keywords}`
         );
         return axiosResponse.data.token;
     }
