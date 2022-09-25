@@ -14,7 +14,7 @@ const { Header, Content, Footer } = Layout;
 const RecipeEditor: NextPage = () => {
     const [title, setTitle] = useState<string>("");
     const [tag, setTag] = useState<string[]>([]);
-    const [ingredient, setIngredient] = useState();
+    const [ingredient, setIngredient] = useState<string[]>([]);
 
     return (
         <Layout>
@@ -29,10 +29,10 @@ const RecipeEditor: NextPage = () => {
                         <TitleEditor setTitle={setTitle} />
                     </div>
                     <div>
-                        <TagEditor setTag={setTag}/>
+                        <TagEditor setTag={setTag} />
                     </div>
                     <div className={styles.ingredients}>
-                        <IngredientsAdder setIngredient={setIngredient}/>
+                        <IngredientsAdder setIngredient={setIngredient} />
                     </div>
                     <div className={styles.methods}>
                         <MethodAdder />
