@@ -49,7 +49,6 @@ export const RegisterForm: React.FC = () => {
         >
             <h2 className={styles["title"]}> Sign Up </h2>
             <Form.Item
-                className="formItemRow "
                 name="username"
                 rules={[
                     {

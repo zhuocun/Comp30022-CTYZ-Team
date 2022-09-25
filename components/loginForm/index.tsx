@@ -1,10 +1,12 @@
 import React, { useEffect } from "react";
-import { Button, Checkbox, Form, Input } from "antd";
+import { Button, Form, Input } from "antd";
 import styles from "./index.module.css";
 import { useReduxDispatch, useReduxSelector } from "../../redux/hooks";
 import { login } from "../../redux/reducers/authSlice";
 import { useRouter } from "next/router";
 import Link from "next/link";
+import { CheckCircleOutline, CheckCircleFill } from 'antd-mobile-icons';
+import { Checkbox } from "antd-mobile";
 
 export const LoginForm: React.FC = () => {
     const loading = useReduxSelector((s) => s.authentication.loading);
@@ -87,7 +89,18 @@ export const LoginForm: React.FC = () => {
                         span: 16
                     }}
                 >
-                    <Checkbox className={styles["remember"]}>
+                    <Checkbox
+                        value="remember"
+                        icon={(checked) =>
+                            checked ? (
+                                <CheckCircleFill style={{ color: "#FF7F3F" }} />
+                            ) : (
+                                <CheckCircleOutline
+                                    style={{ color: "#FF7F3F" }}
+                                />
+                            )
+                        }
+                    >
                         Remember me
                     </Checkbox>
                 </Form.Item>

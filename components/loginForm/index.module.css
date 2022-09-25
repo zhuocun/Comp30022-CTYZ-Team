@@ -38,9 +38,27 @@
 }
 
 .signUp{
-    /* color: black!important; */
     position: relative!important;
     color: black !important;
     bottom: 15px !important;
     font-size: 6px;
+}
+
+
+.submit:active{
+    background-color: #FF9551;
+}
+    
+.submit:focus{
+    background-color: #FF9551;
+    border: 2px solid white!important;
+}
+
+.submit:hover{
+    background-color: #FF9551;
+    border: 2px solid white!important;
+}
+
+.signUp:hover{
+    color: #F96666 !important;
 }
