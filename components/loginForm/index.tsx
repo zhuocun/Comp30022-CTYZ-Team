@@ -90,6 +90,7 @@ export const LoginForm: React.FC = () => {
                     }}
                 >
                     <Checkbox
+                        className={styles["remember"]}
                         value="remember"
                         icon={(checked) =>
                             checked ? (

@@ -9,56 +9,42 @@
 }
 
 .title{
-    font-weight: normal;
-    text-align: left;
+    font-weight: normal!important;
+    text-align: left!important;
 }
 
 .input{
-    border: 0px;
-    border-radius: 5px;
+    border: 0px!important;
+    border-radius: 5px!important;
 }
 
 .remember{
-    width: 60%;
-    position: absolute;
-    right:53%;
-    top:5%;
+    width: 70%!important;
+    position: absolute !important;
+    right:42% !important;
+    top:5% !important;
+    --icon-size: 16px !important;
+    --font-size: 14px !important;
+    --gap: 6px !important;
 }
 
 .submit{
-    background-color: #fff9eb;
-    color: black;
-    border: 2px solid white;
+    background-color: #fff9eb !important;
+    color: black !important;
+    border: 2px solid white !important;
     border-radius: 5px !important;
-    height: 120%;
-    width: 80%;
-    position: absolute;
-    right:42.5%;
-    bottom:20%;
+    height: 120% !important;
+    width: 80% !important;
+    position: absolute !important;
+    right:42.5% !important;
+    bottom:20% !important;
+    font-size: medium !important;
 }
 
 .signUp{
+    /* color: black!important; */
     position: relative!important;
     color: black !important;
     bottom: 15px !important;
-    font-size: 6px;
-}
-
-
-.submit:active{
-    background-color: #FF9551;
-}
-    
-.submit:focus{
-    background-color: #FF9551;
-    border: 2px solid white!important;
-}
-
-.submit:hover{
-    background-color: #FF9551;
-    border: 2px solid white!important;
-}
-
-.signUp:hover{
-    color: #F96666 !important;
+    font-size: 6px !important;
 }
