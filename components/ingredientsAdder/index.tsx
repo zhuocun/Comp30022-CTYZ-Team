@@ -1,5 +1,5 @@
 import { MinusCircleOutlined } from "@ant-design/icons";
-import { Button, Form, Input, Row, Col } from "antd";
+import { Button, Form, Input } from "antd";
 import React, { Dispatch, SetStateAction } from "react";
 import styles from "./index.module.css";
 
@@ -16,7 +16,7 @@ const formItemLayoutWithOutLabel = {
     }
 };
 
-const IngredientsAdder: React.FC<{
+const IngredientAdder: React.FC<{
     setIngredient: Dispatch<SetStateAction<string[]>>
 }> = ({ setIngredient }) => {
 
@@ -69,14 +69,10 @@ const IngredientsAdder: React.FC<{
                                         }
                                     ]}
                                 >
-                                    <Row gutter={13}>
-                                        <Col span={20}>
-                                            <Input
-                                                placeholder={"Ingredient " + (index + 1)}
-                                                className={styles.input}
-                                            />
-                                        </Col>
-                                    </Row>
+                                    <Input
+                                        placeholder={"Ingredient " + (index + 1)}
+                                        className={styles.input}
+                                    />
                                 </Form.Item>
                                 {/* </Form.Item> */}
                                 <MinusCircleOutlined onClick={() => remove(field.name)}
@@ -107,4 +103,4 @@ const IngredientsAdder: React.FC<{
     );
 };
 
-export default IngredientsAdder;
+export default IngredientAdder;

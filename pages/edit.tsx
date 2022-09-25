@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import TagEditor from "../components/tagEditor";
 import TitleEditor from "../components/titleEditor";
 import PicUploader from "../components/picUploader";
-import IngredientsAdder from "../components/ingredientsAdder";
+import IngredientAdder from "../components/ingredientsAdder";
 import MethodAdder from "../components/methodAdder";
 import styles from "../styles/recipeEditor.module.css";
 import { NextPage } from "next";
@@ -58,7 +58,7 @@ const RecipeEditor: NextPage = () => {
                         <TagEditor setTag={setTags} />
                     </div>
                     <div className={styles.ingredients}>
-                        <IngredientsAdder setIngredient={setIngredients} />
+                        <IngredientAdder setIngredient={setIngredients} />
                     </div>
                     <div className={styles.methods}>
                         <MethodAdder setMethod={setMethods} />
