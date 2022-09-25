@@ -1,1 +1,5 @@
-
+.formItemRow 
+    :global .ant-row {
+      justify-content: center !important;
+    }
+  

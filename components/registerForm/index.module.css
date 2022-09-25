@@ -1,5 +1,30 @@
 .register-form {
-    width: 40%;
     margin-left: auto !important;
     margin-right: auto !important;
+    background: #FFF9EB !important ;
+    border: #fff solid 5px !important;
+    border-radius: 10px !important;
+    width: 95% !important;
+    padding: 5% 10% 0% !important;
+}
+
+.title{
+    font-weight: normal;
+    text-align: left;
+}
+.input {
+    border: 0px;
+    border-radius: 5px;
+}
+
+.submit{
+    background-color: #FFDB88;
+    color: black;
+    border: 2px solid white;
+    border-radius: 5px !important;
+    height: 120%;
+    width: 80%;
+    position: absolute;
+    right:40%;
+    top: 5%;
 }

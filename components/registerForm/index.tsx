@@ -1,8 +1,9 @@
-import { Button, Checkbox, Form, Input } from "antd";
+import { Button, Checkbox, Form, Input, Row, Col } from "antd";
 import React from "react";
 import styles from "./index.module.css";
 import axios from "axios";
 import { useRouter } from "next/router";
+import { Content } from "antd/lib/layout/layout";
 
 export const RegisterForm: React.FC = () => {
     const router = useRouter();
@@ -46,8 +47,9 @@ export const RegisterForm: React.FC = () => {
             autoComplete="off"
             className={styles["register-form"]}
         >
+            <h2 className={styles["title"]}> Sign Up </h2>
             <Form.Item
-                label="Username"
+                className="formItemRow "
                 name="username"
                 rules={[
                     {
@@ -55,12 +57,13 @@ export const RegisterForm: React.FC = () => {
                         message: "Please input your username!"
                     }
                 ]}
+                
             >
-                <Input />
+                <Input placeholder="Username" className={styles["input"]}/>
             </Form.Item>
+            
 
             <Form.Item
-                label="Password"
                 name="password"
                 rules={[
                     {
@@ -69,13 +72,12 @@ export const RegisterForm: React.FC = () => {
                     }
                 ]}
             >
-                <Input.Password />
+                <Input.Password placeholder="Password" className={styles["input"]}/>
             </Form.Item>
 
             <Form.Item
-                label="Confirm Password"
                 name="confirm"
-                hasFeedback
+                // hasFeedback
                 rules={[
                     {
                         required: true,
@@ -92,19 +94,9 @@ export const RegisterForm: React.FC = () => {
                     })
                 ]}
             >
-                <Input.Password />
+                <Input.Password placeholder="Confirm Password" className={styles["input"]}/>
             </Form.Item>
 
-            <Form.Item
-                name="remember"
-                valuePropName="checked"
-                wrapperCol={{
-                    offset: 8,
-                    span: 16
-                }}
-            >
-                <Checkbox>Remember me</Checkbox>
-            </Form.Item>
 
             <Form.Item
                 wrapperCol={{
@@ -112,8 +104,8 @@ export const RegisterForm: React.FC = () => {
                     span: 16
                 }}
             >
-                <Button type="primary" htmlType="submit">
-                    Submit
+                <Button type="primary" htmlType="submit" className={styles["submit"]}>
+                    Create Account
                 </Button>
             </Form.Item>
         </Form>

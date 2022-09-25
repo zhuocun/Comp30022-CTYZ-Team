@@ -4,6 +4,7 @@ import styles from "./index.module.css";
 import { useReduxDispatch, useReduxSelector } from "../../redux/hooks";
 import { login } from "../../redux/reducers/authSlice";
 import { useRouter } from "next/router";
+import Link from "next/link";
 
 export const LoginForm: React.FC = () => {
     const loading = useReduxSelector((s) => s.authentication.loading);
@@ -59,7 +60,7 @@ export const LoginForm: React.FC = () => {
                     }
                 ]}
             >
-                <Input placeholder= "Username" className={styles["input"]}/>
+                <Input placeholder="Username" className={styles["input"]} />
             </Form.Item>
 
             <Form.Item
@@ -71,30 +72,46 @@ export const LoginForm: React.FC = () => {
                     }
                 ]}
             >
-                <Input.Password placeholder="Password" className={styles["input"]}/>
+                <Input.Password
+                    placeholder="Password"
+                    className={styles["input"]}
+                />
             </Form.Item>
 
+            <div>
+                <Form.Item
+                    name="remember"
+                    valuePropName="checked"
+                    wrapperCol={{
+                        offset: 8,
+                        span: 16
+                    }}
+                >
+                    <Checkbox className={styles["remember"]}>
+                        Remember me
+                    </Checkbox>
+                </Form.Item>
+            </div>
+
             <Form.Item
-                name="remember"
-                valuePropName="checked"
                 wrapperCol={{
                     offset: 8,
                     span: 16
                 }}
             >
-                <Checkbox>Remember me</Checkbox>
-            </Form.Item>
-
-            <Form.Item
-                wrapperCol={{
-                    offset: 8,
-                    span: 16
-                }}
-            >
-                <Button className={styles["submit"]} type="primary" htmlType="submit" loading={loading}>
+                <Button
+                    className={styles["submit"]}
+                    type="primary"
+                    htmlType="submit"
+                    loading={loading}
+                >
                     Let's start cooking!
                 </Button>
             </Form.Item>
+
+            <Link href="/register">
+                <a className={styles["signUp"]}>or Sign Up</a>
+            </Link>
         </Form>
     );
 };
