@@ -40,27 +40,19 @@ export const createRecipe = createAsyncThunk(
 export const getRecipeList = createAsyncThunk(
     "recipe/getRecipeList",
     async (
-        jwtToken: string | null
+        parameters: {
+            jwtToken: string | null, keywords: string | string[] | undefined
+        }
     ) => {
+        let url = ``;
+        url += parameters.keywords ? `keywords=${parameters.keywords}` : ""
         const axiosResponse = await axios.get(
-            ``,
+            url,
             {
                 headers: {
-                    tokens: `${jwtToken}`
+                    tokens: `${parameters.jwtToken}`
                 }
             }
-        );
-        return axiosResponse.data;
-    }
-);
-
-export const searchForRecipe = createAsyncThunk(
-    "recipe/searchForRecipe",
-    async (
-        keywords: string | string[] | undefined
-    ) => {
-        const axiosResponse = await axios.get(
-            `${keywords}`
         );
         return axiosResponse.data;
     }

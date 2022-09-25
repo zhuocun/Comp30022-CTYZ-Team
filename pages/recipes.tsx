@@ -12,7 +12,7 @@ const Recipes: NextPage = () => {
 
     useEffect(() => {
         if (jwtToken) {
-            dispatch(getRecipeList(jwtToken));
+            dispatch(getRecipeList({ jwtToken, keywords: undefined }));
         }
     }, [jwtToken]);
 
