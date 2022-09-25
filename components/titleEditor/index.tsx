@@ -10,7 +10,7 @@ const TitleEditor: React.FC<{ setTitle: Dispatch<SetStateAction<string>> }> =
                 <Input
                     size="large"
                     onChange={(e) => setTitle(e.target.value)}
-                    placeholder="Insert Recipe Name" allowClear
+                    placeholder="Recipe Name" allowClear
                     className={styles.editTitle}
                 />
                 <br />

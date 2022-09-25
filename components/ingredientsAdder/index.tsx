@@ -20,9 +20,8 @@ const IngredientsAdder: React.FC<{
     setIngredient: Dispatch<SetStateAction<string[]>>
 }> = ({ setIngredient }) => {
 
-    const onFinish = (values) => {
+    const onFinish = (values: string[]) => {
         setIngredient(values);
-        console.log(values)
     };
 
     return (
@@ -33,6 +32,27 @@ const IngredientsAdder: React.FC<{
             autoComplete="off"
         >
             <h1 className={styles.title}>Ingredients</h1>
+            {/*
+            <Form.Item>
+                <Form.Item
+                    className={styles.defaultInput}
+                    name="Ingredient 1"
+                    rules={[
+                        {
+                            required: true,
+                            message: "Insert at least one ingredient."
+                        }
+                    ]}
+                >
+                    <Input
+                        required={true}
+                        placeholder={"Ingredient 1"}
+                        className={styles.input}
+                    />
+                </Form.Item>
+            </Form.Item>
+            */}
+
             <Form.List name="ingredients">
                 {(fields, { add, remove }, { errors }) => (
                     <>
@@ -41,11 +61,17 @@ const IngredientsAdder: React.FC<{
                                 <Form.Item
                                     {...field}
                                     validateTrigger={["onChange", "onBlur"]}
+                                    rules={[
+                                        {
+                                            required: true,
+                                            whitespace: true,
+                                            message: "Please insert an ingredient or delete this field."
+                                        }
+                                    ]}
                                 >
                                     <Row gutter={13}>
                                         <Col span={20}>
                                             <Input
-                                                required={true}
                                                 placeholder={"Ingredient " + (index + 1)}
                                                 className={styles.input}
                                             />

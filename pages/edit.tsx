@@ -1,6 +1,5 @@
-import { Layout } from "antd";
+import { Button, Layout } from "antd";
 import React, { useState } from "react";
-import EditorNavBar from "../components/editorNavBar";
 import TagEditor from "../components/tagEditor";
 import TitleEditor from "../components/titleEditor";
 import PicUploader from "../components/picUploader";
@@ -8,18 +7,45 @@ import IngredientsAdder from "../components/ingredientsAdder";
 import MethodAdder from "../components/methodAdder";
 import styles from "../styles/recipeEditor.module.css";
 import { NextPage } from "next";
+import { CheckOutline, CloseOutline } from "antd-mobile-icons";
+import ECookLogo from "/public/logo.svg";
+import { useReduxDispatch, useReduxSelector } from "../redux/hooks";
+import { createRecipe } from "../redux/reducers/recipeSlice";
 
 const { Header, Content, Footer } = Layout;
 
 const RecipeEditor: NextPage = () => {
     const [title, setTitle] = useState<string>("");
-    const [tag, setTag] = useState<string[]>([]);
-    const [ingredient, setIngredient] = useState<string[]>([]);
+    const [tags, setTags] = useState<string[]>([]);
+    const [ingredients, setIngredients] = useState<string[]>([]);
+    const [methods, setMethods] = useState<string[]>([]);
+
+    const jwtToken = useReduxSelector(s => s.authentication.jwtToken);
+
+    const dispatch = useReduxDispatch();
+
+    const recipe: Recipe = {
+        pic: "",
+        title: title,
+        tags: tags,
+        ingredients: ingredients,
+        methods: methods,
+        category: ""
+    };
+
+    const onSubmit = () => {
+        console.log(recipe);
+        dispatch(createRecipe({ jwtToken, recipe }));
+    };
 
     return (
         <Layout>
             <Header className={styles.header}>
-                <EditorNavBar />
+                <div className={styles.navigation}>
+                    <CloseOutline style={{ fontSize: "28px" }} />
+                    <ECookLogo />
+                    <Button icon={<CheckOutline style={{ fontSize: "28px" }} />} onClick={onSubmit}></Button>
+                </div>
             </Header>
 
             <Content className={styles.content}>
@@ -29,13 +55,13 @@ const RecipeEditor: NextPage = () => {
                         <TitleEditor setTitle={setTitle} />
                     </div>
                     <div>
-                        <TagEditor setTag={setTag} />
+                        <TagEditor setTag={setTags} />
                     </div>
                     <div className={styles.ingredients}>
-                        <IngredientsAdder setIngredient={setIngredient} />
+                        <IngredientsAdder setIngredient={setIngredients} />
                     </div>
                     <div className={styles.methods}>
-                        <MethodAdder />
+                        <MethodAdder setMethod={setMethods} />
                     </div>
                 </div>
             </Content>
