@@ -6,7 +6,7 @@ import { NextPage } from "next";
 
 const { Header, Content, Footer } = Layout;
 
-const RecipeEditor: NextPage = () => {
+const LoginPage: NextPage = () => {
     return (
         <Layout>
             <Header className={styles.header}>
@@ -21,4 +21,4 @@ const RecipeEditor: NextPage = () => {
     );
 };
 
-export default RecipeEditor;
+export default LoginPage;

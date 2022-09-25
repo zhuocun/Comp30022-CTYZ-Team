@@ -1,6 +1,9 @@
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { Toaster } from "react-hot-toast";
 import "antd/dist/antd.css";
+import rootStore from "../redux/store";
+import { Provider } from "react-redux";
+import { PersistGate } from "redux-persist/integration/react";
 
 const queryClient = new QueryClient({
     defaultOptions: {
@@ -13,19 +16,23 @@ const queryClient = new QueryClient({
 
 const CookBook = ({ Component, pageProps }) => {
     return (
-        <QueryClientProvider client={queryClient}>
-            <Toaster
-                position="bottom-right"
-                toastOptions={
-                    {
-                        style: {
-                            fontSize: "1.4rem"
+        <Provider store={rootStore.store}>
+            <PersistGate persistor={rootStore.persistor} loading={null}>
+                <QueryClientProvider client={queryClient}>
+                    <Toaster
+                        position="bottom-right"
+                        toastOptions={
+                            {
+                                style: {
+                                    fontSize: "1.4rem"
+                                }
+                            }
                         }
-                    }
-                }
-            />
-            <Component {...pageProps} />
-        </QueryClientProvider>
+                    />
+                    <Component {...pageProps} />
+                </QueryClientProvider>
+            </PersistGate>
+        </Provider>
     );
 };
 

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { ImageUploader } from "antd-mobile";
 import { PictureOutline } from "antd-mobile-icons";
-import classes from "./index.module.css";
+import styles from "./index.module.css";
 import { ImageUploadItem } from "antd-mobile/es/components/image-uploader";
 
 const PicUploader: React.FC = () => {
@@ -19,7 +19,7 @@ const PicUploader: React.FC = () => {
             onChange={setFileList}
             maxCount={1}
             upload={upload}
-            className={classes.upload}>
+            className={styles.upload}>
 
             <div
                 style={{

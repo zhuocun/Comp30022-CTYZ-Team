@@ -1,12 +1,12 @@
 import React, { useState } from "react";
 import { TagsInput } from "react-tag-input-component";
-import classes from './index.module.css';
+import styles from './index.module.css';
 
 const TagEditor: React.FC = () => {
 const [selected, setSelected] = useState(["dinner"]);
 return (
 
-	<div className={classes.editTags}>
+	<div className={styles.editTags}>
 
 	<TagsInput
 		value={selected}
