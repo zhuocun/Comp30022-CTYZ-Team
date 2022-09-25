@@ -1,6 +1,14 @@
-.user-layout-container {
+.user-layout-container_register {
     height: 100vh;
     background-color: #FFDB88 !important;
+    background-size: 100% !important;
+    background-repeat: no-repeat;
+    background-position: center 110px;
+}
+
+.user-layout-container_login {
+    height: 100vh;
+    background-color: #FFF9EB !important;
     background-size: 100% !important;
     background-repeat: no-repeat;
     background-position: center 110px;

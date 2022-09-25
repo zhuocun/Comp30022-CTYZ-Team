@@ -1,13 +1,15 @@
 import React from "react";
 import { AuthLayout } from "../layouts/authLayout";
-import ECookLogo from "/public/logoMedium.svg";
 import { RegisterForm } from "../components/registerForm";
 import { NextPage } from "next";
+import styles from "../styles/registerPage.module.css";
 
 const Register: NextPage = () => {
     return (
-        <AuthLayout>
-            <RegisterForm />
+        <AuthLayout isLogin = {false}>
+            <div className={styles.component}>
+                <RegisterForm />
+            </div>
         </AuthLayout>
     );
 };

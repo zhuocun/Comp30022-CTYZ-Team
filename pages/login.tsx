@@ -9,8 +9,10 @@ const { Header, Content, Footer } = Layout;
 
 const LoginPage: NextPage = () => {
     return (
-        <AuthLayout>
-            <LoginForm />
+        <AuthLayout isLogin = {true}>
+            <div className={styles.component}>
+                <LoginForm />
+            </div>
         </AuthLayout>
     );
 };

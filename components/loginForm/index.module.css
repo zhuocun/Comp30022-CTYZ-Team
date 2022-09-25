@@ -1,5 +1,27 @@
 .login-form {
-    width: 40%;
     margin-left: auto !important;
     margin-right: auto !important;
+    background: #FFDB88 !important ;
+	border: #fff solid 5px !important;
+	border-radius: 10px !important;
+    width: 95% !important;
+    padding: 5% 10% 0% !important;
+}
+
+.title{
+    font-weight: normal;
+    text-align: left;
+}
+
+.input{
+    border: 0px;
+}
+
+.submit{
+    text-align: center;
+    background-color: #fff9eb;
+    color: black;
+    border: 2px solid white;
+    border-radius: 5px !important;
+
 }

@@ -3,18 +3,18 @@ import { LeftOutline } from "antd-mobile-icons";
 import styles from "./index.module.css";
 import { Layout } from "antd";
 import Link from "next/link";
-import Footer from "../../components/footer";
 import ECookLogo from "/public/logoMedium.svg";
 
 const { Header, Content } = Layout;
 
 interface PropsType {
+    isLogin: boolean;
     children: React.ReactNode;
 }
 
 export const AuthLayout: React.FC<PropsType> = (props) => {
     return (
-        <Layout className={styles["user-layout-container"]}>
+        <Layout className={props.isLogin === true ? styles["user-layout-container_login"] : styles["user-layout-container_register"]}>
             <Header className={styles["header"]}>
                 <div>
                     <Link href="/">
@@ -33,7 +33,6 @@ export const AuthLayout: React.FC<PropsType> = (props) => {
                     {props.children}
                 </div>
             </Content>
-            <Footer />
         </Layout>
     );
 };

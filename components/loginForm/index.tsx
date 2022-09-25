@@ -49,8 +49,8 @@ export const LoginForm: React.FC = () => {
             autoComplete="off"
             className={styles["login-form"]}
         >
+            <h2 className={styles["title"]}> Login </h2>
             <Form.Item
-                label="Username"
                 name="username"
                 rules={[
                     {
@@ -59,11 +59,10 @@ export const LoginForm: React.FC = () => {
                     }
                 ]}
             >
-                <Input />
+                <Input placeholder= "Username" className={styles["input"]}/>
             </Form.Item>
 
             <Form.Item
-                label="Password"
                 name="password"
                 rules={[
                     {
@@ -72,7 +71,7 @@ export const LoginForm: React.FC = () => {
                     }
                 ]}
             >
-                <Input.Password />
+                <Input.Password placeholder="Password" className={styles["input"]}/>
             </Form.Item>
 
             <Form.Item
@@ -92,8 +91,8 @@ export const LoginForm: React.FC = () => {
                     span: 16
                 }}
             >
-                <Button type="primary" htmlType="submit" loading={loading}>
-                    Submit
+                <Button className={styles["submit"]} type="primary" htmlType="submit" loading={loading}>
+                    Let's start cooking!
                 </Button>
             </Form.Item>
         </Form>
