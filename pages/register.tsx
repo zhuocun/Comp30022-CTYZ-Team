@@ -7,7 +7,6 @@ import { NextPage } from "next";
 const Register: NextPage = () => {
     return (
         <AuthLayout>
-            <ECookLogo />
             <RegisterForm />
         </AuthLayout>
     );

@@ -1,9 +1,10 @@
 import React from "react";
-import ECookLogo from "/public/logoMedium.svg";
+import { LeftOutline } from "antd-mobile-icons";
 import styles from "./index.module.css";
 import { Layout } from "antd";
 import Link from "next/link";
 import Footer from "../../components/footer";
+import ECookLogo from "/public/logoMedium.svg";
 
 const { Header, Content } = Layout;
 
@@ -12,20 +13,22 @@ interface PropsType {
 }
 
 export const AuthLayout: React.FC<PropsType> = (props) => {
-    const logo = "/logo.svg";
     return (
         <Layout className={styles["user-layout-container"]}>
-            <Header className={styles["header"]}></Header>
+            <Header className={styles["header"]}>
+                <div>
+                    <Link href="/">
+                        <span className={styles["navBar"]}>
+                            <LeftOutline />
+                        </span>
+                    </Link>
+                </div>
+            </Header>
             <Content className={styles["content"]}>
                 <div className={styles["top"]}>
-                    <div className={styles["content-header"]}>
-                        <img alt="logo" className={styles["logo"]} src={logo} />
-                        <Link href="/">
-                            return
-                        </Link>
-                    </div>
-                    <div className={styles["desc"]}>
-                        <h3>Make cooking more enjoyable!</h3>
+                    <div className={styles["logo"]}>
+                        {" "}
+                        <ECookLogo />{" "}
                     </div>
                     {props.children}
                 </div>
