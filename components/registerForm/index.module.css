@@ -1,5 +1,43 @@
 .register-form {
-    width: 40%;
     margin-left: auto !important;
     margin-right: auto !important;
+    background: #FFF9EB !important ;
+    border: #fff solid 5px !important;
+    border-radius: 10px !important;
+    width: 95% !important;
+    padding: 5% 10% 0% !important;
+}
+
+.title{
+    font-weight: normal !important;
+    text-align: left !important;
+}
+.input {
+    border: 0px !important;
+    border-radius: 5px !important;
+}
+
+.submit{
+    background-color: #FFDB88 !important;
+    color: black !important;
+    border: 2px solid white !important;
+    border-radius: 5px !important;
+    height: 120% !important;
+    width: 80% !important;
+    position: absolute !important;
+    right:42.5% !important;
+    top:10% !important;
+    font-size: medium !important;
+}
+
+.submit:focus{
+    background-color: #FF9551 !important;
+    border: 2px solid white !important;
+    color: white !important;
+}
+
+.submit:hover{
+    background-color: #FF9551 !important;
+    border: 2px solid white !important;
+    color: white !important;
 }
