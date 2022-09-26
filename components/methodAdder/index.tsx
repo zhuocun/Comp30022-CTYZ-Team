@@ -19,13 +19,12 @@ const formItemLayoutWithOutLabel = {
     }
 };
 
-
 const MethodAdder: React.FC<{
     setMethod: Dispatch<SetStateAction<string[]>>
 }> = ({ setMethod }) => {
 
-    const onFinish = (values: string[]) => {
-        setMethod(values);
+    const onFinish = (values: { steps: string[] }) => {
+        setMethod(values.steps);
     };
 
     return (

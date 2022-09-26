@@ -16,7 +16,7 @@ import { useRouter } from "next/router";
 const { Header, Content, Footer } = Layout;
 
 const RecipeEditor: NextPage = () => {
-    const [pic, setPic] = useState<string>("");
+    const [picture, setPicture] = useState<string>("");
     const [title, setTitle] = useState<string>("");
     const [tags, setTags] = useState<string[]>([]);
     const [ingredients, setIngredients] = useState<string[]>([]);
@@ -30,16 +30,16 @@ const RecipeEditor: NextPage = () => {
 
     const recipe: Recipe = {
         id: "",
-        pic: pic,
+        picture: picture,
         title: title,
         tags: tags,
         ingredients: ingredients,
         methods: methods,
-        category: ""
+        category: "63302ddf7b1ea4c130f10c21"
     };
 
     const onSubmit = () => {
-        console.log(recipe);
+        console.log(recipe.ingredients);
         dispatch(createRecipe({ jwtToken, recipe }));
         router.push("/");
     };
@@ -66,7 +66,7 @@ const RecipeEditor: NextPage = () => {
             <Content className={styles.content}>
                 <div>
                     <div className={styles.components}>
-                        <PicUploader setPic={setPic} />
+                        <PicUploader setPic={setPicture} />
                         <TitleEditor setTitle={setTitle} />
                     </div>
                     <div>

@@ -1,6 +1,6 @@
 interface Recipe {
     id: string;
-    pic: string;
+    picture: string;
     title: string;
     tags: string[];
     ingredients: string[];
@@ -10,6 +10,6 @@ interface Recipe {
 
 interface RecipeIntro {
     id: string;
-    pic: string;
+    picture: string;
     title: string;
 }

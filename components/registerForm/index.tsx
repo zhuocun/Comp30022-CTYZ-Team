@@ -1,24 +1,23 @@
-import { Button, Checkbox, Form, Input, Row, Col } from "antd";
+import { Button, Form, Input } from "antd";
 import React from "react";
 import styles from "./index.module.css";
 import axios from "axios";
 import { useRouter } from "next/router";
-import { Content } from "antd/lib/layout/layout";
 
 export const RegisterForm: React.FC = () => {
     const router = useRouter();
 
     const onFinish = async (values: {
-        username: string,
+        email: string,
         password: string,
-        confirm: string
+        name: string
     }) => {
         console.log("Success:", values);
         try {
-            await axios.post("", {
-                email: values.username,
-                password: values.password,
-                confirmPassword: values.confirm
+            await axios.post("http://localhost:8888/api/v1/auth/register", {
+                name: values.name,
+                email: values.email,
+                password: values.password
             });
             router.push("/Login/").then();
         } catch (error) {
@@ -49,16 +48,16 @@ export const RegisterForm: React.FC = () => {
         >
             <h2 className={styles["title"]}> Sign Up </h2>
             <Form.Item
-                name="username"
+                name="email"
                 rules={[
                     {
                         required: true,
-                        message: "Please input your username!"
+                        message: "Please input your email!"
                     }
                 ]}
                 
             >
-                <Input placeholder="Username" className={styles["input"]}/>
+                <Input placeholder="Email" className={styles["input"]}/>
             </Form.Item>
             
 
@@ -75,25 +74,16 @@ export const RegisterForm: React.FC = () => {
             </Form.Item>
 
             <Form.Item
-                name="confirm"
+                name="name"
                 // hasFeedback
                 rules={[
                     {
                         required: true,
-                        message: "Please confirm your password!"
-                    },
-                    ({ getFieldValue }) => ({
-                        validator(_, value) {
-                            if (!value || getFieldValue("password") === value) {
-                                return Promise.resolve();
-                            } else {
-                                return Promise.reject("Confirmation failed");
-                            }
-                        }
-                    })
+                        message: "Please input your name!"
+                    }
                 ]}
             >
-                <Input.Password placeholder="Confirm Password" className={styles["input"]}/>
+                <Input.Password placeholder="Username" className={styles["input"]}/>
             </Form.Item>
 
 
