@@ -25,6 +25,7 @@ const RecipeEditor: NextPage = () => {
     const dispatch = useReduxDispatch();
 
     const recipe: Recipe = {
+        id: "",
         pic: "",
         title: title,
         tags: tags,
