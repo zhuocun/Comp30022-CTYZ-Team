@@ -19,9 +19,8 @@
 }
 
 .remember{
-    width: 70% !important;
-    position: absolute !important;
-    right:42% !important;
+    width: 100% !important;
+    position: relative !important;
     top:5% !important;
     --icon-size: 17px !important;
     --font-size: 15px !important;
@@ -34,9 +33,8 @@
     border: 2px solid white !important;
     border-radius: 5px !important;
     height: 120% !important;
-    width: 80% !important;
-    position: absolute !important;
-    right:42.5% !important;
+    width: 172px !important;
+    position: relative !important;
     bottom:20% !important;
     font-size: medium !important;
 }
