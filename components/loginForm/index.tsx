@@ -1,11 +1,11 @@
 import React, { useEffect } from "react";
-import { Button, Form, Input } from "antd";
+import { Button, Form, Input, Row } from "antd";
 import styles from "./index.module.css";
 import { useReduxDispatch, useReduxSelector } from "../../redux/hooks";
 import { login } from "../../redux/reducers/authSlice";
 import { useRouter } from "next/router";
 import Link from "next/link";
-import { CheckCircleOutline, CheckCircleFill } from 'antd-mobile-icons';
+import { CheckCircleOutline, CheckCircleFill } from "antd-mobile-icons";
 import { Checkbox } from "antd-mobile";
 
 export const LoginForm: React.FC = () => {
@@ -38,12 +38,6 @@ export const LoginForm: React.FC = () => {
     return (
         <Form
             name="basic"
-            labelCol={{
-                span: 8
-            }}
-            wrapperCol={{
-                span: 16
-            }}
             initialValues={{
                 remember: true
             }}
@@ -80,38 +74,28 @@ export const LoginForm: React.FC = () => {
                 />
             </Form.Item>
 
-            <div>
-                <Form.Item
-                    name="remember"
-                    valuePropName="checked"
-                    wrapperCol={{
-                        offset: 8,
-                        span: 16
-                    }}
+            <Row justify="center" align="middle" style={{height:"40px"}}>
+            <Form.Item
+                name="remember"
+                valuePropName="checked"
+            >
+                <Checkbox
+                    className={styles["remember"]}
+                    value="remember"
+                    icon={(checked) =>
+                        checked ? (
+                            <CheckCircleFill style={{ color: "#FF7F3F" }} />
+                        ) : (
+                            <CheckCircleOutline style={{ color: "#FF7F3F" }} />
+                        )
+                    }
                 >
-                    <Checkbox
-                        className={styles["remember"]}
-                        value="remember"
-                        icon={(checked) =>
-                            checked ? (
-                                <CheckCircleFill style={{ color: "#FF7F3F" }} />
-                            ) : (
-                                <CheckCircleOutline
-                                    style={{ color: "#FF7F3F" }}
-                                />
-                            )
-                        }
-                    >
-                        Remember me
-                    </Checkbox>
-                </Form.Item>
-            </div>
+                    Remember me
+                </Checkbox>
+            </Form.Item>
+            </Row>
 
             <Form.Item
-                wrapperCol={{
-                    offset: 8,
-                    span: 16
-                }}
             >
                 <Button
                     className={styles["submit"]}
