@@ -15,7 +15,7 @@ const SearchResult: NextPage = () => {
 
     useEffect(() => {
         dispatch(getRecipeList({ jwtToken, keywords }));
-    }, [keywords]);
+    }, [jwtToken, keywords]);
 
     return (
         <RecipeList loading={loading} recipeList={recipeList} />

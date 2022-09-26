@@ -11,10 +11,12 @@ import { CheckOutline, CloseOutline } from "antd-mobile-icons";
 import ECookLogo from "/public/logo.svg";
 import { useReduxDispatch, useReduxSelector } from "../redux/hooks";
 import { createRecipe } from "../redux/reducers/recipeSlice";
+import { useRouter } from "next/router";
 
 const { Header, Content, Footer } = Layout;
 
 const RecipeEditor: NextPage = () => {
+    const [pic, setPic] = useState<string>("");
     const [title, setTitle] = useState<string>("");
     const [tags, setTags] = useState<string[]>([]);
     const [ingredients, setIngredients] = useState<string[]>([]);
@@ -24,9 +26,11 @@ const RecipeEditor: NextPage = () => {
 
     const dispatch = useReduxDispatch();
 
+    const router = useRouter();
+
     const recipe: Recipe = {
         id: "",
-        pic: "",
+        pic: pic,
         title: title,
         tags: tags,
         ingredients: ingredients,
@@ -37,22 +41,32 @@ const RecipeEditor: NextPage = () => {
     const onSubmit = () => {
         console.log(recipe);
         dispatch(createRecipe({ jwtToken, recipe }));
+        router.push("/");
     };
 
     return (
         <Layout>
             <Header className={styles.header}>
                 <div className={styles.navigation}>
-                    <CloseOutline style={{ fontSize: "28px" }} />
+                    <Button
+                        icon={<CloseOutline style={{ fontSize: "28px" }} />}
+                        onClick={() => router.push("/")}
+                    >
+
+                    </Button>
                     <ECookLogo />
-                    <Button icon={<CheckOutline style={{ fontSize: "28px" }} />} onClick={onSubmit}></Button>
+                    <Button
+                        icon={<CheckOutline style={{ fontSize: "28px" }} />}
+                        onClick={onSubmit}>
+
+                    </Button>
                 </div>
             </Header>
 
             <Content className={styles.content}>
                 <div>
                     <div className={styles.components}>
-                        <PicUploader />
+                        <PicUploader setPic={setPic} />
                         <TitleEditor setTitle={setTitle} />
                     </div>
                     <div>
