@@ -45,7 +45,7 @@ export const RecipeList: React.FC<RecipeListProps> = ({
         ? (recipeList.map((r) => ({
             key: r.id,
             id: r.id,
-            pic: r.pic,
+            picture: r.picture,
             title: r.title,
         }))) : [];
 

@@ -24,12 +24,19 @@
 
 .components {
 	display: flex !important;
-    flex-direction: row !important;
-	justify-content: space-between !important;
+	justify-content: space-around !important;
     align-items: center;
-    padding: 20px 0 0 20px !important;
+    padding: 20px 9px 0 10px !important;
+}
 
- 
+.servings{
+	display: flex !important;
+	justify-content: space-around !important;
+    padding: 20px 16px 10px 16px !important;
+}
+
+.intro{
+	padding: 20px 21px 0px 21px !important;
 }
 
 .ingredients {

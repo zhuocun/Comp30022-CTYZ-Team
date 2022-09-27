@@ -23,13 +23,18 @@ export const createRecipe = createAsyncThunk(
         jwtToken: string | null, recipe: Recipe | null
     }) => {
         const axiosResponse = await axios.post(
-            ``,
+            `http://localhost:8888/api/v1/recipe`,
             {
-                recipe: parameters.recipe
+                title: parameters.recipe?.title,
+                category: parameters.recipe?.category,
+                methods: parameters.recipe?.methods,
+                ingredients: parameters.recipe?.ingredients,
+                tags: parameters.recipe?.tags,
+                picture: parameters.recipe?.picture
             },
             {
                 headers: {
-                    tokens: `${parameters.jwtToken}`
+                    Authorization: `Bearer ${parameters.jwtToken}`
                 }
             }
         );
