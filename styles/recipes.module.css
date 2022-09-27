@@ -4,10 +4,14 @@
 	padding: 0 0 0 0 !important;
 }
 
-.navBar{
-    font-size: 20px !important;
-    position: absolute !important;
-    left: 15px !important;
+.headerNav {
+    display: flex !important;
+    flex-wrap: nowrap !important;
+    justify-content: space-between !important;
+    list-style: none !important;
+    padding: 0 20px 0 20px !important;
+    align-items: baseline !important;
+	font-size: 20px !important;
 }
 
 .pageTitle{
