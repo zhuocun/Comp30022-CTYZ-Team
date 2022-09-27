@@ -23,34 +23,43 @@ export const createRecipe = createAsyncThunk(
         jwtToken: string | null, recipe: Recipe | null
     }) => {
         const axiosResponse = await axios.post(
-            ``,
+            `http://localhost:8888/api/v1/recipe`,
             {
-                recipe: parameters.recipe
+                title: parameters.recipe?.title,
+                category: parameters.recipe?.category,
+                methods: parameters.recipe?.methods,
+                ingredients: parameters.recipe?.ingredients,
+                tags: parameters.recipe?.tags,
+                picture: parameters.recipe?.picture
             },
             {
                 headers: {
-                    tokens: `${parameters.jwtToken}`
+                    Authorization: `Bearer ${parameters.jwtToken}`
                 }
             }
         );
-        return axiosResponse.data.token;
+        return axiosResponse.data;
     }
 );
 
 export const getRecipeList = createAsyncThunk(
     "recipe/getRecipeList",
-    async (parameters: {
-        jwtToken: string | null
-    }) => {
+    async (
+        parameters: {
+            jwtToken: string | null, keywords: string | string[] | undefined
+        }
+    ) => {
+        let url = ``;
+        url += parameters.keywords ? `keywords=${parameters.keywords}` : ""
         const axiosResponse = await axios.get(
-            ``,
+            url,
             {
                 headers: {
                     tokens: `${parameters.jwtToken}`
                 }
             }
         );
-        return axiosResponse.data.token;
+        return axiosResponse.data;
     }
 );
 
@@ -71,7 +80,7 @@ export const updateRecipe = createAsyncThunk(
                 }
             }
         );
-        return axiosResponse.data.token;
+        return axiosResponse.data;
     }
 );
 
@@ -88,7 +97,7 @@ export const deleteRecipe = createAsyncThunk(
                 }
             }
         );
-        return axiosResponse.data.token;
+        return axiosResponse;
     }
 );
 
@@ -146,6 +155,21 @@ export const recipeSlice = createSlice({
         ) => {
             state.loading = false;
             state.recipe = null;
+        },
+        [getRecipeList.pending.type]: (state) => {
+            state.loading = true;
+        },
+        [getRecipeList.fulfilled.type]: (state, action) => {
+            state.loading = false;
+            state.error = null;
+            state.recipe = action.payload;
+        },
+        [getRecipeList.rejected.type]: (
+            state,
+            action: PayloadAction<Recipe[] | null>
+        ) => {
+            state.loading = false;
+            state.recipeList = action.payload;
         },
         [getRecipeList.pending.type]: (state) => {
             state.loading = true;

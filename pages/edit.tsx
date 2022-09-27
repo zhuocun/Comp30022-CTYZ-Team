@@ -14,10 +14,12 @@ import { createRecipe } from "../redux/reducers/recipeSlice";
 import TimeEstimate from "../components/timeEstimate";
 import ServingSuggestion from "../components/servingSuggestion";
 import Intro from "../components/intro";
+import { useRouter } from "next/router";
 
 const { Header, Content, Footer } = Layout;
 
 const RecipeEditor: NextPage = () => {
+    const [picture, setPicture] = useState<string>("");
     const [title, setTitle] = useState<string>("");
     const [tags, setTags] = useState<string[]>([]);
     const [ingredients, setIngredients] = useState<string[]>([]);
@@ -27,35 +29,47 @@ const RecipeEditor: NextPage = () => {
 
     const dispatch = useReduxDispatch();
 
+    const router = useRouter();
+
     const recipe: Recipe = {
         id: "",
-        pic: "",
+        picture: picture,
         title: title,
         tags: tags,
         ingredients: ingredients,
         methods: methods,
-        category: ""
+        category: "63302ddf7b1ea4c130f10c21"
     };
 
     const onSubmit = () => {
-        console.log(recipe);
+        console.log(recipe.ingredients);
         dispatch(createRecipe({ jwtToken, recipe }));
+        router.push("/");
     };
 
     return (
         <Layout>
             <Header className={styles.header}>
                 <div className={styles.navigation}>
-                    <CloseOutline style={{ fontSize: "28px" }} />
+                    <Button
+                        icon={<CloseOutline style={{ fontSize: "28px" }} />}
+                        onClick={() => router.push("/")}
+                    >
+
+                    </Button>
                     <ECookLogo />
-                    <Button icon={<CheckOutline style={{ fontSize: "28px" }} />} onClick={onSubmit}></Button>
+                    <Button
+                        icon={<CheckOutline style={{ fontSize: "28px" }} />}
+                        onClick={onSubmit}>
+
+                    </Button>
                 </div>
             </Header>
 
             <Content className={styles.content}>
                 <div>
                     <div className={styles.components}>
-                        <PicUploader />
+                        <PicUploader setPic={setPicture} />
                         <TitleEditor setTitle={setTitle} />
                     </div>
                     <div className={styles.servings}>

@@ -20,8 +20,8 @@ const IngredientAdder: React.FC<{
     setIngredient: Dispatch<SetStateAction<string[]>>
 }> = ({ setIngredient }) => {
 
-    const onFinish = (values: string[]) => {
-        setIngredient(values);
+    const onFinish = (values: {ingredients: string[]}) => {
+        setIngredient(values.ingredients);
     };
 
     return (
