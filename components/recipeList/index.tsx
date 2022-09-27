@@ -7,7 +7,7 @@ import styles from "./index.module.css";
 
 interface RecipeListProps {
     loading: boolean;
-    recipeList: Recipe[] | null;
+    recipeList: RecipeListRes[] | null;
 }
 
 export const RecipeList: React.FC<RecipeListProps> = ({
@@ -34,7 +34,7 @@ export const RecipeList: React.FC<RecipeListProps> = ({
                 <Space size="small">
                     <Button
                         shape="round"
-                        onClick={() => router.push(`/recipe/${record.id}`)}
+                        onClick={() => router.push(`/detail/${record.key}`)}
                     >
                         Enter
                     </Button>
@@ -44,9 +44,9 @@ export const RecipeList: React.FC<RecipeListProps> = ({
     ];
 
     const recipeData: RecipeIntro[] = recipeList
-        ? (recipeList.map((r) => ({
-            key: r.id,
-            id: r.id,
+        ? (recipeList.map((r, index) => ({
+            key: index,
+            id: r._id,
             picture: r.picture,
             title: r.title,
         }))) : [];

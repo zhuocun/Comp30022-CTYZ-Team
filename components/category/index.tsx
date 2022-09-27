@@ -18,7 +18,6 @@ const Category: NextPage = () => {
                 <Dinner className={styles["category"]}/>
                 <Vegetarian className={styles["category"]}/>
             </div>
-
     );
 };
 

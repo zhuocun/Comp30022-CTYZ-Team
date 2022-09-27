@@ -20,13 +20,13 @@
     border-bottom-right-radius: 10px !important;
 }
 
-.homeSearchBar :global .ant-input-search-button:hover{
+.homeSearchBar :global .ant-input-search-button:active{
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
     border-top-right-radius: 10px !important;
     border-bottom-right-radius: 10px !important;
 }
 
-.listSearchBar :global .ant-input-search-button:hover{
+.listSearchBar :global .ant-input-search-button:active{
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
     border-top-right-radius: 10px !important;
     border-bottom-right-radius: 10px !important;

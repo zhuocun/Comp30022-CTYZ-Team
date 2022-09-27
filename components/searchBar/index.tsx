@@ -1,16 +1,26 @@
 import { Input } from "antd";
 import React from "react";
 import styles from "./index.module.css";
+import { useRouter } from "next/router";
 
 const { Search } = Input;
-
-const onSearch = (value: string) => console.log(value);
 
 interface PropsType {
     isHome: boolean;
 }
 
 export const SearchBar: React.FC<PropsType> = (props) => {
+
+    const router = useRouter();
+    const onSearch = (keywords: string) => {
+        for (let i = 0; i < keywords.length; i++) {
+            if (keywords[i] !== " ") {
+                router.push(`/search/${keywords}`).then();
+                break;
+            }
+        }
+    };
+
     return (
         <>
             <Search

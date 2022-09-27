@@ -1,17 +1,21 @@
 import { NextPage } from "next";
 import React from "react";
 import { SearchBar } from "../components/searchBar";
-import { Layout } from "antd";
+import { Button, Layout } from "antd";
 import styles from "../styles/index.module.css";
 import Link from "next/link";
 import { HistoryOutlined, UserOutlined } from "@ant-design/icons";
 import FooterNavBar from "../components/footerNavBar";
 import Category from "../components/category";
+import { useRouter } from "next/router";
 
 
 const { Header, Content, Footer } = Layout;
 
-const Index: NextPage = () => {
+
+const Home: NextPage = () => {
+    const router = useRouter();
+
     return (
         <Layout>
             <Header className={styles["header"]}>
@@ -37,6 +41,7 @@ const Index: NextPage = () => {
                     <Category />
                 </div>
             </Content>
+            <Button onClick={() => router.push("./recipes")}>My Recipes</Button>
             <Footer className={styles["footer"]}>
                 <FooterNavBar />
             </Footer>
@@ -44,4 +49,4 @@ const Index: NextPage = () => {
     );
 };
 
-export default Index;
+export default Home;
