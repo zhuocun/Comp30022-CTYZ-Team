@@ -5,8 +5,11 @@ import { useRouter } from "next/router";
 
 const { Search } = Input;
 
+interface PropsType {
+    isHome: boolean;
+}
 
-export const SearchBar: React.FC = () => {
+export const SearchBar: React.FC<PropsType> = (props) => {
 
     const router = useRouter();
     const onSearch = (keywords: string) => {
@@ -21,10 +24,10 @@ export const SearchBar: React.FC = () => {
     return (
         <>
             <Search
-                className={styles.searchBar}
                 placeholder="Search..."
                 allowClear
                 onSearch={onSearch}
+                className={props.isHome === true ? styles["homeSearchBar"] : styles["listSearchBar"]}
             />
         </>
     );

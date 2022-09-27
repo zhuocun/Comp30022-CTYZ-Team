@@ -1,31 +1,66 @@
-.searchBar :global .ant-input-search-button{
+.homeSearchBar{
+    background: #fff0cc !important;
+    padding: 10px !important;
+}
+
+.listSearchBar{
+    background: #ffdb88 !important;
+    padding: 10px !important;
+}
+
+.homeSearchBar :global .ant-input-search-button{
     border: 0px;
     border-top-right-radius: 10px !important;
     border-bottom-right-radius: 10px !important;
 }
 
-.searchBar :global .ant-input-search-button:hover{
+.listSearchBar :global .ant-input-search-button{
+    border: 0px;
+    border-top-right-radius: 10px !important;
+    border-bottom-right-radius: 10px !important;
+}
+
+.homeSearchBar :global .ant-input-search-button:active{
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
     border-top-right-radius: 10px !important;
     border-bottom-right-radius: 10px !important;
 }
 
-.searchBar :global .ant-input-affix-wrapper:not(.ant-input-affix-wrapper-disabled){
+.listSearchBar :global .ant-input-search-button:active{
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    border-top-right-radius: 10px !important;
+    border-bottom-right-radius: 10px !important;
+}
+
+.homeSearchBar :global .ant-input-affix-wrapper:not(.ant-input-affix-wrapper-disabled){
+    border: 1px solid #ffdb8800!important;
+    border-top-left-radius: 10px !important;
+    border-bottom-left-radius: 10px !important;
+}
+
+.listSearchBar :global .ant-input-affix-wrapper:not(.ant-input-affix-wrapper-disabled){
     border: 1px solid #ffdb8800!important;
     border-top-left-radius: 10px !important;
     border-bottom-left-radius: 10px !important;
 }
 
 
-.searchBar :global .ant-input-affix-wrapper-focused{
+.homeSearchBar :global .ant-input-affix-wrapper-focused{
     border: 0px !important;
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px !important;
 }
-.searchBar{
-    background: #ffdb88 !important;
-    padding: 10px !important;
+
+.listSearchBar :global .ant-input-affix-wrapper-focused{
+    border: 0px !important;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px !important;
 }
 
-.searchBar :global .ant-input-group-addon{
+.homeSearchBar :global .ant-input-group-addon{
     background-color: #ffdb8800 !important;
 }
+
+.listSearchBar :global .ant-input-group-addon{
+    background-color: #ffdb8800 !important;
+}
+
+

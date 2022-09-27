@@ -10,7 +10,7 @@ import styles from "../styles/recipes.module.css";
 import Link from "next/link";
 import { LeftOutline } from "antd-mobile-icons";
 
-const { Header, Content, Footer } = Layout;
+const { Header, Content} = Layout;
 
 const Recipes: NextPage = () => {
     const jwtToken = useReduxSelector((s) => s.authentication.jwtToken);
@@ -40,7 +40,7 @@ const Recipes: NextPage = () => {
             </Header>
             <Content>
                 <div>
-                    <SearchBar />
+                    <SearchBar isHome= {false}/>
                 </div>
                 <div className={styles.recipeList}>
                     <RecipeList loading={loading} recipeList={recipeList} />
