@@ -9,14 +9,14 @@ import Vegetarian from "/public/vegetarian.svg";
 
 const Category: NextPage = () => {
     return (
-            <div>
-                <Snack/>
-                <Dessert/>
-                <Breakfast/>
-                <Lunch/>
-                <Dinner/>
-                <Vegetarian/>
-            </div>
+        <div>
+            <Snack />
+            <Dessert />
+            <Breakfast />
+            <Lunch />
+            <Dinner />
+            <Vegetarian />
+        </div>
 
     );
 };

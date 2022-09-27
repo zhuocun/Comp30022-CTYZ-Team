@@ -9,8 +9,13 @@ const { Search } = Input;
 export const SearchBar: React.FC = () => {
 
     const router = useRouter();
-    const onSearch = (value: string) => {
-        router.push(`/search/${value}`);
+    const onSearch = (keywords: string) => {
+        for (let i = 0; i < keywords.length; i++) {
+            if (keywords[i] !== " ") {
+                router.push(`/search/${keywords}`).then();
+                break;
+            }
+        }
     };
 
     return (
