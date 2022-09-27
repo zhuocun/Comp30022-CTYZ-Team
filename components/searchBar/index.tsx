@@ -27,7 +27,7 @@ export const SearchBar: React.FC<PropsType> = (props) => {
                 placeholder="Search..."
                 allowClear
                 onSearch={onSearch}
-                className={props.isHome === true ? styles["homeSearchBar"] : styles["listSearchBar"]}
+                className={props.isHome ? styles["homeSearchBar"] : styles["listSearchBar"]}
             />
         </>
     );
