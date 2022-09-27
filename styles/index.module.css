@@ -6,7 +6,7 @@
 
 .content {
 	background-color: #fff0cc !important;
-	padding: 10px 0 550px 0 !important;
+	padding: 10px 0 100px 0 !important;
 }
 
 .footer {
@@ -29,7 +29,12 @@
     padding: 0 20px 0 20px !important;
     align-items: baseline !important;
 	font-size: 20px !important;
-
-
 }
 
+.searchBar{
+	margin-bottom: 50px;
+}
+
+.category{
+	margin-bottom: 40px;
+}
