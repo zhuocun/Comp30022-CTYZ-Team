@@ -8,9 +8,9 @@ import { SearchBar } from "../components/searchBar";
 import { Layout } from "antd";
 import styles from "../styles/recipes.module.css";
 import Link from "next/link";
-import { LeftOutline } from "antd-mobile-icons";
+import { LeftOutline, EditSOutline } from "antd-mobile-icons";
 
-const { Header, Content} = Layout;
+const { Header, Content } = Layout;
 
 const Recipes: NextPage = () => {
     const jwtToken = useReduxSelector((s) => s.authentication.jwtToken);
@@ -26,21 +26,25 @@ const Recipes: NextPage = () => {
 
     return (
         <Layout>
-            <Header className={styles.header}>
-                <div>
+            <Header className={styles["header"]}>
+                <div className={styles["headerNav"]}>
                     <Link href="/">
-                        <span className={styles["navBar"]}>
+                        <span className={styles["return"]}>
                             <LeftOutline />
                         </span>
                     </Link>
+
+                    <h1 className={styles.pageTitle}>What to eat?</h1>
+                    <Link href="/edit">
+                        <span className={styles["addNew"]}>
+                            <EditSOutline />
+                        </span>
+                    </Link>
                 </div>
-                <h1 className={styles.pageTitle}>
-                    What to eat?
-                </h1>
             </Header>
             <Content>
                 <div>
-                    <SearchBar isHome= {false}/>
+                    <SearchBar isHome={false} />
                 </div>
                 <div className={styles.recipeList}>
                     <RecipeList loading={loading} recipeList={recipeList} />
