@@ -23,7 +23,7 @@ export const createRecipe = createAsyncThunk(
         jwtToken: string | null, recipe: IRecipe | null
     }) => {
         const axiosResponse = await axios.post(
-            `http://localhost:8888/api/v1/recipe`,
+            `https://itproject-online-cookbook.herokuapp.com/api/v1/recipe`,
             {
                 title: parameters.recipe?.title,
                 category: parameters.recipe?.category,
@@ -49,7 +49,7 @@ export const getRecipeList = createAsyncThunk(
             jwtToken: string | null, keywords: string | string[] | undefined
         }
     ) => {
-        let url = `http://localhost:8888/api/v1/recipe`;
+        let url = `https://itproject-online-cookbook.herokuapp.com/api/v1/recipe`;
         url += parameters.keywords ? `keywords=${parameters.keywords}` : "";
         const axiosResponse = await axios.get(
             url,

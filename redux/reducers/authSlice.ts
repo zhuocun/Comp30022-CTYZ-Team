@@ -17,7 +17,7 @@ export const login = createAsyncThunk(
     "authentication/login",
     async (parameters: { email: string, password: string }) => {
         const axiosResponse = await axios.post(
-            `http://localhost:8888/api/v1/auth/login`,
+            `https://itproject-online-cookbook.herokuapp.com/api/v1/auth/login`,
             {
                 email: parameters.email,
                 password: parameters.password

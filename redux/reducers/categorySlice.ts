@@ -19,7 +19,7 @@ export const getCategories = createAsyncThunk(
         jwtToken: string | null
     ) => {
         const axiosResponse = await axios.get(
-            `http://localhost:8888/api/v1/category`,
+            `https://itproject-online-cookbook.herokuapp.com/api/v1/category`,
             {
                 headers: {
                     Authorization: `Bearer ${jwtToken}`
