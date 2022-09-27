@@ -1,7 +1,8 @@
 import React from "react";
-import { Button, Skeleton, Space, Table } from "antd";
+import { Button, Skeleton, Space, Table, BackTop } from "antd";
 import type { ColumnsType } from "antd/es/table";
 import { useRouter } from "next/router";
+import styles from "./index.module.css"
 
 interface RecipeListProps {
     loading: boolean;
@@ -56,7 +57,9 @@ export const RecipeList: React.FC<RecipeListProps> = ({
                 showHeader={true}
                 size="small"
                 bordered={false}
+                className={styles.list}
             />
+            <BackTop />
         </Skeleton>
     );
 };

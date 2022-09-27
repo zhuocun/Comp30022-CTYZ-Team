@@ -3,7 +3,6 @@ import React from "react";
 import styles from "./index.module.css";
 import axios from "axios";
 import { useRouter } from "next/router";
-import { Content } from "antd/lib/layout/layout";
 
 export const RegisterForm: React.FC = () => {
     const router = useRouter();
