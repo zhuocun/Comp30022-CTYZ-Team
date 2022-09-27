@@ -12,6 +12,6 @@ const LoginPage: NextPage = () => {
             </div>
         </AuthLayout>
     );
-};
+}
 
 export default LoginPage;

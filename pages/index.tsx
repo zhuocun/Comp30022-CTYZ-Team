@@ -1,6 +1,4 @@
 import { NextPage } from "next";
-import { useReduxDispatch, useReduxSelector } from "../redux/hooks";
-import { useEffect } from "react";
 import React from "react";
 import { SearchBar } from "../components/searchBar";
 import { Layout } from "antd";
@@ -10,9 +8,10 @@ import { HistoryOutlined, UserOutlined } from "@ant-design/icons";
 import FooterNavBar from "../components/footerNavBar";
 import Category from "../components/category";
 
+
 const { Header, Content, Footer } = Layout;
 
-const Home: NextPage = () => {
+const Index: NextPage = () => {
     return (
         <Layout>
             <Header className={styles["header"]}>
@@ -32,7 +31,7 @@ const Home: NextPage = () => {
             </Header>
             <Content className={styles["content"]}>
                 <div className={styles["searchBar"]}>
-                    <SearchBar />
+                    <SearchBar isHome= {true}/>
                 </div>
                 <div className={styles["category"]}>
                     <Category />
@@ -45,4 +44,4 @@ const Home: NextPage = () => {
     );
 };
 
-export default Home;
+export default Index;

@@ -6,12 +6,12 @@
 
 .content {
 	background-color: #fff0cc !important;
-	padding: 10px 0 100px 0 !important;
+	padding: 5px 0 0px 0 !important;
 }
 
 .footer {
 	background-color: #fff0cc !important;
-	padding: 30px 10px 10px!important;
+	padding: 10px 10px 10px!important;
 }
 
 .pageTitle{
@@ -32,9 +32,9 @@
 }
 
 .searchBar{
-	margin-bottom: 50px;
+	margin-bottom: 30px;
 }
 
 .category{
-	margin-bottom: 40px;
+	margin-bottom: 50px;
 }
