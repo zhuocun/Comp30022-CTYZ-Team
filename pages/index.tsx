@@ -44,7 +44,7 @@ const Home: NextPage = () => {
             </Header>
             <Content className={styles["content"]}>
                 <div className={styles["searchBar"]}>
-                    <SearchBar />
+                    <SearchBar isHome= {true}/>
                 </div>
                 <div className={styles["category"]}>
                     <Category />
