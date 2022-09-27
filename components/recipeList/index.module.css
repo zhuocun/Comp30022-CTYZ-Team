@@ -1,0 +1,8 @@
+.recipeList :global .ant-table-thead > tr > th{
+    display: none !important;
+}
+
+.recipeList :global .ant-table-cell{
+    border: none !important;
+}
+
