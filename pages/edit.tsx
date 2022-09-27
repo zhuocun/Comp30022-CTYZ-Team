@@ -11,6 +11,9 @@ import { CheckOutline, CloseOutline } from "antd-mobile-icons";
 import ECookLogo from "/public/logo.svg";
 import { useReduxDispatch, useReduxSelector } from "../redux/hooks";
 import { createRecipe } from "../redux/reducers/recipeSlice";
+import TimeEstimate from "../components/timeEstimate";
+import ServingSuggestion from "../components/servingSuggestion";
+import Intro from "../components/intro";
 
 const { Header, Content, Footer } = Layout;
 
@@ -55,9 +58,14 @@ const RecipeEditor: NextPage = () => {
                         <PicUploader />
                         <TitleEditor setTitle={setTitle} />
                     </div>
+                    <div className={styles.servings}>
+                        <TimeEstimate/>
+                        <ServingSuggestion/>
+                    </div>
                     <div>
                         <TagEditor setTag={setTags} />
                     </div>
+                    <div className={styles.intro}><Intro/></div>
                     <div className={styles.ingredients}>
                         <IngredientAdder setIngredient={setIngredients} />
                     </div>

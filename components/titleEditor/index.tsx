@@ -1,5 +1,5 @@
-import { Input } from "antd";
 import React, { Dispatch, SetStateAction } from "react";
+import { Input } from "antd";
 import styles from "./index.module.css";
 
 const TitleEditor: React.FC<{ setTitle: Dispatch<SetStateAction<string>> }> =
@@ -13,7 +13,6 @@ const TitleEditor: React.FC<{ setTitle: Dispatch<SetStateAction<string>> }> =
                     placeholder="Recipe Name" allowClear
                     className={styles.editTitle}
                 />
-                <br />
             </>
         );
     };
