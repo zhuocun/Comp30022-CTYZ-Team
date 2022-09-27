@@ -7,7 +7,7 @@ import styles from "./index.module.css";
 
 interface RecipeListProps {
     loading: boolean;
-    recipeList: Recipe[] | null;
+    recipeList: RecipeListRes[] | null;
 }
 
 export const RecipeList: React.FC<RecipeListProps> = ({
@@ -45,8 +45,8 @@ export const RecipeList: React.FC<RecipeListProps> = ({
 
     const recipeData: RecipeIntro[] = recipeList
         ? (recipeList.map((r) => ({
-            key: r.id,
-            id: r.id,
+            key: r._id,
+            id: r._id,
             picture: r.picture,
             title: r.title,
         }))) : [];

@@ -5,7 +5,7 @@ interface RecipeState {
     loading: boolean;
     error: string | null;
     recipe: Recipe | null;
-    recipeList: Recipe[] | null;
+    recipeList: RecipeListRes[] | null;
     recipeCache: Recipe | null;
 }
 
@@ -49,17 +49,17 @@ export const getRecipeList = createAsyncThunk(
             jwtToken: string | null, keywords: string | string[] | undefined
         }
     ) => {
-        let url = ``;
-        url += parameters.keywords ? `keywords=${parameters.keywords}` : ""
+        let url = `http://localhost:8888/api/v1/recipe`;
+        url += parameters.keywords ? `keywords=${parameters.keywords}` : "";
         const axiosResponse = await axios.get(
             url,
             {
                 headers: {
-                    tokens: `${parameters.jwtToken}`
+                    Authorization: `Bearer ${parameters.jwtToken}`
                 }
             }
         );
-        return axiosResponse.data;
+        return axiosResponse.data.recipes;
     }
 );
 
@@ -122,10 +122,10 @@ export const recipeSlice = createSlice({
         },
         [createRecipe.rejected.type]: (
             state,
-            action: PayloadAction<Recipe | null>
+            action
         ) => {
             state.loading = false;
-            state.recipe = action.payload;
+            state.error = action.payload;
         },
         [updateRecipe.pending.type]: (state) => {
             state.loading = true;
@@ -137,7 +137,7 @@ export const recipeSlice = createSlice({
         },
         [updateRecipe.rejected.type]: (
             state,
-            action: PayloadAction<Recipe | null>
+            action
         ) => {
             state.loading = false;
             state.recipe = action.payload;
@@ -159,32 +159,17 @@ export const recipeSlice = createSlice({
         [getRecipeList.pending.type]: (state) => {
             state.loading = true;
         },
-        [getRecipeList.fulfilled.type]: (state, action) => {
+        [getRecipeList.fulfilled.type]: (state, action: PayloadAction<RecipeListRes[] | null>) => {
             state.loading = false;
             state.error = null;
-            state.recipe = action.payload;
+            state.recipeList = action.payload;
         },
         [getRecipeList.rejected.type]: (
             state,
-            action: PayloadAction<Recipe[] | null>
+            action
         ) => {
             state.loading = false;
-            state.recipeList = action.payload;
-        },
-        [getRecipeList.pending.type]: (state) => {
-            state.loading = true;
-        },
-        [getRecipeList.fulfilled.type]: (state, action) => {
-            state.loading = false;
-            state.error = null;
-            state.recipe = action.payload;
-        },
-        [getRecipeList.rejected.type]: (
-            state,
-            action: PayloadAction<Recipe[] | null>
-        ) => {
-            state.loading = false;
-            state.recipeList = action.payload;
+            state.error = action.payload;
         }
 
     }
