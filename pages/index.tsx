@@ -1,6 +1,4 @@
 import { NextPage } from "next";
-import { useReduxDispatch, useReduxSelector } from "../redux/hooks";
-import { useEffect } from "react";
 import React from "react";
 import { SearchBar } from "../components/searchBar";
 import { Layout } from "antd";

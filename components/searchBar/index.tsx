@@ -1,13 +1,18 @@
-import { AudioOutlined } from "@ant-design/icons";
 import { Input } from "antd";
 import React from "react";
 import styles from "./index.module.css";
+import { useRouter } from "next/router";
 
 const { Search } = Input;
 
-const onSearch = (value: string) => console.log(value);
 
 export const SearchBar: React.FC = () => {
+
+    const router = useRouter();
+    const onSearch = (value: string) => {
+        router.push(`/search/${value}`);
+    };
+
     return (
         <>
             <Search
