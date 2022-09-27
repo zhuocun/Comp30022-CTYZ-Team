@@ -31,7 +31,7 @@ const RecipeEditor: NextPage = () => {
 
     const router = useRouter();
 
-    const recipe: Recipe = {
+    const recipe: IRecipe = {
         id: "",
         picture: picture,
         title: title,

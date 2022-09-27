@@ -1,4 +1,4 @@
-interface Recipe {
+interface IRecipe {
     id: string;
     picture: string;
     title: string;
@@ -8,7 +8,7 @@ interface Recipe {
     category: string;
 }
 
-interface RecipeListRes {
+interface IRecipeListRes {
     category: string;
     createBy: string;
     createdAt: string;
@@ -24,7 +24,7 @@ interface RecipeListRes {
     _id: string;
 }
 
-interface RecipeIntro {
+interface IRecipeIntro {
     key: number;
     id: string;
     picture: string;
