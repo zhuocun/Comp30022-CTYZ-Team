@@ -25,6 +25,7 @@ interface RecipeListRes {
 }
 
 interface RecipeIntro {
+    key: number;
     id: string;
     picture: string;
     title: string;
