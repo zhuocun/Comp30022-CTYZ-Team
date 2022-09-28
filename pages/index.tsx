@@ -26,16 +26,16 @@ const Home: NextPage = () => {
     }, [jwtToken]);
     console.log(categories);
     return (
-        <Layout>
+        <Layout className={styles["fullPage"]}>
             <Header className={styles["header"]}>
                 <div className={styles["headerNav"]}>
-                    <Link href="/">
+                    <Link href="/login">
                         <span className={styles["user"]}>
                             <UserOutlined />
                         </span>
                     </Link>
                     <h1 className={styles.pageTitle}>What to eat?</h1>
-                    <Link href="/">
+                    <Link href="/historyList">
                         <span className={styles["shoppingList"]}>
                             <HistoryOutlined />
                         </span>
