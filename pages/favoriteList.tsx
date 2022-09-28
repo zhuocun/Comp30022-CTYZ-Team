@@ -39,9 +39,9 @@ const FavoriteList: NextPage = () => {
                     <RecipeList loading={loading} recipeList={recipeList} />
                 </div>
             </Content>
-            <Footer className={styles["footer"]}>
-                <FooterNavBar />
-            </Footer>
+            <Footer/>
+                {/* <FooterNavBar />
+            </Footer> */}
         </Layout>
     );
 };

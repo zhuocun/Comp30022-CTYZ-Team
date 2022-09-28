@@ -1,4 +1,4 @@
-.footerNav {
+/* .footerNav {
     display: flex !important;
     flex-wrap: nowrap !important;
     justify-content: space-between !important;
@@ -7,4 +7,9 @@
     align-items: center !important;
 	font-size: 30px !important;
 
+} */
+
+
+.activeButton :global .adm-tab-bar-item-active{
+    color: #fd841f !important;
 }

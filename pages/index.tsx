@@ -1,61 +1,32 @@
-import { NextPage } from "next";
-import React, { useEffect } from "react";
-import { SearchBar } from "../components/searchBar";
-import { Button, Layout } from "antd";
-import styles from "../styles/index.module.css";
-import Link from "next/link";
-import { HistoryOutlined, UserOutlined } from "@ant-design/icons";
+import React from "react";
+import {
+    Route,
+    Routes,
+    MemoryRouter as Router
+} from "react-router-dom";
+
 import FooterNavBar from "../components/footerNavBar";
-import Category from "../components/category";
-import { useRouter } from "next/router";
-import { useReduxDispatch, useReduxSelector } from "../redux/hooks";
-import { getCategories } from "../redux/reducers/categorySlice";
+import styles from "../styles/index.module.css";
+import HistoryList from "./historyList";
+import FavoriteList from "./favoriteList";
+import Home from "./homepage";
 
-const { Header, Content, Footer } = Layout;
-
-const Home: NextPage = () => {
-    const router = useRouter();
-
-    const jwtToken = useReduxSelector(s => s.authentication.jwtToken);
-    const categories = useReduxSelector(s => s.category.categories);
-    const dispatch = useReduxDispatch();
-    useEffect(() => {
-        if (jwtToken) {
-            dispatch(getCategories(jwtToken));
-        }
-    }, [jwtToken]);
-    console.log(categories);
+export default () => {
     return (
-        <Layout className={styles["fullPage"]}>
-            <Header className={styles["header"]}>
-                <div className={styles["headerNav"]}>
-                    <Link href="/login">
-                        <span className={styles["user"]}>
-                            <UserOutlined />
-                        </span>
-                    </Link>
-                    <h1 className={styles.pageTitle}>What to eat?</h1>
-                    <Link href="/historyList">
-                        <span className={styles["shoppingList"]}>
-                            <HistoryOutlined />
-                        </span>
-                    </Link>
+        <Router initialEntries={["/homepage"]}>
+            <div className={styles.app}>
+                <div className={styles.body}>
+                    <Routes>
+                    <Route path="/homepage" element={<Home />} />
+                        <Route path="/favoriteList" element={<FavoriteList />} />
+                        <Route path="//favoriteList" element={<FavoriteList/>} />
+                        <Route path="/historyList" element={<HistoryList/>} />
+                    </Routes>
                 </div>
-            </Header>
-            <Content className={styles["content"]}>
-                <div className={styles["searchBar"]}>
-                    <SearchBar isHome= {true}/>
+                <div className={styles.bottom}>
+                    <FooterNavBar />
                 </div>
-                <div className={styles["category"]}>
-                    <Category />
-                </div>
-            </Content>
-            <Button onClick={() => router.push("./recipes")}>My Recipes</Button>
-            <Footer className={styles["footer"]}>
-                <FooterNavBar />
-            </Footer>
-        </Layout>
+            </div>
+        </Router>
     );
 };
-
-export default Home;
