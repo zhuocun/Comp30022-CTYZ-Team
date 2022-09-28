@@ -7,17 +7,21 @@ import Lunch from "/public/lunch.svg";
 import Dinner from "/public/dinner.svg";
 import Vegetarian from "/public/vegetarian.svg";
 import styles from "./index.module.css";
+import { useRouter } from "next/router";
 
 const Category: NextPage = () => {
+    const router = useRouter();
     return (
-            <div className={styles["categories"]}>
-                <Snack className={styles["category"]}/>
-                <Dessert className={styles["category"]}/>
-                <Breakfast className={styles["category"]}/>
-                <Lunch className={styles["category"]}/>
-                <Dinner className={styles["category"]}/>
-                <Vegetarian className={styles["category"]}/>
+        <div className={styles["categories"]}>
+            <div onClick={()=>router.push("/edit")}>
+                <Snack className={styles["category"]} />
             </div>
+            <Dessert className={styles["category"]} />
+            <Breakfast className={styles["category"]} />
+            <Lunch className={styles["category"]} />
+            <Dinner className={styles["category"]} />
+            <Vegetarian className={styles["category"]} />
+        </div>
     );
 };
 
