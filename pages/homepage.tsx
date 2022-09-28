@@ -51,7 +51,7 @@ const Home: NextPage = () => {
                 </div>
             </Content>
             <Button onClick={() => router.push("./recipes")}>My Recipes</Button>
-            <Footer/>
+            <Footer className={styles["footer"]}/>
         </Layout>
     );
 };

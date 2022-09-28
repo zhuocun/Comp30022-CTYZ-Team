@@ -6,7 +6,6 @@ import { getRecipeList } from "../redux/reducers/recipeSlice";
 import React from "react";
 import { Layout } from "antd";
 import styles from "../styles/list.module.css";
-import FooterNavBar from "../components/footerNavBar";
 
 const { Header, Content, Footer } = Layout;
 
@@ -35,9 +34,6 @@ const HistoryList: NextPage = () => {
                     <RecipeList loading={loading} recipeList={recipeList} />
                 </div>
             </Content>
-            <Footer />
-                {/* <FooterNavBar />
-            </Footer> */}
         </Layout>
     );
 };
