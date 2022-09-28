@@ -1,5 +1,5 @@
 import { NextPage } from "next";
-import React from "react";
+import React, { useEffect } from "react";
 import { SearchBar } from "../components/searchBar";
 import { Button, Layout } from "antd";
 import styles from "../styles/index.module.css";
@@ -8,14 +8,23 @@ import { HistoryOutlined, UserOutlined } from "@ant-design/icons";
 import FooterNavBar from "../components/footerNavBar";
 import Category from "../components/category";
 import { useRouter } from "next/router";
-
+import { useReduxDispatch, useReduxSelector } from "../redux/hooks";
+import { getCategories } from "../redux/reducers/categorySlice";
 
 const { Header, Content, Footer } = Layout;
-
 
 const Home: NextPage = () => {
     const router = useRouter();
 
+    const jwtToken = useReduxSelector(s => s.authentication.jwtToken);
+    const categories = useReduxSelector(s => s.category.categories);
+    const dispatch = useReduxDispatch();
+    useEffect(() => {
+        if (jwtToken) {
+            dispatch(getCategories(jwtToken));
+        }
+    }, [jwtToken]);
+    console.log(categories);
     return (
         <Layout className={styles["fullPage"]}>
             <Header className={styles["header"]}>

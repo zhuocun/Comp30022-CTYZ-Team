@@ -7,7 +7,7 @@ import styles from "./index.module.css";
 
 interface RecipeListProps {
     loading: boolean;
-    recipeList: RecipeListRes[] | null;
+    recipeList: IRecipeListRes[] | null;
 }
 
 export const RecipeList: React.FC<RecipeListProps> = ({
@@ -15,7 +15,7 @@ export const RecipeList: React.FC<RecipeListProps> = ({
                                                                  recipeList
                                                              }) => {
     const router = useRouter();
-    const columns: ColumnsType<RecipeIntro> = [
+    const columns: ColumnsType<IRecipeIntro> = [
         {
             title: "Preview",
             dataIndex: "pic",
@@ -43,7 +43,7 @@ export const RecipeList: React.FC<RecipeListProps> = ({
         }
     ];
 
-    const recipeData: RecipeIntro[] = recipeList
+    const recipeData: IRecipeIntro[] = recipeList
         ? (recipeList.map((r, index) => ({
             key: index,
             id: r._id,
@@ -53,7 +53,7 @@ export const RecipeList: React.FC<RecipeListProps> = ({
 
     return (
         <Skeleton loading={loading} active>
-            <Table<RecipeIntro>
+            <Table<IRecipeIntro>
                 columns={columns}
                 dataSource={recipeData}
                 showHeader={true}

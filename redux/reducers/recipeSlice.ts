@@ -4,9 +4,9 @@ import axios from "axios";
 interface RecipeState {
     loading: boolean;
     error: string | null;
-    recipe: Recipe | null;
-    recipeList: RecipeListRes[] | null;
-    recipeCache: Recipe | null;
+    recipe: IRecipe | null;
+    recipeList: IRecipeListRes[] | null;
+    recipeCache: IRecipe | null;
 }
 
 const initialState: RecipeState = {
@@ -20,7 +20,7 @@ const initialState: RecipeState = {
 export const createRecipe = createAsyncThunk(
     "recipe/createRecipe",
     async (parameters: {
-        jwtToken: string | null, recipe: Recipe | null
+        jwtToken: string | null, recipe: IRecipe | null
     }) => {
         const axiosResponse = await axios.post(
             `http://localhost:8888/api/v1/recipe`,
@@ -66,7 +66,7 @@ export const getRecipeList = createAsyncThunk(
 export const updateRecipe = createAsyncThunk(
     "recipe/updateRecipe",
     async (parameters: {
-        jwtToken: string | null, recipeId: string | null, recipe: Recipe | null
+        jwtToken: string | null, recipeId: string | null, recipe: IRecipe | null
     }) => {
         const axiosResponse = await axios.put(
             ``,
@@ -102,7 +102,7 @@ export const deleteRecipe = createAsyncThunk(
 );
 
 export const recipeSlice = createSlice({
-    name: "authentication",
+    name: "recipe",
     initialState,
     reducers: {
         logout: (state) => {
@@ -159,7 +159,7 @@ export const recipeSlice = createSlice({
         [getRecipeList.pending.type]: (state) => {
             state.loading = true;
         },
-        [getRecipeList.fulfilled.type]: (state, action: PayloadAction<RecipeListRes[] | null>) => {
+        [getRecipeList.fulfilled.type]: (state, action: PayloadAction<IRecipeListRes[] | null>) => {
             state.loading = false;
             state.error = null;
             state.recipeList = action.payload;
