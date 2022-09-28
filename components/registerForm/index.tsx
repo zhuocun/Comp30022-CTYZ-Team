@@ -77,7 +77,7 @@ export const RegisterForm: React.FC = () => {
                     }
                 ]}
             >
-                <Input.Password placeholder="Username" className={styles["input"]}/>
+                <Input placeholder="Username" className={styles["input"]}/>
             </Form.Item>
 
 

@@ -7,7 +7,7 @@ import React from "react";
 import { Layout } from "antd";
 import styles from "../styles/list.module.css";
 
-const { Header, Content, Footer } = Layout;
+const { Header, Content } = Layout;
 
 const HistoryList: NextPage = () => {
     const jwtToken = useReduxSelector((s) => s.authentication.jwtToken);

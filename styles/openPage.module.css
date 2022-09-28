@@ -1,0 +1,53 @@
+.header{
+    background-color: #FFF9EB !important;
+}
+
+.content{
+    background-color: #FFF9EB !important;
+    height: 600px !important;
+}
+
+.footer{
+    position:absolute !important;
+    left: 0px !important;
+    right: 0px !important;
+    bottom: 0px !important;
+    height: 250px;
+    border-top-left-radius: 20px !important;
+    border-top-right-radius: 20px !important;
+    background-color: #ffdb88 !important;
+}
+
+.navBar{
+    font-size: 20px !important;
+    position: absolute !important;
+    left: 15px !important;
+}
+
+.bigLogo{
+    height: 600px;
+
+}
+
+.signIn{
+    font-size: 20px !important;
+    height: 40% !important;
+    width: 80% !important;
+    background-color :#FFF9EB !important;
+    color: black !important;
+    border: 3px white solid !important;
+    border-radius: 10px !important;
+    margin: 8% 0% !important;
+    padding: 10px 0px !important;
+}
+
+.signUp{
+    font-size: 20px !important;
+    height: 30% !important;
+    width: 80% !important;
+    background-color :#FFF9EB !important;
+    color: black !important;
+    border: 3px white solid !important;
+    border-radius: 10px !important;
+    padding: 10px 0px;
+}
