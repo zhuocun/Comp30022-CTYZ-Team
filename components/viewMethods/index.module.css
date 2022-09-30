@@ -1,0 +1,16 @@
+.ingredients {
+    margin-top: 20px;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    background: #FFDB88 !important ;
+	border: #fff solid 3px !important;
+	border-radius: 10px !important;
+    width: 95% !important;
+    padding: 5% 10% !important;
+    text-align: left;
+}
+
+.box{
+    inline-size: 224px;
+    word-break: break-all;
+}

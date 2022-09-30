@@ -6,7 +6,6 @@ import { getRecipeList } from "../redux/reducers/recipeSlice";
 import React from "react";
 import { Layout } from "antd";
 import styles from "../styles/list.module.css";
-import FooterNavBar from "../components/footerNavBar";
 
 const { Header, Content } = Layout;
 
@@ -29,7 +28,7 @@ const FavoriteList: NextPage = () => {
                     <h1 className={styles.pageTitle}>Favorite List 💝</h1>
                 </div>
             </Header>
-            <Content>
+            <Content className={styles["content"]}>
                 <div className={styles.recipeList}>
                     <RecipeList loading={loading} recipeList={recipeList} />
                 </div>
