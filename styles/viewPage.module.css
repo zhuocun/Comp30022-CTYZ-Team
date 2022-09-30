@@ -56,12 +56,12 @@
 
 }
 
-.complete:visited{
+.complete:focus{
     color: red !important;
 
 }
 
-.favorite:active{
+.favorite:focus{
     color: red !important;
 }
 
