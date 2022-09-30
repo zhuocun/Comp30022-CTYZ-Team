@@ -5,7 +5,6 @@ import { Button, Layout } from "antd";
 import styles from "../styles/homepage.module.css";
 import Link from "next/link";
 import { ShoppingCartOutlined, UserOutlined } from "@ant-design/icons";
-import FooterNavBar from "../components/footerNavBar";
 import Category from "../components/category";
 import { useRouter } from "next/router";
 import { useReduxDispatch, useReduxSelector } from "../redux/hooks";
@@ -26,6 +25,7 @@ const Home: NextPage = () => {
     }, [jwtToken]);
     console.log(categories);
     return (
+        <div style={{minHeight:"inherit"}}>
         <Layout className={styles["fullPage"]}>
             <Header className={styles["header"]}>
                 <div className={styles["headerNav"]}>
@@ -53,6 +53,7 @@ const Home: NextPage = () => {
             <Button onClick={() => router.push("./recipes")}>My Recipes</Button>
             <Footer className={styles["footer"]}/>
         </Layout>
+        </div>
     );
 };
 

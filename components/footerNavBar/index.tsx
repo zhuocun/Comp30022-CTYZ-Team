@@ -9,7 +9,6 @@ import {
     HomeOutlined,
     CalendarOutlined,
     HeartOutlined,
-    // ShoppingCartOutlined,
     HistoryOutlined
 } from "@ant-design/icons";
 import styles from "./index.module.css";

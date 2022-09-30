@@ -9,10 +9,12 @@
 	background-color: #fff0cc !important;
 	padding: 5px 0 0px 0 !important;
 	margin-bottom: 0px;
+	/* height: -webkit-fill-available!important; */
 }
 
-.footer {
+.footer :global .ant-layout-footer {
 	background-color: #fff0cc !important;
+	height: -webkit-fill-available!important;
 }
 
 .pageTitle{
