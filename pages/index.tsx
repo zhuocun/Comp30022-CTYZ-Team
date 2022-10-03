@@ -5,7 +5,7 @@ import FooterNavBar from "../components/footerNavBar";
 import styles from "../styles/index.module.css";
 import HistoryList from "./historyList";
 import FavoriteList from "./favoriteList";
-import Home from "./homepage";
+import Home from "./homePage";
 
 export default () => {
     return (
