@@ -28,14 +28,14 @@ const ViewPage: NextPage = () => {
             <Header className={styles["header"]}>
                 <div className={styles["navigation"]}>
                     <Link href="/recipes">
-                        <span className={styles["return"]}>
-                            <LeftOutline />
+                        <span >
+                            <LeftOutline className={styles["return"]}/>
                         </span>
                     </Link>
                     <ECookLogo />
                     <Link href="/">
-                        <span className={styles["share"]}>
-                            <SendOutline />
+                        <span >
+                            <SendOutline className={styles["share"]}/>
                         </span>
                     </Link>
                 </div>
