@@ -1,5 +1,9 @@
 interface ICategory {
+    _id: string;
     name: string;
-    recipes: IRecipe[];
-    createdBy: string;
+    recipes: string[];
+    createBy: string;
+    createdAt: string;
+    updatedAt: string;
+    __v: number;
 }

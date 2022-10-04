@@ -4,31 +4,32 @@ import axios from "axios";
 interface categoriesState {
     loading: boolean;
     error: string | null;
-    categories: ICategory[] | null;
+    categoryList: ICategory[] | null;
 }
 
 const initialState: categoriesState = {
     loading: false,
     error: null,
-    categories: null
+    categoryList: null
 };
 
 export const getCategories = createAsyncThunk(
-    "recipe/getCategories",
-    async (
-        jwtToken: string | null
-    ) => {
-        const axiosResponse = await axios.get(
-            `https://itproject-online-cookbook.herokuapp.com/api/v1/category`,
-            {
-                headers: {
-                    Authorization: `Bearer ${jwtToken}`
+        "recipe/getCategories",
+        async (
+            parameters: { jwtToken: string | null }
+        ) => {
+            const axiosResponse = await axios.get(
+                `https://itproject-online-cookbook.herokuapp.com/api/v1/category`,
+                {
+                    headers: {
+                        Authorization: `Bearer ${parameters.jwtToken}`
+                    }
                 }
-            }
-        );
-        return axiosResponse.data;
-    }
-);
+            );
+            return axiosResponse.data.categories;
+        }
+    )
+;
 
 export const categorySlice = createSlice({
     name: "category",
@@ -41,7 +42,7 @@ export const categorySlice = createSlice({
         [getCategories.fulfilled.type]: (state, action) => {
             state.loading = false;
             state.error = null;
-            state.categories = action.payload;
+            state.categoryList = action.payload;
         },
         [getCategories.rejected.type]: (
             state,

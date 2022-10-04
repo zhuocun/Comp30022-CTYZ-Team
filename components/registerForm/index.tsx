@@ -14,7 +14,7 @@ export const RegisterForm: React.FC = () => {
     }) => {
         console.log("Success:", values);
         try {
-            await axios.post("http://localhost:8888/api/v1/auth/register", {
+            await axios.post("https://itproject-online-cookbook.herokuapp.com/api/v1/auth/register", {
                 name: values.name,
                 email: values.email,
                 password: values.password

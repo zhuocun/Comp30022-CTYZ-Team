@@ -4,7 +4,7 @@ import { Layout } from "antd";
 import styles from "../styles/viewPage.module.css";
 import ViewPageHeader from "../components/viewPageHeader";
 import TimeAndServing from "../components/timeAndServing";
-import ViewInrgedients from "../components/viewIngredients";
+import ViewIngredients from "../components/viewIngredients";
 import ViewMethods from "../components/viewMethods";
 import ViewTags from "../components/viewTags";
 import BackStory from "../components/backStory";
@@ -22,7 +22,7 @@ const ViewPage: NextPage = () => {
                 <div className={styles["timeAndServing"]}>
                     <TimeAndServing />
                 </div>
-                <ViewInrgedients />
+                <ViewIngredients />
                 <ViewMethods />
                 <div className={styles["backStory"]}>
                     <BackStory />

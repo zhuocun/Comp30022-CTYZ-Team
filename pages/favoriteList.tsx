@@ -17,7 +17,7 @@ const FavoriteList: NextPage = () => {
 
     useEffect(() => {
         if (jwtToken) {
-            dispatch(getRecipeList({ jwtToken, keywords: undefined }));
+            dispatch(getRecipeList({ jwtToken, keywords: undefined, categoryId: undefined }));
         }
     }, [jwtToken]);
 

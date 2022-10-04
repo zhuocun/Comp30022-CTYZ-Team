@@ -14,7 +14,7 @@ const SearchResult: NextPage = () => {
     const dispatch = useReduxDispatch();
 
     useEffect(() => {
-        dispatch(getRecipeList({ jwtToken, keywords }));
+        dispatch(getRecipeList({ jwtToken, keywords, categoryId: undefined }));
     }, [jwtToken, keywords]);
 
     return (
