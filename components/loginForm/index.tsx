@@ -15,7 +15,6 @@ export const LoginForm: React.FC = () => {
     const dispatch = useReduxDispatch();
     const router = useRouter();
 
-
     useEffect(() => {
         if (jwtToken !== null) {
             router.push("/").then();

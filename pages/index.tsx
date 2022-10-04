@@ -5,7 +5,7 @@ import FooterNavBar from "../components/footerNavBar";
 import styles from "../styles/index.module.css";
 import HistoryList from "./historyList";
 import FavoriteList from "./favoriteList";
-import Home from "./homePage";
+import Home from "./home";
 
 export default () => {
     return (
@@ -14,7 +14,6 @@ export default () => {
                 <Routes>
                     <Route path="/homepage" element={<Home />} />
                     <Route path="/favoriteList" element={<FavoriteList />} />
-                    <Route path="//favoriteList" element={<FavoriteList />} />
                     <Route path="/historyList" element={<HistoryList />} />
                 </Routes>
                 <div className={styles.bottom}>
