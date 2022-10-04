@@ -29,7 +29,7 @@ const Recipes: NextPage = () => {
             <Header className={styles["header"]}>
                 <div className={styles["headerNav"]}>
                     <Link href="/">
-                        <span className={styles["return"]}>
+                        <span>
                             <LeftOutline />
                         </span>
                     </Link>

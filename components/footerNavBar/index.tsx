@@ -1,42 +1,65 @@
-import React from "react";
-import styles from "./index.module.css";
-import Link from "next/link";
+import React, { FC } from "react";
+import { TabBar } from "antd-mobile";
+import {
+    useNavigate,
+    useLocation,
+} from "react-router-dom";
+
 import {
     HomeOutlined,
-    HomeTwoTone,
     CalendarOutlined,
-    CalendarTwoTone,
     HeartOutlined,
-    HeartTwoTone,
-    ShoppingCartOutlined,
-    ShoppingTwoTone
+    HistoryOutlined
 } from "@ant-design/icons";
+import styles from "./index.module.css";
 
-const FooterNavBar: React.FC = () => {
+const FooterNavBar: FC = () => {
+    const navigate = useNavigate();
+    const location = useLocation();
+    const { pathname } = location;
+
+    const setRouteActive = (value: string) => {
+        navigate(value);
+    };
+
+    const tabs = [
+        {
+            key: "/homepage",
+            title: "Homepage",
+            icon: <HomeOutlined/>
+        },
+        {
+            key: "/favoriteList",
+            title: "Favorites",
+            icon: <HeartOutlined />
+        },
+        {
+            // key: "/favoriteList",
+            title: "Weekly Plan",
+            icon: <CalendarOutlined />
+        },
+        {
+            key: "/historyList",
+            title: "History List",
+            icon: <HistoryOutlined/>
+        }
+    ];
     return (
-        <div className={styles["footerNav"]} >
-        <Link href="/">
-            <span className={styles["home"]}>
-                <HomeTwoTone twoToneColor="orange"/>
-            </span>
-        </Link>
-        <Link href="/">
-            <span className={styles["plan"]}>
-                <CalendarTwoTone twoToneColor="orange"/>
-            </span>
-        </Link>
-        <Link href="/">
-            <span className={styles["history"]}>
-                <ShoppingTwoTone twoToneColor="orange"/>
-            </span>
-        </Link>
-        <Link href="/">
-            <span className={styles["favorite"]}>
-                <HeartTwoTone twoToneColor="orange"/>
-            </span>
-        </Link>
-    </div>
+        <TabBar
+            activeKey={pathname}
+            onChange={(value) => setRouteActive(value)}
+            className = {styles["activeButton"]}
+        >
+            {tabs.map((item) => (
+                <TabBar.Item
+                    key={item.key}
+                    icon={item.icon}
+                    title={item.title}
+                   
+                />
+            ))}
+        </TabBar>
     );
-}
+};
 
 export default FooterNavBar;

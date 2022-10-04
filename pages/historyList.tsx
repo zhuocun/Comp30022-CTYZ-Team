@@ -6,9 +6,8 @@ import { getRecipeList } from "../redux/reducers/recipeSlice";
 import React from "react";
 import { Layout } from "antd";
 import styles from "../styles/list.module.css";
-import FooterNavBar from "../components/footerNavBar";
 
-const { Header, Content, Footer } = Layout;
+const { Header, Content } = Layout;
 
 const HistoryList: NextPage = () => {
     const jwtToken = useReduxSelector((s) => s.authentication.jwtToken);
@@ -35,9 +34,6 @@ const HistoryList: NextPage = () => {
                     <RecipeList loading={loading} recipeList={recipeList} />
                 </div>
             </Content>
-            <Footer className={styles["footer"]}>
-                <FooterNavBar />
-            </Footer>
         </Layout>
     );
 };
