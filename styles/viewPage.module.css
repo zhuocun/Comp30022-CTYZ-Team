@@ -49,6 +49,9 @@
 
 }
 
+
+
+
 .title{
     padding-top: 10px;
     word-break: break-word;
@@ -56,14 +59,15 @@
 
 }
 
-.complete:focus{
+.complete:hover{
     color: red !important;
 
 }
 
-.favorite:focus{
+.favorite:hover{
     color: red !important;
 }
+
 
 .content{
     background-color: #fff0cc;

@@ -9,7 +9,7 @@
 	background-color: #fff0cc !important;
 	padding: 5px 0 0px 0 !important;
 	margin-bottom: 0px;
-	/* height: -webkit-fill-available!important; */
+	height: 81.5vh!important;
 }
 
 .footer :global .ant-layout-footer {

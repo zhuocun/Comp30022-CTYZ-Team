@@ -4,11 +4,12 @@
 
 .content{
     background-color: #FFF9EB !important;
-    height: 100vh !important;
+    height: 90vh !important;
 }
 
 .footer{
-    position:absolute !important;
+
+    position:fixed !important;
     left: 0px !important;
     right: 0px !important;
     bottom: 0px !important;
