@@ -51,7 +51,7 @@ export const authenticationSlice = createSlice({
             action: PayloadAction<string | null>
         ) => {
             state.loading = false;
-            state.jwtToken = action.payload;
+            state.error = action.payload;
         }
     }
 });

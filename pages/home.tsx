@@ -23,7 +23,6 @@ const Home: NextPage = () => {
             dispatch(getCategories({ jwtToken }));
         }
     }, [jwtToken]);
-    console.log(categoryList);
     return (
         <div style={{ minHeight: "inherit" }}>
             <Layout className={styles["fullPage"]}>

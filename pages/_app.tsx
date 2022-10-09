@@ -4,6 +4,7 @@ import "antd/dist/antd.css";
 import rootStore from "../redux/store";
 import { Provider } from "react-redux";
 import { PersistGate } from "redux-persist/integration/react";
+import { ChakraProvider } from "@chakra-ui/react";
 
 const queryClient = new QueryClient({
     defaultOptions: {
@@ -16,8 +17,9 @@ const queryClient = new QueryClient({
 
 const CookBook = ({ Component, pageProps }) => {
     return (
-        <Provider store={rootStore.store}>
-            <PersistGate persistor={rootStore.persistor} loading={null}>
+        <ChakraProvider>
+            <Provider store={rootStore.store}>
+                {/*<PersistGate persistor={rootStore.persistor} loading={null}>*/}
                 <QueryClientProvider client={queryClient}>
                     <Toaster
                         position="bottom-right"
@@ -31,8 +33,9 @@ const CookBook = ({ Component, pageProps }) => {
                     />
                     <Component {...pageProps} />
                 </QueryClientProvider>
-            </PersistGate>
-        </Provider>
+                {/*</PersistGate>*/}
+            </Provider>
+        </ChakraProvider>
     );
 };
 
