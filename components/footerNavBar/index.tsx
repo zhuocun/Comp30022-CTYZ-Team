@@ -24,8 +24,8 @@ const FooterNavBar: FC = () => {
 
     const tabs = [
         {
-            key: "/homepage",
-            title: "Homepage",
+            key: "/home",
+            title: "Home",
             icon: <HomeOutlined/>
         },
         {

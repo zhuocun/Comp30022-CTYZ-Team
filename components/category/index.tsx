@@ -9,94 +9,133 @@ interface CategoryIntro extends ICategory {
 }
 
 interface PropsType {
-    categoryList: ICategory[] | null,
-    loading: boolean
+    categoryList: ICategory[] | null;
+    loading: boolean;
 }
 
 const Category: React.FC<PropsType> = ({ categoryList, loading }) => {
     const categoryData: CategoryIntro[] = categoryList
-        ? (categoryList.map((c, index) => ({
-            key: index,
-            ...c
-        }))) : [];
+        ? categoryList.map((c, index) => ({
+              key: index,
+              ...c
+          }))
+        : [];
 
     return (
-        <div style={{ marginLeft: 31 }}>
-            <Row className={styles.row}>
-                <Col span={12}>
-                    <Box maxW="150" borderWidth="1px" borderRadius="lg" overflow="hidden">
-                        <img src={"https://bit.ly/2Z4KKcF"} alt={categoryData[0]?.name} />
-                        <Link href={`category/${categoryData[0]?._id}`}>
-                            <div className={styles.text}>{categoryData[0]?.name}</div>
-                        </Link>
-                    </Box>
+        <div className={styles["categories"]}>
+            <Row className={styles.row} gutter={[8, 16]}>
+                <Col className={styles.col} span={12}>
+                    <Link href={`category/${categoryData[0]?._id}`}>
+                        <Box className={styles["category"]}>
+                            <img
+                                className={styles["img"]}
+                                src={"https://bit.ly/2Z4KKcF"}
+                                alt={categoryData[0]?.name}
+                            />
+
+                            <Box className={styles["name"]}>
+                                {categoryData[0]?.name}
+                                Breakfast
+                            </Box>
+                        </Box>
+                    </Link>
                 </Col>
-                <Col span={12}>
-                    <Box maxW="150" borderWidth="1px" borderRadius="lg" overflow="hidden">
-                        <img src={"https://bit.ly/2Z4KKcF"} alt={categoryData[0]?.name} />
-                        <Link href={`category/${categoryData[0]?._id}`} replace={true}>
-                            <div className={styles.text}>{categoryData[0]?.name}</div>
-                        </Link>
-                    </Box>
+                <Col className={styles.col} span={12}>
+                    <Link href={`category/${categoryData[0]?._id}`}>
+                        <Box className={styles["category"]}>
+                            <img
+                                className={styles["img"]}
+                                src={"https://bit.ly/2Z4KKcF"}
+                                alt={categoryData[0]?.name}
+                            />
+
+                            <Box className={styles["name"]}>
+                                {categoryData[0]?.name} 
+                                Lunch
+                            </Box>
+                        </Box>
+                    </Link>
                 </Col>
             </Row>
 
-            <Row className={styles.row}>
-                <Col span={12}>
-                    <Box maxW="150" borderWidth="1px" borderRadius="lg" overflow="hidden">
-                        <img src={"https://bit.ly/2Z4KKcF"} alt={categoryData[0]?.name} />
-                        <Link href={`category/${categoryData[0]?._id}`}>
-                            <div className={styles.text}>{categoryData[0]?.name}</div>
-                        </Link>
-                    </Box>
+            <Row className={styles.row} gutter={[8, 16]}>
+                <Col className={styles.col} span={12}>
+                    <Link href={`category/${categoryData[0]?._id}`}>
+                        <Box className={styles["category"]}>
+                            <img
+                                className={styles["img"]}
+                                src={"https://bit.ly/2Z4KKcF"}
+                                alt={categoryData[0]?.name}
+                            />
+
+                            <Box className={styles["name"]}>
+                                {categoryData[0]?.name} 
+                                Dinner
+                            </Box>
+                        </Box>
+                    </Link>
                 </Col>
-                <Col span={12}>
-                    <Box maxW="150" borderWidth="1px" borderRadius="lg" overflow="hidden">
-                        <img src={"https://bit.ly/2Z4KKcF"} alt={categoryData[0]?.name} />
-                        <Link href={`category/${categoryData[0]?._id}`} replace={true}>
-                            <div className={styles.text}>{categoryData[0]?.name}</div>
-                        </Link>
-                    </Box>
+                <Col className={styles.col} span={12}>
+                    <Link href={`category/${categoryData[0]?._id}`}>
+                        <Box className={styles["category"]}>
+                            <img
+                                className={styles["img"]}
+                                src={"https://bit.ly/2Z4KKcF"}
+                                alt={categoryData[0]?.name}
+                            />
+                            <Box className={styles["name"]}>
+                                {categoryData[0]?.name}
+                                Snack
+                            </Box>
+                        </Box>
+                    </Link>
                 </Col>
             </Row>
 
-            <Row className={styles.row}>
-                <Col span={12}>
-                    <Box maxW="150" borderWidth="1px" borderRadius="lg" overflow="hidden">
-                        <img src={"https://bit.ly/2Z4KKcF"} alt={categoryData[0]?.name} />
-                        <Link href={`category/${categoryData[0]?._id}`}>
-                            <div className={styles.text}>{categoryData[0]?.name}</div>
-                        </Link>
-                    </Box>
+            <Row className={styles.row} gutter={[8, 16]}>
+                <Col className={styles.col} span={12}>
+                    <Link href={`category/${categoryData[0]?._id}`}>
+                        <Box className={styles["category"]}>
+                            <img
+                                className={styles["img"]}
+                                src={"https://bit.ly/2Z4KKcF"}
+                                alt={categoryData[0]?.name}
+                            />
+
+                            <Box className={styles["name"]}>
+                                {categoryData[0]?.name}
+                                Vegetarian
+                            </Box>
+                        </Box>
+                    </Link>
                 </Col>
-                <Col span={12}>
-                    <Box maxW="150" borderWidth="1px" borderRadius="lg" overflow="hidden">
-                        <img src={"https://bit.ly/2Z4KKcF"} alt={categoryData[0]?.name} />
-                        <Link href={`category/${categoryData[0]?._id}`} replace={true}>
-                            <div className={styles.text}>{categoryData[0]?.name}</div>
-                        </Link>
-                    </Box>
+                <Col className={styles.col} span={12}>
+                    <Link href={`category/${categoryData[0]?._id}`}>
+                        <Box className={styles["category"]}>
+                            <img
+                                className={styles["img"]}
+                                src={"https://bit.ly/2Z4KKcF"}
+                                alt={categoryData[0]?.name}
+                            />
+
+                            <Box className={styles["name"]}>
+                                {categoryData[0]?.name} 
+                                Dessert
+                            </Box>
+                        </Box>
+                    </Link>
                 </Col>
             </Row>
-            {/*<div className={styles["categories"]}>*/
-            }
-            {/*    <Snack className={styles["category"]} />*/
-            }
-            {/*    <Dessert className={styles["category"]} />*/
-            }
-            {/*    <Breakfast className={styles["category"]} />*/
-            }
-            {/*    <Lunch className={styles["category"]} />*/
-            }
-            {/*    <Dinner className={styles["category"]} />*/
-            }
-            {/*    <Vegetarian className={styles["category"]} />*/
-            }
-            {/*</div>*/
-            }
+            {/*<div className={styles["categories"]}>*/}
+            {/*    <Snack className={styles["category"]} />*/}
+            {/*    <Dessert className={styles["category"]} />*/}
+            {/*    <Breakfast className={styles["category"]} />*/}
+            {/*    <Lunch className={styles["category"]} />*/}
+            {/*    <Dinner className={styles["category"]} />*/}
+            {/*    <Vegetarian className={styles["category"]} />*/}
+            {/*</div>*/}
         </div>
-    )
-        ;
+    );
 };
 
 export default Category;

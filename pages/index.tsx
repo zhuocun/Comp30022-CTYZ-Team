@@ -9,10 +9,10 @@ import Home from "./home";
 
 export default () => {
     return (
-        <Router initialEntries={["/homepage"]}>
+        <Router initialEntries={["/home"]}>
             <div>
                 <Routes>
-                    <Route path="/homepage" element={<Home />} />
+                    <Route path="/home" element={<Home />} />
                     <Route path="/favoriteList" element={<FavoriteList />} />
                     <Route path="/historyList" element={<HistoryList />} />
                 </Routes>
