@@ -29,7 +29,7 @@ const Category: React.FC<PropsType> = ({ categoryList, loading }) => {
                         <Box className={styles["category"]}>
                             <img
                                 className={styles["img"]}
-                                src={"https://bit.ly/2Z4KKcF"}
+                                src={"https://cdn.broadsheet.com.au/cache/47/a2/47a2d923be188058c559282a338944a5.jpg"}
                                 alt={categoryData[0]?.name}
                             />
 
@@ -45,7 +45,7 @@ const Category: React.FC<PropsType> = ({ categoryList, loading }) => {
                         <Box className={styles["category"]}>
                             <img
                                 className={styles["img"]}
-                                src={"https://bit.ly/2Z4KKcF"}
+                                src={"https://cdn.broadsheet.com.au/cache/4c/b6/4cb64a6fc45d7d50587cb0b37d800835.jpg"}
                                 alt={categoryData[0]?.name}
                             />
 
