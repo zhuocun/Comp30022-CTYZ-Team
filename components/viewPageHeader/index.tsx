@@ -6,9 +6,7 @@ import { CarryOutOutlined, HeartOutlined } from "@ant-design/icons";
 import { LeftOutline, SendOutline } from "antd-mobile-icons";
 import { Image } from "antd-mobile";
 
-const demoSrc =
-    "https://cookingwithayeh.com/wp-content/uploads/2021/11/Spicy-Tuna-Crispy-Rice.jpg";
-
+const demoSrc ="https://cookingwithayeh.com/wp-content/uploads/2021/11/Spicy-Tuna-Crispy-Rice.jpg";
 const ViewPageHeader: FC = () => {
     return (
         <>
@@ -35,7 +33,7 @@ const ViewPageHeader: FC = () => {
                 />
 
                 <div className={styles["title"]}>
-                    <h1>Spicy Tuna Cripsy Rice</h1>
+                    Spicy Tuna Cripsy Rice
                 </div>
 
                 <HeartOutlined className={styles["favorite"]} />

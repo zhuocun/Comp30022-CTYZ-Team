@@ -19,6 +19,7 @@ const Recipes: NextPage = () => {
     const dispatch = useReduxDispatch();
 
     useEffect(() => {
+        document.body.style.backgroundColor = 'white';
         if (jwtToken) {
             dispatch(getRecipeList({ jwtToken, keywords: undefined, categoryId: undefined }));
         }

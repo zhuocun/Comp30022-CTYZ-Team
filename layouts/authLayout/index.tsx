@@ -27,8 +27,7 @@ export const AuthLayout: React.FC<PropsType> = (props) => {
             <Content className={styles["content"]}>
                 <div className={styles["top"]}>
                     <div className={styles["logo"]}>
-                        {" "}
-                        <ECookLogo />{" "}
+                        <ECookLogo />
                     </div>
                     {props.children}
                 </div>

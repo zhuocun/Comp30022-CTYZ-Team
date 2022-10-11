@@ -15,6 +15,7 @@ import TimeEstimate from "../components/timeEstimate";
 import ServingSuggestion from "../components/servingSuggestion";
 import Intro from "../components/intro";
 import { useRouter } from "next/router";
+import { background } from "@chakra-ui/react";
 
 const { Header, Content, Footer } = Layout;
 
@@ -52,6 +53,7 @@ const RecipeEditor: NextPage = () => {
             <Header className={styles.header}>
                 <div className={styles.navigation}>
                     <Button
+                        style={{ background: "transparent", border: "0px"}}
                         icon={<CloseOutline style={{ fontSize: "28px" }} />}
                         onClick={() => router.push("/")}
                     >
@@ -59,6 +61,7 @@ const RecipeEditor: NextPage = () => {
                     </Button>
                     <ECookLogo />
                     <Button
+                        style={{ background: "transparent", border: "0px"}}
                         icon={<CheckOutline style={{ fontSize: "28px" }} />}
                         onClick={onSubmit}>
 

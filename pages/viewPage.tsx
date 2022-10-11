@@ -28,7 +28,7 @@ const ViewPage: NextPage = () => {
                     <BackStory />
                 </div>
             </Content>
-            <Footer className={styles.footer}>footer</Footer>
+            <Footer className={styles.footer}></Footer>
         </Layout>
     );
 };
