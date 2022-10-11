@@ -1,45 +1,33 @@
 @import url('https://fonts.googleapis.com/css2?family=Rokkitt:wght@410&display=swap');
 
-/* .categories {
-    display: flex !important;
-    flex-wrap: wrap !important;
-    justify-content: space-between !important;
-    list-style: none !important;
-    padding: 0 20px !important;
-    align-items: baseline !important;
-    font-size: 20px !important;
-}
-
-.category {
-    margin-bottom: 20px;
-}
 
 .category:active {
     box-shadow: rgba(0, 0, 0, 0.4) 0 2px 4px, rgba(0, 0, 0, 0.3) 0 7px 13px -3px, rgba(0, 0, 0, 0.2) 0 -3px 0 inset;
     -webkit-box-shadow: rgba(0, 0, 0, 0.4) 0 2px 4px, rgba(0, 0, 0, 0.3) 0 7px 13px -3px, rgba(0, 0, 0, 0.2) 0 -3px 0 inset;
     border-radius: 10px !important;
-} */
+}
 
 .categories{
     padding: 0px 15px;
 }
 
 .category{
+    height: 90%;
     width: 95%;
     border-radius:0.5rem;
-    overflow:hidden;
 }
 
 .img{
-    height: 60%;
+    height: 70%;
     width: 100%;
 }
 
 .name {
+    height: 30%;
     background-color: white;
     display: flex;
     justify-content: center;
-    align-items: flex-end;
+    align-items: center;
     font-size: 1.4rem;
     padding: 1px;
     border-bottom-left-radius: 0.5rem;
