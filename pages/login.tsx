@@ -7,7 +7,7 @@ import { NextPage } from "next";
 const LoginPage: NextPage = () => {
     return (
         <AuthLayout isLogin = {true}>
-            <div className={styles.component}>
+            <div className={styles["component"]}>
                 <LoginForm />
             </div>
         </AuthLayout>
