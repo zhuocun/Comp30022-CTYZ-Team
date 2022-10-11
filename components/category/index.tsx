@@ -26,7 +26,7 @@ const Category: React.FC<PropsType> = ({ categoryList, loading }) => {
             <Row className={styles.row} gutter={[8, 16]}>
                 <Col className={styles.col} span={12}>
                     <Link href={`category/${categoryData[0]?._id}`}>
-                        <Box className={styles["category"]}>
+                        <Box className={styles["category"]} >
                             <img
                                 className={styles["img"]}
                                 src={"https://cdn.broadsheet.com.au/cache/47/a2/47a2d923be188058c559282a338944a5.jpg"}

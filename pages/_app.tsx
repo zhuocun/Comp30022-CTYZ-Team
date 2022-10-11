@@ -18,8 +18,9 @@ const queryClient = new QueryClient({
 
 const CookBook = ({ Component, pageProps }) => {
     return (
-        <ChakraProvider>
+        
             <Provider store={rootStore.store}>
+                <ChakraProvider resetCSS={false}>
                 {/*<PersistGate persistor={rootStore.persistor} loading={null}>*/}
                 <QueryClientProvider client={queryClient}>
                     <Toaster
@@ -35,8 +36,9 @@ const CookBook = ({ Component, pageProps }) => {
                     <Component {...pageProps} />
                 </QueryClientProvider>
                 {/*</PersistGate>*/}
+                </ChakraProvider>
             </Provider>
-        </ChakraProvider>
+        
     );
 };
 
