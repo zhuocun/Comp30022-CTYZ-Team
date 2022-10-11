@@ -3,7 +3,6 @@ import { Toaster } from "react-hot-toast";
 import "antd/dist/antd.css";
 import rootStore from "../redux/store";
 import { Provider } from "react-redux";
-import "@fontsource/caveat/500.css";
 import { PersistGate } from "redux-persist/integration/react";
 import { ChakraProvider } from "@chakra-ui/react";
 
