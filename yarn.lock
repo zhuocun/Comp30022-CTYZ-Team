@@ -1901,6 +1901,11 @@
   dependencies:
     "@floating-ui/core" "^1.0.1"
 
+"@fontsource/caveat@^4.5.9":
+  version "4.5.9"
+  resolved "https://registry.yarnpkg.com/@fontsource/caveat/-/caveat-4.5.9.tgz#a540b6c675d68b177970af8f95d6c22932ef5868"
+  integrity sha512-kFrgwTDWxctBzfQxtoZrP9Vp1duKTc0IYcv+hjmjNiVAQFrCCUyuwuMEO1++jtOvzgUkzNinR/Co/Rna6t8TUA==
+
 "@jridgewell/gen-mapping@^0.1.0":
   version "0.1.1"
   resolved "https://registry.npmjs.org/@jridgewell/gen-mapping/-/gen-mapping-0.1.1.tgz"
