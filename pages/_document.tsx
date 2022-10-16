@@ -17,7 +17,7 @@ function MyDocument() {
                     crossorigin
                 />
                 <link
-                    href="https://fonts.googleapis.com/css2?family=Caveat:wght@600&family=Rokkitt&display=swap"
+                    href="https://fonts.googleapis.com/css2?family=Caveat:wght@600&family=EB+Garamond:wght@500&display=swap"
                     rel="stylesheet"
                 />
             </Head>

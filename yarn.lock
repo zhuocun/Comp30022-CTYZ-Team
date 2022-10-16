@@ -1916,6 +1916,12 @@
   dependencies:
     "@floating-ui/core" "^1.0.1"
 
+<<<<<<< HEAD
+"@fontsource/caveat@^4.5.9":
+  version "4.5.9"
+  resolved "https://registry.yarnpkg.com/@fontsource/caveat/-/caveat-4.5.9.tgz#a540b6c675d68b177970af8f95d6c22932ef5868"
+  integrity sha512-kFrgwTDWxctBzfQxtoZrP9Vp1duKTc0IYcv+hjmjNiVAQFrCCUyuwuMEO1++jtOvzgUkzNinR/Co/Rna6t8TUA==
+=======
 "@humanwhocodes/config-array@^0.10.4":
   "integrity" "sha512-mXAIHxZT3Vcpg83opl1wGlVZ9xydbfZO3r5YfRSH6Gpp2J/PfdBP0wbDa2sO6/qRbcalpoevVyW6A/fI6LfeMw=="
   "resolved" "https://registry.npmjs.org/@humanwhocodes/config-array/-/config-array-0.10.4.tgz"
@@ -1939,6 +1945,7 @@
   "integrity" "sha512-ZnQMnLV4e7hDlUvw8H+U8ASL02SS2Gn6+9Ac3wGGLIe7+je2AeAOxPY+izIPJDfFDb7eDjev0Us8MO1iFRN8hA=="
   "resolved" "https://registry.npmjs.org/@humanwhocodes/object-schema/-/object-schema-1.2.1.tgz"
   "version" "1.2.1"
+>>>>>>> b4c87197ad482e47d34a9f8ef63bd4d34b71757e
 
 "@jridgewell/gen-mapping@^0.1.0":
   "integrity" "sha512-sQXCasFk+U8lWYEe66WxRDOE9PjVz4vSM51fTu3Hw+ClTpUSQb718772vH3pyS5pShp6lvQM7SxgIDXXXmOX7w=="
