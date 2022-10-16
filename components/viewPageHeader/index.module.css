@@ -19,11 +19,17 @@
 .img{
     height: 260px !important;
     width: auto !important;
+    display: flex !important;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+
 }
 
-.image{
-    height: 360px !important;
-    width: auto !important;
+.img .image{
+    flex-shrink: 0;
+    min-width: 100%;
+    min-height: 100%
 }
 
 .functions{

@@ -4,7 +4,8 @@ import Link from "next/link";
 import ECookLogo from "/public/logo.svg";
 import { CarryOutOutlined, HeartOutlined } from "@ant-design/icons";
 import { LeftOutline, SendOutline } from "antd-mobile-icons";
-import { Image } from "antd-mobile";
+import { Image } from "antd";
+
 
 const demoSrc ="https://cookingwithayeh.com/wp-content/uploads/2021/11/Spicy-Tuna-Crispy-Rice.jpg";
 const ViewPageHeader: FC = () => {

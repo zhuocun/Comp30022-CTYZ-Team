@@ -52,7 +52,6 @@ const Home: NextPage = () => {
                     <div className={styles["category"]}>
                         <Category loading={loading} categoryList={categoryList} />
                     </div>
-            
                 </Content>
                 <Button onClick={() => router.push("./recipes")}>My Recipes</Button>
             </Layout>
