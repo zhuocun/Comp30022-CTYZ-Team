@@ -16,17 +16,12 @@ interface RecipeListProps {
 }
 
 export const RecipeItem: React.FC<RecipeListProps> = ({
-<<<<<<< HEAD
-    loading,
-    recipeItem
-}) => {
-=======
+
                                                           loading,
                                                           recipeItem
                                                       }) => {
     const dispatch = useReduxDispatch();
     const jwtToken = useReduxSelector(s => s.authentication.jwtToken);
->>>>>>> c83d279f2564985482ec2ff9a2f214eba090b1b8
     const router = useRouter();
     const onDelete = () => {
         const recipeId = recipeItem?._id;

@@ -4,7 +4,7 @@ import { List, SwipeAction, Dialog, Toast } from "antd-mobile";
 import type { ColumnsType } from "antd/es/table";
 import { useRouter } from "next/router";
 import styles from "./index.module.css";
-import { Action, SwipeActionRef } from "antd-mobile/es/components/swipe-action";
+import { SwipeActionRef } from "antd-mobile/es/components/swipe-action";
 
 const demoSrc =
     "https://gw.alipayobjects.com/zos/rmsportal/mqaQswcyDLcXyDKnZfES.png";
@@ -14,7 +14,10 @@ interface RecipeListProps {
     loading: boolean;
 }
 
-export const RecipeList: React.FC<RecipeListProps> = ({ recipeList, loading }) => {
+export const RecipeList: React.FC<RecipeListProps> = ({
+    recipeList,
+    loading
+}) => {
     const router = useRouter();
     const columns: ColumnsType<IRecipeIntro> = [
         {
@@ -75,7 +78,7 @@ export const RecipeList: React.FC<RecipeListProps> = ({ recipeList, loading }) =
 
     function handleClick() {}
 
-    const ref = useRef<SwipeActionRef>(null)
+    const ref = useRef < SwipeActionRef > null;
 
     return (
         // <Skeleton loading={loading} active>
@@ -98,24 +101,23 @@ export const RecipeList: React.FC<RecipeListProps> = ({ recipeList, loading }) =
                         key: "delete",
                         text: "delete",
                         color: "danger",
-                        
+
                         onClick: async () => {
                             await Dialog.confirm({
                                 content: "Are u sure to delete😧",
                                 cancelText: "Cancel",
                                 confirmText: "Confirm",
-                        onConfirm: async () => {
-                        Toast.show({
-                          icon: 'success',
-                          content: 'Delete Successfully',
-                          position: 'center',
-                        })
-                            ref.current?.close();
+                                onConfirm: async () => {
+                                    Toast.show({
+                                        icon: "success",
+                                        content: "Delete Successfully",
+                                        position: "center"
+                                    });
+                                    ref.current?.close();
+                                }
+                            });
                         }
-                    })
-                    
-                }
-            }
+                    }
                 ]}
             >
                 <Skeleton loading={loading} active style={{ padding: "10px" }}>
@@ -131,14 +133,21 @@ export const RecipeList: React.FC<RecipeListProps> = ({ recipeList, loading }) =
                                 alt="logo"
                             />
                         }
-                        onClick={handleClick}
+                        onClick={() => {
+                            Toast.show("你点击了列表项");
+                            
+                        }}
+                        // onClick={handleClick}
                     >
                         <h1 className={styles.recipeName}>
                             {/* {recipeList.title} */}
                             Title
                         </h1>
-
-                        <Rate allowHalf defaultValue={2.5} />
+                        {/* <Rate
+                            className={styles.rate}
+                            allowHalf
+                            defaultValue={2.5}
+                        /> */}
                     </List.Item>
                 </Skeleton>
             </SwipeAction>
