@@ -28,8 +28,9 @@ export const RecipeItem: React.FC<RecipeListProps> = ({
 
     return (
         <div>
+            <Skeleton loading={loading} active style={{ padding: "10px" }}>
             <List>
-                <Skeleton loading={loading} active style={{ padding: "10px" }}>
+                
                     <SwipeAction
                         className={styles["delete"]}
                         rightActions={[
@@ -79,8 +80,9 @@ export const RecipeItem: React.FC<RecipeListProps> = ({
                             {recipeItem?.title}
                         </List.Item>
                     </SwipeAction>
-                </Skeleton>
+               
             </List>
+            </Skeleton>
             <BackTop />
         </div>
     );
