@@ -1,30 +1,28 @@
-import React, { useEffect, useState } from "react";
-import { Button, Skeleton, Space, Table, BackTop, Image, Rate } from "antd";
-import { List, SwipeAction } from 'antd-mobile'
+import React, { useEffect, useState, useRef } from "react";
+import { Button, Skeleton, Space, BackTop, Image, Rate } from "antd";
+import { List, SwipeAction, Dialog, Toast } from "antd-mobile";
 import type { ColumnsType } from "antd/es/table";
 import { useRouter } from "next/router";
 import styles from "./index.module.css";
-import InfiniteScroll from 'react-infinite-scroll-component';
+import InfiniteScroll from "react-infinite-scroll-component";
 import Link from "next/link";
-import { Action, SwipeActionRef } from 'antd-mobile/es/components/swipe-action';
-import { SmileOutlined, MehOutlined, FrownOutlined } from '@ant-design/icons';
+import { Action, SwipeActionRef } from "antd-mobile/es/components/swipe-action";
+import { SmileOutlined, MehOutlined, FrownOutlined } from "@ant-design/icons";
 
-const demoSrc = "https://gw.alipayobjects.com/zos/rmsportal/mqaQswcyDLcXyDKnZfES.png";
+const demoSrc =
+    "https://gw.alipayobjects.com/zos/rmsportal/mqaQswcyDLcXyDKnZfES.png";
 
 interface RecipeListProps {
     recipeList: IRecipeListRes[] | null;
 }
 
-export const RecipeList: React.FC<RecipeListProps> = ({
-    recipeList
-}) => {
+export const RecipeList: React.FC<RecipeListProps> = ({ recipeList }) => {
     const router = useRouter();
     const columns: ColumnsType<IRecipeIntro> = [
         {
             title: "Preview",
             dataIndex: "pic",
-            key: "pic",
-
+            key: "pic"
         },
         {
             title: "Title",
@@ -48,12 +46,13 @@ export const RecipeList: React.FC<RecipeListProps> = ({
     ];
 
     const recipeData: IRecipeIntro[] = recipeList
-        ? (recipeList.map((r, index) => ({
-            key: index,
-            id: r._id,
-            picture: r.picture,
-            title: r.title,
-        }))) : [];
+        ? recipeList.map((r, index) => ({
+              key: index,
+              id: r._id,
+              picture: r.picture,
+              title: r.title
+          }))
+        : [];
 
     const [loading, setLoading] = useState(false);
 
@@ -62,9 +61,9 @@ export const RecipeList: React.FC<RecipeListProps> = ({
             return;
         }
         setLoading(true);
-        fetch('https://randomuser.me/api/?results=10&inc=title,picture')
-            .then(res => res.json())
-            .then(body => {
+        fetch("https://randomuser.me/api/?results=10&inc=title,picture")
+            .then((res) => res.json())
+            .then((body) => {
                 setLoading(false);
             })
             .catch(() => {
@@ -78,18 +77,17 @@ export const RecipeList: React.FC<RecipeListProps> = ({
 
     const leftActions: Action[] = [
         {
-            key: 'pin',
-            text: 'delete',
-            color: 'primary',
-        },
-    ]
+            key: "pin",
+            text: "delete",
+            color: "primary"
+        }
+    ];
 
-    function handleClick() {
+    function handleClick() {}
 
-    }
+    const ref = useRef<SwipeActionRef>(null)
 
     return (
-
         // <Skeleton loading={loading} active>
         //     <Table<IRecipeIntro>
         //         columns={columns}
@@ -104,10 +102,33 @@ export const RecipeList: React.FC<RecipeListProps> = ({
         <div>
             <SwipeAction
                 // key={item}
-                leftActions={leftActions}
 
+                rightActions={[
+                    {
+                        key: "delete",
+                        text: "delete",
+                        color: "danger",
+                        
+                        onClick: async () => {
+                            danger: true;
+                            await Dialog.confirm({
+                                content: "Are u sure to delete😧",
+                                cancelText: "Cancel",
+                                confirmText: "Confirm",
+                        onConfirm: async () => {
+                        Toast.show({
+                          icon: 'success',
+                          content: 'Delete Successfully',
+                          position: 'center',
+                        })
+                            ref.current?.close();
+                        }
+                    })
+                    
+                }
+            }
+                ]}
             >
-
                 <Skeleton loading={loading} active style={{ padding: "10px" }}>
                     <List.Item
                         className={styles["recipeList"]}
@@ -122,22 +143,17 @@ export const RecipeList: React.FC<RecipeListProps> = ({
                             />
                         }
                         onClick={handleClick}
-
                     >
-
                         <h1 className={styles.recipeName}>
                             {/* {recipeList.title} */}
                             Title
                         </h1>
 
                         <Rate allowHalf defaultValue={2.5} />
-
                     </List.Item>
                 </Skeleton>
-
             </SwipeAction>
             <BackTop />
         </div>
-
     );
 };
