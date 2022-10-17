@@ -110,7 +110,6 @@ export const RecipeList: React.FC<RecipeListProps> = ({ recipeList }) => {
                         color: "danger",
                         
                         onClick: async () => {
-                            danger: true;
                             await Dialog.confirm({
                                 content: "Are u sure to delete😧",
                                 cancelText: "Cancel",

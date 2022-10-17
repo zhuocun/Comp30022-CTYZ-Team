@@ -10,10 +10,10 @@ interface CategoryIntro extends ICategory {
 
 interface PropsType {
     categoryList: ICategory[] | null;
-    loading: boolean;
+    // loading: boolean;
 }
 
-const Category: React.FC<PropsType> = ({ categoryList, loading }) => {
+const Category: React.FC<PropsType> = ({ categoryList }) => {
     const categoryData: CategoryIntro[] = categoryList
         ? categoryList.map((c, index) => ({
               key: index,
