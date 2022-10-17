@@ -12,7 +12,7 @@ const ViewPageHeader: React.FC<{ title: string, picture: string | undefined }> =
     return (
         <>
             <div className={styles["navigation"]}>
-                <Link href="/recipes">
+                <Link href="/">
                     <span className={styles["return"]}>
                         <LeftOutline />
                     </span>

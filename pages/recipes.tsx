@@ -56,7 +56,6 @@ const Recipes: NextPage = () => {
                     <SearchBar isHome={false} />
                 </div>
                 <div className={styles.recipeList}>
-                    <RecipeList  recipeList={recipeList} loading={loading} />
                     {recipeItems}
                 </div>
             </Content>

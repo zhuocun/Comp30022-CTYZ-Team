@@ -54,7 +54,7 @@ export const getRecipeList = createAsyncThunk(
         }
     ) => {
         let url = `https://itproject-online-cookbook.herokuapp.com/api/v1/recipe?`;
-        url += parameters.keywords ? `&keywords=${parameters.keywords}` : "";
+        url += parameters.keywords ? `title=${parameters.keywords}` : "";
         url += parameters.categoryId ? `&category=${parameters.categoryId}` : "";
         const axiosResponse = await axios.get(
             url,

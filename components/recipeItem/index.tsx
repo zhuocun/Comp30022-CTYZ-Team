@@ -48,7 +48,6 @@ export const RecipeItem: React.FC<RecipeListProps> = ({
                         <h1 className={styles.recipeName}>
                             {recipeItem?.title}
                         </h1>
-                        <Rate allowHalf defaultValue={2.5} />
                     </List.Item>
                 </Skeleton>
             </SwipeAction>
