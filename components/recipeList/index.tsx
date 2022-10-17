@@ -13,9 +13,11 @@ const demoSrc = "https://gw.alipayobjects.com/zos/rmsportal/mqaQswcyDLcXyDKnZfES
 
 interface RecipeListProps {
     recipeList: IRecipeListRes[] | null;
+    loading: boolean;
 }
 
 export const RecipeList: React.FC<RecipeListProps> = ({
+    loading,
     recipeList
 }) => {
     const router = useRouter();
@@ -55,26 +57,26 @@ export const RecipeList: React.FC<RecipeListProps> = ({
             title: r.title,
         }))) : [];
 
-    const [loading, setLoading] = useState(false);
+    // const [loading, setLoading] = useState(false);
 
-    const loadMoreData = () => {
-        if (loading) {
-            return;
-        }
-        setLoading(true);
-        fetch('https://randomuser.me/api/?results=10&inc=title,picture')
-            .then(res => res.json())
-            .then(body => {
-                setLoading(false);
-            })
-            .catch(() => {
-                setLoading(false);
-            });
-    };
-
-    useEffect(() => {
-        loadMoreData();
-    }, []);
+    // const loadMoreData = () => {
+    //     if (loading) {
+    //         return;
+    //     }
+    //     setLoading(true);
+    //     fetch('https://randomuser.me/api/?results=10&inc=title,picture')
+    //         .then(res => res.json())
+    //         .then(body => {
+    //             setLoading(false);
+    //         })
+    //         .catch(() => {
+    //             setLoading(false);
+    //         });
+    // };
+    //
+    // useEffect(() => {
+    //     loadMoreData();
+    // }, []);
 
     const leftActions: Action[] = [
         {

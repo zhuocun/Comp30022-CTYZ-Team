@@ -17,11 +17,11 @@ const rootReducer = combineReducers({
     category: categorySlice.reducer
 });
 
-//const persistedReducer = persistReducer(persistConfig, rootReducer);
+const persistedReducer = persistReducer(persistConfig, rootReducer);
 
 // reducers are saved in store
 const store = configureStore({
-    reducer: rootReducer,
+    reducer: persistedReducer,
     devTools: true
 });
 
