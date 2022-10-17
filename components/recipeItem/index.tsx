@@ -30,7 +30,6 @@ export const RecipeItem: React.FC<RecipeListProps> = ({
         <div>
             <Skeleton loading={loading} active style={{ padding: "10px" }}>
             <List>
-                
                     <SwipeAction
                         className={styles["delete"]}
                         rightActions={[

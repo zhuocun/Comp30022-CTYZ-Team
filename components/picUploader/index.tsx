@@ -44,7 +44,6 @@ const PicUploader: React.FC<{ setPic: Dispatch<SetStateAction<{ src: string, ima
                 className={styles.upload}>
                 {fileList ? fileList.length < 1 && "+ Upload" : "+ Upload"}
             </Upload>
-
         );
     };
 

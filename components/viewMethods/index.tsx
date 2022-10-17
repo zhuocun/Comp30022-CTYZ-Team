@@ -1,11 +1,13 @@
-import React, { FC } from "react";
+import React from "react";
 import styles from "./index.module.css";
 
-const viewMethods: React.FC<{ methods: string[] }> = ({ methods }) => {
+const viewMethods: React.FC<{ methods: string[] | undefined }> = ({ methods }) => {
 
     const methodItems: JSX.Element[] = [];
-    for (const m of methods) {
-        methodItems.push(<li className= {styles["box"]} >{m}</li>);
+    if (methods) {
+        for (const m of methods) {
+            methodItems.push(<li className={styles["box"]}>{m}</li>);
+        }
     }
 
     return (

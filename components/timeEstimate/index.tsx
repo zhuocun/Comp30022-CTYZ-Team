@@ -3,13 +3,13 @@ import { Input } from "antd";
 import styles from "./index.module.css";
 
 const TimeEstimate: React.FC<{
-    setTime: Dispatch<SetStateAction<number | undefined>>
-}> = ({ setTime }) => {
+    setCookTime: Dispatch<SetStateAction<number | undefined>>
+}> = ({ setCookTime }) => {
 
     return (
         <>
             <Input
-                onChange={(e) => (setTime(parseInt(e.target.value)))}
+                onChange={(e) => (setCookTime(parseInt(e.target.value)))}
                 placeholder="🕒Time Estimate" allowClear
                 className={styles.timeEstimate}
             />

@@ -33,12 +33,12 @@ const RecipeDetail: NextPage = () => {
                 <Content className={styles.content}>
                     <ViewTags tagIds={recipe.tags} />
                     <div className={styles["timeAndServing"]}>
-                        <TimeAndServing time={-2} servings={-2} />
+                        <TimeAndServing time={recipe.cookTime} servings={recipe.serve} />
                     </div>
                     <ViewIngredients ingredients={recipe.ingredients} />
                     <ViewMethods methods={recipe.methods} />
                     <div className={styles["backStory"]}>
-                        <BackStory backStory={"null"} />
+                        <BackStory backStory={recipe.introduction} />
                     </div>
                 </Content>
                 <Footer className={styles.footer}></Footer>

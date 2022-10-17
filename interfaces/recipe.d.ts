@@ -7,20 +7,15 @@ interface IRecipe {
     category?: string | undefined;
     favorite?: boolean;
     imageId?: string;
+    cookTime?: number;
+    serve?: number;
+    introduction?: string;
+    completed?: string;
 }
 
-interface IRecipeListRes {
-    completed: string;
-    category: string;
+interface IRecipeListRes extends IRecipe {
     createBy: string;
     createdAt: string;
-    favorite: boolean;
-    imageId: string;
-    ingredients: string[];
-    methods: string[];
-    picture: string;
-    tags: string[];
-    title: string;
     updatedAt: string;
     __v: number;
     _id: string;

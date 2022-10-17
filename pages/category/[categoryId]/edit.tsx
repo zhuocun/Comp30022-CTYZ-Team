@@ -21,8 +21,9 @@ const { Header, Content, Footer } = Layout;
 const RecipeEditor: NextPage = () => {
     const [pic, setPic] = useState<{ src: string, imageId: string } | undefined>(undefined);
     const [title, setTitle] = useState<string>("");
-    const [time, setTime] = useState<number>();
-    const [serving, setServing] = useState<number>();
+    const [intro, setIntro] = useState<string>("");
+    const [cookTime, setCookTime] = useState<number>();
+    const [serve, setServe] = useState<number>();
     const [tags, setTags] = useState<string[]>([]);
     const [ingredients, setIngredients] = useState<string[]>([]);
     const [methods, setMethods] = useState<string[]>([]);
@@ -41,7 +42,10 @@ const RecipeEditor: NextPage = () => {
         ingredients: ingredients,
         methods: methods,
         category: typeof categoryId === "string" ? categoryId : undefined,
-        favorite: false
+        favorite: false,
+        cookTime: cookTime,
+        serve: serve,
+        introduction: intro
     };
 
     const onSubmit = () => {
@@ -75,13 +79,13 @@ const RecipeEditor: NextPage = () => {
                         <TitleEditor setTitle={setTitle} />
                     </div>
                     <div className={styles.servings}>
-                        <TimeEstimate setTime={setTime} />
-                        <ServingSuggestion setServing={setServing} />
+                        <TimeEstimate setCookTime={setCookTime} />
+                        <ServingSuggestion setServing={setServe} />
                     </div>
                     <div>
                         <TagEditor setTag={setTags} />
                     </div>
-                    <div className={styles.intro}><Intro /></div>
+                    <div className={styles.intro}><Intro setIntro={setIntro} /></div>
                     <div className={styles.ingredients}>
                         <IngredientAdder setIngredient={setIngredients} />
                     </div>

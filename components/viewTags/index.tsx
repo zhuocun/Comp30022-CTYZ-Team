@@ -1,17 +1,16 @@
-import React, { FC, useEffect } from "react";
+import React, { useEffect } from "react";
 import { Row, Col } from "antd";
 import styles from "./index.module.css";
-import { RecipeItem } from "../recipeItem";
 import { useReduxDispatch, useReduxSelector } from "../../redux/hooks";
 import { getAllTags } from "../../redux/reducers/recipeSlice";
 
-const viewTags: React.FC<{ tagIds: string[] }> = ({ tagIds }) => {
+const viewTags: React.FC<{ tagIds: string[] | undefined }> = ({ tagIds }) => {
 
     const dispatch = useReduxDispatch();
     const tagList = useReduxSelector(s => s.recipe.tags);
     const jwtToken = useReduxSelector(s => s.authentication.jwtToken);
     const tagItems: JSX.Element[] = [];
-    if (tagList) {
+    if (tagList && tagIds) {
         console.log(tagList);
         for (const tagId of tagIds) {
             let targetTag: string = "";
