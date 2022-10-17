@@ -1,5 +1,5 @@
 import { NextPage } from "next";
-import { RecipeList } from "../components/recipeList";
+import { RecipeItem } from "../components/recipeItem";
 import { useReduxDispatch, useReduxSelector } from "../redux/hooks";
 import { useEffect } from "react";
 import { getRecipeList } from "../redux/reducers/recipeSlice";
@@ -19,10 +19,13 @@ const HistoryList: NextPage = () => {
             r.completed ? historyList.push(r) : null;
         }
     }
+    const recipeItems: JSX.Element[] = [];
+    for (const r of historyList) {
+        recipeItems.push(<RecipeItem loading={loading} recipeItem={r} />);
+    }
     const dispatch = useReduxDispatch();
-
     useEffect(() => {
-        document.body.style.backgroundColor = 'white';
+        document.body.style.backgroundColor = "white";
         if (jwtToken) {
             dispatch(getRecipeList({ jwtToken, keywords: undefined, categoryId: undefined }));
         }
@@ -32,13 +35,12 @@ const HistoryList: NextPage = () => {
         <Layout>
             <Header className={styles["header"]}>
                 <div className={styles["headerNav"]}>
-
                     <h1 className={styles.pageTitle}>History List 👩‍🍳</h1>
                 </div>
             </Header>
             <Content>
                 <div className={styles.recipeList}>
-                    <RecipeList loading={loading} recipeList={historyList} />
+                    {recipeItems}
                 </div>
             </Content>
         </Layout>

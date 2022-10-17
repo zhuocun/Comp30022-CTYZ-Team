@@ -1,7 +1,7 @@
 import { NextPage } from "next";
-import { RecipeList } from "../../components/recipeList";
+import { RecipeItem } from "../../components/recipeItem";
 import { useReduxDispatch, useReduxSelector } from "../../redux/hooks";
-import { useEffect } from "react";
+import React, { useEffect } from "react";
 import { getRecipeList } from "../../redux/reducers/recipeSlice";
 import { useRouter } from "next/router";
 
@@ -16,9 +16,16 @@ const SearchResult: NextPage = () => {
     useEffect(() => {
         dispatch(getRecipeList({ jwtToken, keywords, categoryId: undefined }));
     }, [jwtToken, keywords]);
-
+    const recipeItems: JSX.Element[] = [];
+    if (recipeList) {
+        for (const r of recipeList) {
+            recipeItems.push(<RecipeItem loading={loading} recipeItem={r} />);
+        }
+    }
     return (
-        <RecipeList loading={loading} recipeList={recipeList} />
+        <>
+            {recipeItems}
+        </>
     );
 };
 

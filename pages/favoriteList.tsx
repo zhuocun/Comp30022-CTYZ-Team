@@ -1,5 +1,5 @@
 import { NextPage } from "next";
-import { RecipeList } from "../components/recipeList";
+import { RecipeItem } from "../components/recipeItem";
 import { useReduxDispatch, useReduxSelector } from "../redux/hooks";
 import { useEffect } from "react";
 import { getRecipeList } from "../redux/reducers/recipeSlice";
@@ -19,6 +19,11 @@ const FavoriteList: NextPage = () => {
             r.favorite ? favoriteList.push(r) : null;
         }
     }
+    const recipeItems: JSX.Element[] = [];
+    for (const r of favoriteList) {
+        recipeItems.push(<RecipeItem loading={loading} recipeItem={r} />);
+    }
+
     const dispatch = useReduxDispatch();
 
     useEffect(() => {
@@ -37,7 +42,7 @@ const FavoriteList: NextPage = () => {
             </Header>
             <Content className={styles["content"]}>
                 <div className={styles.recipeList}>
-                    <RecipeList loading={loading} recipeList={favoriteList} />
+                    {recipeItems}
                 </div>
             </Content>
         </Layout>

@@ -1,5 +1,5 @@
 import { NextPage } from "next";
-import { RecipeList } from "../components/recipeList";
+import { RecipeItem } from "../components/recipeItem";
 import { useReduxDispatch, useReduxSelector } from "../redux/hooks";
 import { useEffect } from "react";
 import { getRecipeList } from "../redux/reducers/recipeSlice";
