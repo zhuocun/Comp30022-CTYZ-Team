@@ -10,7 +10,6 @@ import styles from "../styles/recipes.module.css";
 import Link from "next/link";
 import { LeftOutline, EditSOutline } from "antd-mobile-icons";
 
-
 const { Header, Content } = Layout;
 
 const Recipes: NextPage = () => {
