@@ -13,6 +13,12 @@ const HistoryList: NextPage = () => {
     const jwtToken = useReduxSelector((s) => s.authentication.jwtToken);
     const loading = useReduxSelector((s) => s.recipe.loading);
     const recipeList = useReduxSelector((s) => s.recipe.recipeList);
+    const historyList: IRecipeListRes[] = [];
+    if (recipeList) {
+        for (const r of recipeList) {
+            r.completed ? historyList.push(r) : null;
+        }
+    }
     const dispatch = useReduxDispatch();
 
     useEffect(() => {
@@ -32,7 +38,7 @@ const HistoryList: NextPage = () => {
             </Header>
             <Content>
                 <div className={styles.recipeList}>
-                    <RecipeList loading={loading} recipeList={recipeList} />
+                    <RecipeList loading={loading} recipeList={historyList} />
                 </div>
             </Content>
         </Layout>

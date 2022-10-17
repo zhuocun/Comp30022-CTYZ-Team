@@ -10,6 +10,7 @@ interface IRecipe {
 }
 
 interface IRecipeListRes {
+    completed: string;
     category: string;
     createBy: string;
     createdAt: string;
