@@ -81,7 +81,7 @@ export const updateRecipe = createAsyncThunk(
             },
             {
                 headers: {
-                    tokens: `${parameters.jwtToken}`
+                    Authorization: `Bearer ${parameters.jwtToken}`
                 }
             }
         );
@@ -92,13 +92,13 @@ export const updateRecipe = createAsyncThunk(
 export const deleteRecipe = createAsyncThunk(
     "recipe/deleteRecipe",
     async (parameters: {
-        jwtToken: string | null, recipeId: string | null
+        jwtToken: string | null, recipeId: string | undefined
     }) => {
         const axiosResponse = await axios.delete(
-            ``,
+            `https://itproject-online-cookbook.herokuapp.com/api/v1/recipe/${parameters.recipeId}`,
             {
                 headers: {
-                    tokens: `${parameters.jwtToken}`
+                    Authorization: `Bearer ${parameters.jwtToken}`
                 }
             }
         );
@@ -109,7 +109,7 @@ export const deleteRecipe = createAsyncThunk(
 export const getAllTags = createAsyncThunk(
     "tag/getTags",
     async (
-            jwtToken: string | null
+        jwtToken: string | null
     ) => {
         let url = `https://itproject-online-cookbook.herokuapp.com/api/v1/tag`;
         const axiosResponse = await axios.get(
