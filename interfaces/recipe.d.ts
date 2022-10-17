@@ -5,7 +5,8 @@ interface IRecipe {
     tags: string[];
     ingredients: string[];
     methods: string[];
-    category: string;
+    category: string | undefined;
+    favorite: boolean;
 }
 
 interface IRecipeListRes {
