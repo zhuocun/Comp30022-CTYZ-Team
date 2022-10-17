@@ -15,13 +15,14 @@ import TimeEstimate from "../components/timeEstimate";
 import ServingSuggestion from "../components/servingSuggestion";
 import Intro from "../components/intro";
 import { useRouter } from "next/router";
-import { background } from "@chakra-ui/react";
 
 const { Header, Content, Footer } = Layout;
 
 const RecipeEditor: NextPage = () => {
     const [picture, setPicture] = useState<string>("");
     const [title, setTitle] = useState<string>("");
+    const [time, setTime] = useState<number>();
+    const [serving, setServing] = useState<number>();
     const [tags, setTags] = useState<string[]>([]);
     const [ingredients, setIngredients] = useState<string[]>([]);
     const [methods, setMethods] = useState<string[]>([]);
@@ -53,18 +54,16 @@ const RecipeEditor: NextPage = () => {
             <Header className={styles.header}>
                 <div className={styles.navigation}>
                     <Button
-                        style={{ background: "transparent", border: "0px"}}
+                        style={{ background: "transparent", border: "0px" }}
                         icon={<CloseOutline style={{ fontSize: "28px" }} />}
                         onClick={() => router.push("/")}
                     >
-
                     </Button>
                     <ECookLogo />
                     <Button
-                        style={{ background: "transparent", border: "0px"}}
+                        style={{ background: "transparent", border: "0px" }}
                         icon={<CheckOutline style={{ fontSize: "28px" }} />}
                         onClick={onSubmit}>
-
                     </Button>
                 </div>
             </Header>
@@ -76,13 +75,13 @@ const RecipeEditor: NextPage = () => {
                         <TitleEditor setTitle={setTitle} />
                     </div>
                     <div className={styles.servings}>
-                        <TimeEstimate/>
-                        <ServingSuggestion/>
+                        <TimeEstimate setTime={setTime} />
+                        <ServingSuggestion setServing={setServing} />
                     </div>
                     <div>
                         <TagEditor setTag={setTags} />
                     </div>
-                    <div className={styles.intro}><Intro/></div>
+                    <div className={styles.intro}><Intro /></div>
                     <div className={styles.ingredients}>
                         <IngredientAdder setIngredient={setIngredients} />
                     </div>
