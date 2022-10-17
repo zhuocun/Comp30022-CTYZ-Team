@@ -1,12 +1,12 @@
 interface IRecipe {
-    picture: string;
-    title: string;
-    tags: string[];
-    ingredients: string[];
-    methods: string[];
-    category: string | undefined;
-    favorite: boolean;
-    imageId: string;
+    picture?: string;
+    title?: string;
+    tags?: string[];
+    ingredients?: string[];
+    methods?: string[];
+    category?: string | undefined;
+    favorite?: boolean;
+    imageId?: string;
 }
 
 interface IRecipeListRes {
