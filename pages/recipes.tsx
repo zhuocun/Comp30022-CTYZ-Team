@@ -9,6 +9,7 @@ import { Layout } from "antd";
 import styles from "../styles/recipes.module.css";
 import Link from "next/link";
 import { LeftOutline, EditSOutline } from "antd-mobile-icons";
+import { RecipeList } from "../components/recipeList";
 
 const { Header, Content } = Layout;
 
@@ -55,11 +56,8 @@ const Recipes: NextPage = () => {
                     <SearchBar isHome={false} />
                 </div>
                 <div className={styles.recipeList}>
-<<<<<<< HEAD
                     <RecipeList  recipeList={recipeList} loading={loading} />
-=======
                     {recipeItems}
->>>>>>> f744748f2791dd1db8b414b67c7944321cbd2341
                 </div>
             </Content>
         </Layout>
