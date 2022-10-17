@@ -34,25 +34,14 @@ const PicUploader: React.FC<{ setPic: Dispatch<SetStateAction<string>> }> =
                     Authorization: jwtToken ? `Bearer ${jwtToken}` : ""
                 }}
                 action={`https://itproject-online-cookbook.herokuapp.com/api/v1/recipe/image`}
+                method={"POST"}
                 listType="picture-card"
                 fileList={fileList}
                 onChange={onChange}
                 onPreview={onPreview}
+                multiple={false}
                 className={styles.upload}>
-                {/*<div*/}
-                {/*    style={{*/}
-                {/*        width: 100,*/}
-                {/*        height: 80,*/}
-                {/*        borderRadius: 40,*/}
-                {/*        display: "flex",*/}
-                {/*        justifyContent: "center",*/}
-                {/*        alignItems: "center"*/}
-                {/*    }}*/}
-                {/*>*/}
-                    {fileList? fileList.length < 1 && '+ Upload' : '+ Upload'}
-                    {/*<PictureOutline style={{ fontSize: 32 }} />*/}
-                {/*</div>*/}
-
+                {fileList ? fileList.length < 1 && "+ Upload" : "+ Upload"}
             </Upload>
 
         );

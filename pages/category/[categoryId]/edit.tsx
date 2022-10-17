@@ -1,20 +1,21 @@
 import { Button, Layout } from "antd";
 import React, { useState } from "react";
-import TagEditor from "../components/tagEditor";
-import TitleEditor from "../components/titleEditor";
-import PicUploader from "../components/picUploader";
-import IngredientAdder from "../components/ingredientsAdder";
-import MethodAdder from "../components/methodAdder";
-import styles from "../styles/recipeEditor.module.css";
+import TagEditor from "../../../components/tagEditor";
+import TitleEditor from "../../../components/titleEditor";
+import PicUploader from "../../../components/picUploader";
+import IngredientAdder from "../../../components/ingredientsAdder";
+import MethodAdder from "../../../components/methodAdder";
+import styles from "../../../styles/recipeEditor.module.css";
 import { NextPage } from "next";
 import { CheckOutline, CloseOutline } from "antd-mobile-icons";
-import ECookLogo from "../public/logo.svg";
-import { useReduxDispatch, useReduxSelector } from "../redux/hooks";
-import { createRecipe } from "../redux/reducers/recipeSlice";
-import TimeEstimate from "../components/timeEstimate";
-import ServingSuggestion from "../components/servingSuggestion";
-import Intro from "../components/intro";
+import ECookLogo from "../../../public/logo.svg";
+import { useReduxDispatch, useReduxSelector } from "../../../redux/hooks";
+import { createRecipe } from "../../../redux/reducers/recipeSlice";
+import TimeEstimate from "../../../components/timeEstimate";
+import ServingSuggestion from "../../../components/servingSuggestion";
+import Intro from "../../../components/intro";
 import { useRouter } from "next/router";
+import { useParams } from "react-router";
 
 const { Header, Content, Footer } = Layout;
 
@@ -30,8 +31,8 @@ const RecipeEditor: NextPage = () => {
     const jwtToken = useReduxSelector(s => s.authentication.jwtToken);
 
     const dispatch = useReduxDispatch();
-
     const router = useRouter();
+    let { categoryId } = router.query;
 
     const recipe: IRecipe = {
         id: "",
@@ -40,7 +41,8 @@ const RecipeEditor: NextPage = () => {
         tags: tags,
         ingredients: ingredients,
         methods: methods,
-        category: "63302ddf7b1ea4c130f10c21"
+        category: typeof categoryId === "string" ? categoryId : undefined,
+        favorite: false
     };
 
     const onSubmit = () => {

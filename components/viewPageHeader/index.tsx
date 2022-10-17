@@ -8,7 +8,7 @@ import { Image } from "antd";
 
 
 const demoSrc ="https://cookingwithayeh.com/wp-content/uploads/2021/11/Spicy-Tuna-Crispy-Rice.jpg";
-const ViewPageHeader: FC = () => {
+const ViewPageHeader: React.FC<{title: string}> = ({title}) => {
     return (
         <>
             <div className={styles["navigation"]}>
@@ -34,7 +34,7 @@ const ViewPageHeader: FC = () => {
                 />
 
                 <div className={styles["title"]}>
-                    Spicy Tuna Cripsy Rice
+                    {title}
                 </div>
 
                 <HeartOutlined className={styles["favorite"]} />

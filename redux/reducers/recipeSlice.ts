@@ -7,6 +7,7 @@ interface RecipeState {
     recipe: IRecipe | null;
     recipeList: IRecipeListRes[] | null;
     recipeCache: IRecipe | null;
+    tags: ITag[] | null;
 }
 
 const initialState: RecipeState = {
@@ -14,7 +15,8 @@ const initialState: RecipeState = {
     error: null,
     recipe: null,
     recipeList: null,
-    recipeCache: null
+    recipeCache: null,
+    tags: null
 };
 
 export const createRecipe = createAsyncThunk(
@@ -104,6 +106,24 @@ export const deleteRecipe = createAsyncThunk(
     }
 );
 
+export const getAllTags = createAsyncThunk(
+    "tag/getTags",
+    async (
+            jwtToken: string | null
+    ) => {
+        let url = `https://itproject-online-cookbook.herokuapp.com/api/v1/tag`;
+        const axiosResponse = await axios.get(
+            url,
+            {
+                headers: {
+                    Authorization: `Bearer ${jwtToken}`
+                }
+            }
+        );
+        return axiosResponse.data.tags;
+    }
+);
+
 export const recipeSlice = createSlice({
     name: "recipe",
     initialState,
@@ -168,6 +188,21 @@ export const recipeSlice = createSlice({
             state.recipeList = action.payload;
         },
         [getRecipeList.rejected.type]: (
+            state,
+            action
+        ) => {
+            state.loading = false;
+            state.error = action.payload;
+        },
+        [getAllTags.pending.type]: (state) => {
+            state.loading = true;
+        },
+        [getAllTags.fulfilled.type]: (state, action: PayloadAction<ITag[] | null>) => {
+            state.loading = false;
+            state.error = null;
+            state.tags = action.payload;
+        },
+        [getAllTags.rejected.type]: (
             state,
             action
         ) => {
