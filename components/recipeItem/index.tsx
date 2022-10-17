@@ -29,33 +29,36 @@ export const RecipeItem: React.FC<RecipeListProps> = ({
 
     return (
         <div>
-            <Skeleton loading={loading} active style={{ padding: "10px" }}>
             <List>
-                
-                    <SwipeAction
-                        className={styles["delete"]}
-                        rightActions={[
-                            {
-                                key: "delete",
-                                text: "Delete",
-                                color: "danger",
+                <SwipeAction
+                    className={styles["delete"]}
+                    rightActions={[
+                        {
+                            key: "delete",
+                            text: "Delete",
+                            color: "danger",
 
-                                onClick: async () => {
-                                    await Dialog.confirm({
-                                        content: "Are u sure to delete😧",
-                                        cancelText: "Cancel",
-                                        confirmText: "Confirm",
-                                        onConfirm: async () => {
-                                            Toast.show({
-                                                icon: "success",
-                                                content: "Delete Successfully",
-                                                position: "center"
-                                            });
-                                        }
-                                    });
-                                }
+                            onClick: async () => {
+                                await Dialog.confirm({
+                                    content: "Are u sure to delete😧",
+                                    cancelText: "Cancel",
+                                    confirmText: "Confirm",
+                                    onConfirm: async () => {
+                                        Toast.show({
+                                            icon: "success",
+                                            content: "Delete Successfully",
+                                            position: "center"
+                                        });
+                                    }
+                                });
                             }
-                        ]}
+                        }
+                    ]}
+                >
+                    <Skeleton
+                        loading={loading}
+                        active
+                        style={{ padding: "10px" }}
                     >
                         <List.Item
                             className={styles["recipeList"]}
@@ -79,11 +82,11 @@ export const RecipeItem: React.FC<RecipeListProps> = ({
                         >
                             {recipeItem?.title}
                         </List.Item>
-                    </SwipeAction>
-               
+                    </Skeleton>
+                </SwipeAction>
             </List>
-            </Skeleton>
-            <BackTop />
-        </div>
+
+             <BackTop /> 
+       </div> 
     );
 };
