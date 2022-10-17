@@ -1,11 +1,12 @@
 import React from "react";
-import { Skeleton, BackTop, Image, Rate } from "antd";
-import { List, SwipeAction } from "antd-mobile";
+import { Skeleton, BackTop, Image } from "antd";
+import { List, SwipeAction, Toast, Dialog } from "antd-mobile";
 import { useRouter } from "next/router";
 import styles from "./index.module.css";
 import { Action } from "antd-mobile/es/components/swipe-action";
 
-const demoSrc = "https://gw.alipayobjects.com/zos/rmsportal/mqaQswcyDLcXyDKnZfES.png";
+const demoSrc =
+    "https://gw.alipayobjects.com/zos/rmsportal/mqaQswcyDLcXyDKnZfES.png";
 
 interface RecipeListProps {
     recipeItem: IRecipeListRes | null;
@@ -13,9 +14,9 @@ interface RecipeListProps {
 }
 
 export const RecipeItem: React.FC<RecipeListProps> = ({
-                                                          loading,
-                                                          recipeItem
-                                                      }) => {
+    loading,
+    recipeItem
+}) => {
     const router = useRouter();
     const leftActions: Action[] = [
         {
@@ -28,7 +29,29 @@ export const RecipeItem: React.FC<RecipeListProps> = ({
     return (
         <div>
             <SwipeAction
-                leftActions={leftActions}
+                className={styles["delete"]}
+                rightActions={[
+                    {
+                        key: "delete",
+                        text: "Delete",
+                        color: "danger",
+
+                        onClick: async () => {
+                            await Dialog.confirm({
+                                content: "Are u sure to delete😧",
+                                cancelText: "Cancel",
+                                confirmText: "Confirm",
+                                onConfirm: async () => {
+                                    Toast.show({
+                                        icon: "success",
+                                        content: "Delete Successfully",
+                                        position: "center"
+                                    });
+                                }
+                            });
+                        }
+                    }
+                ]}
             >
                 <Skeleton loading={loading} active style={{ padding: "10px" }}>
                     <List.Item
@@ -37,17 +60,21 @@ export const RecipeItem: React.FC<RecipeListProps> = ({
                         prefix={
                             <Image
                                 className={styles.img}
-                                src={recipeItem?.picture ? recipeItem?.picture : demoSrc}
+                                src={
+                                    recipeItem?.picture
+                                        ? recipeItem?.picture
+                                        : demoSrc
+                                }
                                 width={150}
-                                height={100}
+                                height={106}
                                 alt="logo"
                             />
                         }
-                        onClick={() => router.push(`/detail/${recipeItem?._id}`)}
+                        onClick={() =>
+                            router.push(`/detail/${recipeItem?._id}`)
+                        }
                     >
-                        <h1 className={styles.recipeName}>
-                            {recipeItem?.title}
-                        </h1>
+                        {recipeItem?.title}
                     </List.Item>
                 </Skeleton>
             </SwipeAction>
