@@ -14,7 +14,7 @@ function MyDocument() {
                 <link
                     rel="preconnect"
                     href="https://fonts.gstatic.com"
-                    crossorigin
+                    //crossorigin
                 />
                 <link
                     href="https://fonts.googleapis.com/css2?family=Caveat:wght@600&family=EB+Garamond:wght@500&display=swap"
