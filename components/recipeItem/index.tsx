@@ -4,6 +4,8 @@ import { List, SwipeAction } from "antd-mobile";
 import { useRouter } from "next/router";
 import styles from "./index.module.css";
 import { Action } from "antd-mobile/es/components/swipe-action";
+import { useReduxDispatch, useReduxSelector } from "../../redux/hooks";
+import { deleteRecipe } from "../../redux/reducers/recipeSlice";
 
 const demoSrc = "https://gw.alipayobjects.com/zos/rmsportal/mqaQswcyDLcXyDKnZfES.png";
 
@@ -16,12 +18,19 @@ export const RecipeItem: React.FC<RecipeListProps> = ({
                                                           loading,
                                                           recipeItem
                                                       }) => {
+    const dispatch = useReduxDispatch();
+    const jwtToken = useReduxSelector(s => s.authentication.jwtToken);
     const router = useRouter();
+    const onDelete = () => {
+        const recipeId = recipeItem?._id;
+        dispatch(deleteRecipe({ jwtToken, recipeId }))
+    };
     const leftActions: Action[] = [
         {
             key: "pin",
             text: "delete",
-            color: "primary"
+            color: "primary",
+            onClick: onDelete
         }
     ];
 
