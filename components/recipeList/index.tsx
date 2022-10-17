@@ -4,19 +4,17 @@ import { List, SwipeAction, Dialog, Toast } from "antd-mobile";
 import type { ColumnsType } from "antd/es/table";
 import { useRouter } from "next/router";
 import styles from "./index.module.css";
-import InfiniteScroll from "react-infinite-scroll-component";
-import Link from "next/link";
 import { Action, SwipeActionRef } from "antd-mobile/es/components/swipe-action";
-import { SmileOutlined, MehOutlined, FrownOutlined } from "@ant-design/icons";
 
 const demoSrc =
     "https://gw.alipayobjects.com/zos/rmsportal/mqaQswcyDLcXyDKnZfES.png";
 
 interface RecipeListProps {
     recipeList: IRecipeListRes[] | null;
+    loading: boolean;
 }
 
-export const RecipeList: React.FC<RecipeListProps> = ({ recipeList }) => {
+export const RecipeList: React.FC<RecipeListProps> = ({ recipeList, loading }) => {
     const router = useRouter();
     const columns: ColumnsType<IRecipeIntro> = [
         {
@@ -54,20 +52,20 @@ export const RecipeList: React.FC<RecipeListProps> = ({ recipeList }) => {
           }))
         : [];
 
-    const [loading, setLoading] = useState(false);
+    // const [loading, setLoading] = useState(false);
 
     const loadMoreData = () => {
         if (loading) {
             return;
         }
-        setLoading(true);
+        // setLoading(true);
         fetch("https://randomuser.me/api/?results=10&inc=title,picture")
             .then((res) => res.json())
             .then((body) => {
-                setLoading(false);
+                // setLoading(false);
             })
             .catch(() => {
-                setLoading(false);
+                // setLoading(false);
             });
     };
 

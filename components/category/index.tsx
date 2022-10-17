@@ -10,10 +10,10 @@ interface CategoryIntro extends ICategory {
 
 interface PropsType {
     categoryList: ICategory[] | null;
-    // loading: boolean;
+    loading: boolean;
 }
 
-const Category: React.FC<PropsType> = ({ categoryList }) => {
+const Category: React.FC<PropsType> = ({ categoryList, loading }) => {
     const categoryData: CategoryIntro[] = categoryList
         ? categoryList.map((c, index) => ({
               key: index,
@@ -35,6 +35,7 @@ const Category: React.FC<PropsType> = ({ categoryList }) => {
 
                             <Box className={styles["name"]}>
                                 {categoryData[0]?.name}
+                                Breakfast
                             </Box>
                         </Box>
                     </Link>
@@ -50,6 +51,7 @@ const Category: React.FC<PropsType> = ({ categoryList }) => {
 
                             <Box className={styles["name"]}>
                                 {categoryData[0]?.name} 
+                                Lunch
                             </Box>
                         </Box>
                     </Link>
@@ -68,6 +70,7 @@ const Category: React.FC<PropsType> = ({ categoryList }) => {
 
                             <Box className={styles["name"]}>
                                 {categoryData[0]?.name} 
+                                Dinner
                             </Box>
                         </Box>
                     </Link>
@@ -82,6 +85,7 @@ const Category: React.FC<PropsType> = ({ categoryList }) => {
                             />
                             <Box className={styles["name"]}>
                                 {categoryData[0]?.name}
+                                Snack
                             </Box>
                         </Box>
                     </Link>
@@ -100,6 +104,7 @@ const Category: React.FC<PropsType> = ({ categoryList }) => {
 
                             <Box className={styles["name"]}>
                                 {categoryData[0]?.name}
+                                Vegetarian
                             </Box>
                         </Box>
                     </Link>
@@ -115,6 +120,7 @@ const Category: React.FC<PropsType> = ({ categoryList }) => {
 
                             <Box className={styles["name"]}>
                                 {categoryData[0]?.name} 
+                                Dessert
                             </Box>
                         </Box>
                     </Link>
