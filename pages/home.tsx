@@ -15,7 +15,7 @@ const { Header, Content } = Layout;
 const Home: NextPage = () => {
     const router = useRouter();
     const jwtToken = useReduxSelector(s => s.authentication.jwtToken);
-    //const loading = useReduxSelector(s => s.category.loading);
+    const loading = useReduxSelector(s => s.category.loading);
     const categoryList = useReduxSelector(s => s.category.categoryList);
     const dispatch = useReduxDispatch();
     useEffect(() => {
@@ -48,7 +48,7 @@ const Home: NextPage = () => {
                         <SearchBar isHome={true} />
                     </div>
                     <div className={styles["category"]}>
-                        <Category categoryList={categoryList} />
+                        <Category loading={loading} categoryList={categoryList} />
                     </div>
                 </Content>
                 <Button onClick={() => router.push("./recipes")}>My Recipes</Button>
