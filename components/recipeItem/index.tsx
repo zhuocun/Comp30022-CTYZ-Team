@@ -3,7 +3,6 @@ import { Skeleton, BackTop, Image } from "antd";
 import { List, SwipeAction, Toast, Dialog } from "antd-mobile";
 import { useRouter } from "next/router";
 import styles from "./index.module.css";
-import { Action } from "antd-mobile/es/components/swipe-action";
 import { useReduxDispatch, useReduxSelector } from "../../redux/hooks";
 import { deleteRecipe } from "../../redux/reducers/recipeSlice";
 
@@ -16,9 +15,9 @@ interface RecipeListProps {
 }
 
 export const RecipeItem: React.FC<RecipeListProps> = ({
-    loading,
-    recipeItem
-}) => {
+                                                          loading,
+                                                          recipeItem
+                                                      }) => {
     const dispatch = useReduxDispatch();
     const jwtToken = useReduxSelector((s) => s.authentication.jwtToken);
     const router = useRouter();
@@ -45,6 +44,7 @@ export const RecipeItem: React.FC<RecipeListProps> = ({
                                         cancelText: "Cancel",
                                         confirmText: "Confirm",
                                         onConfirm: async () => {
+                                            onDelete();
                                             Toast.show({
                                                 icon: "success",
                                                 content: "Delete Successfully",
