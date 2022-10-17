@@ -26,16 +26,17 @@ const Category: React.FC<PropsType> = ({ categoryList, loading }) => {
             <Row className={styles.row} gutter={[8, 16]}>
                 <Col className={styles.col} span={12}>
                     <Link href={`category/${categoryData[0]?._id}`}>
-                        <Box className={styles["category"]} >
+                        <Box className={styles["category"]}>
                             <img
                                 className={styles["img"]}
-                                src={"https://cdn.broadsheet.com.au/cache/47/a2/47a2d923be188058c559282a338944a5.jpg"}
+                                src={
+                                    "https://cdn.broadsheet.com.au/cache/47/a2/47a2d923be188058c559282a338944a5.jpg"
+                                }
                                 alt={categoryData[0]?.name}
                             />
 
                             <Box className={styles["name"]}>
                                 {categoryData[0]?.name}
-                                Breakfast
                             </Box>
                         </Box>
                     </Link>
@@ -45,47 +46,14 @@ const Category: React.FC<PropsType> = ({ categoryList, loading }) => {
                         <Box className={styles["category"]}>
                             <img
                                 className={styles["img"]}
-                                src={"https://cdn.broadsheet.com.au/cache/4c/b6/4cb64a6fc45d7d50587cb0b37d800835.jpg"}
+                                src={
+                                    "https://cdn.broadsheet.com.au/cache/4c/b6/4cb64a6fc45d7d50587cb0b37d800835.jpg"
+                                }
                                 alt={categoryData[0]?.name}
                             />
 
-                            <Box className={styles["name"]}>
-                                {categoryData[0]?.name} 
-                                Lunch
-                            </Box>
-                        </Box>
-                    </Link>
-                </Col>
-            </Row>
-
-            <Row className={styles.row} gutter={[8, 16]}>
-                <Col className={styles.col} span={12}>
-                    <Link href={`category/${categoryData[0]?._id}`}>
-                        <Box className={styles["category"]}>
-                            <img
-                                className={styles["img"]}
-                                src={"https://bit.ly/2Z4KKcF"}
-                                alt={categoryData[0]?.name}
-                            />
-
-                            <Box className={styles["name"]}>
-                                {categoryData[0]?.name} 
-                                Dinner
-                            </Box>
-                        </Box>
-                    </Link>
-                </Col>
-                <Col className={styles.col} span={12}>
-                    <Link href={`category/${categoryData[0]?._id}`}>
-                        <Box className={styles["category"]}>
-                            <img
-                                className={styles["img"]}
-                                src={"https://bit.ly/2Z4KKcF"}
-                                alt={categoryData[0]?.name}
-                            />
                             <Box className={styles["name"]}>
                                 {categoryData[0]?.name}
-                                Snack
                             </Box>
                         </Box>
                     </Link>
@@ -104,7 +72,38 @@ const Category: React.FC<PropsType> = ({ categoryList, loading }) => {
 
                             <Box className={styles["name"]}>
                                 {categoryData[0]?.name}
-                                Vegetarian
+                            </Box>
+                        </Box>
+                    </Link>
+                </Col>
+                <Col className={styles.col} span={12}>
+                    <Link href={`category/${categoryData[0]?._id}`}>
+                        <Box className={styles["category"]}>
+                            <img
+                                className={styles["img"]}
+                                src={"https://bit.ly/2Z4KKcF"}
+                                alt={categoryData[0]?.name}
+                            />
+                            <Box className={styles["name"]}>
+                                {categoryData[0]?.name}
+                            </Box>
+                        </Box>
+                    </Link>
+                </Col>
+            </Row>
+
+            <Row className={styles.row} gutter={[8, 16]}>
+                <Col className={styles.col} span={12}>
+                    <Link href={`category/${categoryData[0]?._id}`}>
+                        <Box className={styles["category"]}>
+                            <img
+                                className={styles["img"]}
+                                src={"https://bit.ly/2Z4KKcF"}
+                                alt={categoryData[0]?.name}
+                            />
+
+                            <Box className={styles["name"]}>
+                                {categoryData[0]?.name}
                             </Box>
                         </Box>
                     </Link>
@@ -119,8 +118,7 @@ const Category: React.FC<PropsType> = ({ categoryList, loading }) => {
                             />
 
                             <Box className={styles["name"]}>
-                                {categoryData[0]?.name} 
-                                Dessert
+                                {categoryData[0]?.name}
                             </Box>
                         </Box>
                     </Link>

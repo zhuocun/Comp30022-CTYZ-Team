@@ -16,9 +16,9 @@ interface RecipeListProps {
 }
 
 export const RecipeItem: React.FC<RecipeListProps> = ({
-                                                          loading,
-                                                          recipeItem
-                                                      }) => {
+    loading,
+    recipeItem
+}) => {
     const dispatch = useReduxDispatch();
     const jwtToken = useReduxSelector((s) => s.authentication.jwtToken);
     const router = useRouter();
@@ -29,57 +29,58 @@ export const RecipeItem: React.FC<RecipeListProps> = ({
 
     return (
         <div>
-            <SwipeAction
-                className={styles["delete"]}
-                rightActions={[
-                    {
-                        key: "delete",
-                        text: "Delete",
-                        color: "danger",
+            <List>
+                <Skeleton loading={loading} active style={{ padding: "10px" }}>
+                    <SwipeAction
+                        className={styles["delete"]}
+                        rightActions={[
+                            {
+                                key: "delete",
+                                text: "Delete",
+                                color: "danger",
 
-                        onClick: async () => {
-                            await Dialog.confirm({
-                                content: "Are u sure to delete😧",
-                                cancelText: "Cancel",
-                                confirmText: "Confirm",
-                                onConfirm: async () => {
-                                    onDelete();
-                                    Toast.show({
-                                        icon: "success",
-                                        content: "Delete Successfully",
-                                        position: "center"
+                                onClick: async () => {
+                                    await Dialog.confirm({
+                                        content: "Are u sure to delete😧",
+                                        cancelText: "Cancel",
+                                        confirmText: "Confirm",
+                                        onConfirm: async () => {
+                                            Toast.show({
+                                                icon: "success",
+                                                content: "Delete Successfully",
+                                                position: "center"
+                                            });
+                                        }
                                     });
                                 }
-                            });
-                        }
-                    }
-                ]}
-            >
-                <Skeleton loading={loading} active style={{ padding: "10px" }}>
-                    <List.Item
-                        className={styles["recipeList"]}
-                        key={recipeItem?._id}
-                        prefix={
-                            <Image
-                                className={styles.img}
-                                src={
-                                    recipeItem?.picture
-                                        ? recipeItem?.picture
-                                        : demoSrc
-                                }
-                                width={150}
-                                height={106}
-                                alt="logo"
-                            />
-                        }
-                        onClick={() =>
-                            router.push(`/detail/${recipeItem?._id}`)
-                        }
+                            }
+                        ]}
                     >
-                        {recipeItem?.title}
-                    </List.Item>
+                        <List.Item
+                            className={styles["recipeList"]}
+                            key={recipeItem?._id}
+                            prefix={
+                                <Image
+                                    className={styles.img}
+                                    src={
+                                        recipeItem?.picture
+                                            ? recipeItem?.picture
+                                            : demoSrc
+                                    }
+                                    width={150}
+                                    height={107}
+                                    alt="logo"
+                                />
+                            }
+                            onClick={() =>
+                                router.push(`/detail/${recipeItem?._id}`)
+                            }
+                        >
+                            {recipeItem?.title}
+                        </List.Item>
+                    </SwipeAction>
                 </Skeleton>
-            </SwipeAction>
+            </List>
             <BackTop />
         </div>
     );
