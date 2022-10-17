@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef } from "react";
+import React, { useEffect, useRef } from "react";
 import { Button, Skeleton, Space, BackTop, Image, Rate } from "antd";
 import { List, SwipeAction, Dialog, Toast } from "antd-mobile";
 import type { ColumnsType } from "antd/es/table";
@@ -72,14 +72,6 @@ export const RecipeList: React.FC<RecipeListProps> = ({ recipeList, loading }) =
     useEffect(() => {
         loadMoreData();
     }, []);
-
-    const leftActions: Action[] = [
-        {
-            key: "pin",
-            text: "delete",
-            color: "primary"
-        }
-    ];
 
     function handleClick() {}
 
