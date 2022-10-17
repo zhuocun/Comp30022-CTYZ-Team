@@ -1,7 +1,7 @@
 import React from "react";
 import styles from "./index.module.css";
 import Link from "next/link";
-import { Col, Row, Card } from "antd";
+import { Col, Row } from "antd";
 import { Box } from "@chakra-ui/react";
 
 interface CategoryIntro extends ICategory {
@@ -16,9 +16,9 @@ interface PropsType {
 const Category: React.FC<PropsType> = ({ categoryList, loading }) => {
     const categoryData: CategoryIntro[] = categoryList
         ? categoryList.map((c, index) => ({
-              key: index,
-              ...c
-          }))
+            key: index,
+            ...c
+        }))
         : [];
 
     return (
@@ -26,21 +26,6 @@ const Category: React.FC<PropsType> = ({ categoryList, loading }) => {
             <Row className={styles.row} gutter={[8, 16]}>
                 <Col className={styles.col} span={12}>
                     <Link href={`category/${categoryData[0]?._id}`}>
-                        <Card
-                            hoverable
-                            style={{ width: 240 }}
-                            cover={
-                                <img
-                                    alt="example"
-                                    src="https://os.alipayobjects.com/rmsportal/QBnOOoLaAfKPirc.png"
-                                />
-                            }
-                        >
-                            <Meta
-                                title="Europe Street beat"
-                                description="www.instagram.com"
-                            />
-                        </Card>
                         <Box className={styles["category"]}>
                             <img
                                 className={styles["img"]}

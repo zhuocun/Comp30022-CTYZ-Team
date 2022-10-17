@@ -36,14 +36,13 @@ export const RecipeItem: React.FC<RecipeListProps> = ({
                             key: "delete",
                             text: "Delete",
                             color: "danger",
-
-<<<<<<< HEAD
                             onClick: async () => {
                                 await Dialog.confirm({
                                     content: "Are u sure to delete😧",
                                     cancelText: "Cancel",
                                     confirmText: "Confirm",
                                     onConfirm: async () => {
+                                        onDelete();
                                         Toast.show({
                                             icon: "success",
                                             content: "Delete Successfully",
@@ -51,23 +50,6 @@ export const RecipeItem: React.FC<RecipeListProps> = ({
                                         });
                                     }
                                 });
-=======
-                                onClick: async () => {
-                                    await Dialog.confirm({
-                                        content: "Are u sure to delete😧",
-                                        cancelText: "Cancel",
-                                        confirmText: "Confirm",
-                                        onConfirm: async () => {
-                                            onDelete();
-                                            Toast.show({
-                                                icon: "success",
-                                                content: "Delete Successfully",
-                                                position: "center"
-                                            });
-                                        }
-                                    });
-                                }
->>>>>>> 30f4b891717323568e04ea5fd5dab9894db678d9
                             }
                         }
                     ]}
@@ -103,7 +85,7 @@ export const RecipeItem: React.FC<RecipeListProps> = ({
                 </SwipeAction>
             </List>
 
-             <BackTop /> 
-       </div> 
+            <BackTop />
+        </div>
     );
 };
