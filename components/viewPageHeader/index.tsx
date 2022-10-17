@@ -1,4 +1,4 @@
-import React, { FC } from "react";
+import React from "react";
 import styles from "./index.module.css";
 import Link from "next/link";
 import ECookLogo from "/public/logo.svg";
@@ -7,8 +7,8 @@ import { LeftOutline, SendOutline } from "antd-mobile-icons";
 import { Image } from "antd";
 
 
-const demoSrc ="https://cookingwithayeh.com/wp-content/uploads/2021/11/Spicy-Tuna-Crispy-Rice.jpg";
-const ViewPageHeader: React.FC<{title: string}> = ({title}) => {
+const demoSrc = "https://cookingwithayeh.com/wp-content/uploads/2021/11/Spicy-Tuna-Crispy-Rice.jpg";
+const ViewPageHeader: React.FC<{ title: string, picture: string | undefined }> = ({ title, picture }) => {
     return (
         <>
             <div className={styles["navigation"]}>
@@ -25,7 +25,7 @@ const ViewPageHeader: React.FC<{title: string}> = ({title}) => {
                 </Link>
             </div>
             <div style={{ userSelect: "none" }} className={styles["img"]}>
-                <Image src={demoSrc} className={styles["image"]} />
+                <Image src={picture ? picture : demoSrc} className={styles["image"]} />
             </div>
             <div className={styles["functions"]}>
                 <CarryOutOutlined

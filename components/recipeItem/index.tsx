@@ -37,7 +37,7 @@ export const RecipeItem: React.FC<RecipeListProps> = ({
                         prefix={
                             <Image
                                 className={styles.img}
-                                src={demoSrc}
+                                src={recipeItem?.picture ? recipeItem?.picture : demoSrc}
                                 width={150}
                                 height={100}
                                 alt="logo"

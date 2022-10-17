@@ -19,12 +19,12 @@ const Home: NextPage = () => {
     const categoryList = useReduxSelector(s => s.category.categoryList);
     const dispatch = useReduxDispatch();
     useEffect(() => {
-        document.body.style.backgroundColor = '#fff0cc';
+        document.body.style.backgroundColor = "#fff0cc";
         if (jwtToken) {
             dispatch(getCategories({ jwtToken }));
         }
     }, [jwtToken]);
-    
+
     return (
         <div style={{ minHeight: "inherit" }} className={styles["body"]}>
             <Layout className={styles["fullPage"]}>

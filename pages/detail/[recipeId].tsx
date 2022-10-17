@@ -27,7 +27,7 @@ const RecipeDetail: NextPage = () => {
         return (
             <Layout>
                 <Header className={styles["header"]}>
-                    <ViewPageHeader title={recipe.title} />
+                    <ViewPageHeader title={recipe.title} picture={recipe.picture}/>
                 </Header>
                 <Content className={styles.content}>
                     <ViewTags tagIds={recipe.tags} />

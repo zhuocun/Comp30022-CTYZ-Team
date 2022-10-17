@@ -4,13 +4,14 @@ import { useReduxSelector } from "../../redux/hooks";
 import { Upload, UploadFile, UploadProps } from "antd";
 import { RcFile } from "antd/lib/upload";
 
-const PicUploader: React.FC<{ setPic: Dispatch<SetStateAction<string>> }> =
+const PicUploader: React.FC<{ setPic: Dispatch<SetStateAction<{ src: string, imageId: string } | undefined>> }> =
     ({ setPic }) => {
         const [fileList, setFileList] = useState<UploadFile[]>();
         const jwtToken = useReduxSelector(s => s.authentication.jwtToken);
 
         const onChange: UploadProps["onChange"] = ({ fileList: newFileList }) => {
             setFileList(newFileList);
+            setPic(newFileList[0]?.response?.image);
         };
 
         const onPreview = async (file: UploadFile) => {

@@ -1,5 +1,4 @@
 interface IRecipe {
-    id: string;
     picture: string;
     title: string;
     tags: string[];
@@ -7,6 +6,7 @@ interface IRecipe {
     methods: string[];
     category: string | undefined;
     favorite: boolean;
+    imageId: string;
 }
 
 interface IRecipeListRes {

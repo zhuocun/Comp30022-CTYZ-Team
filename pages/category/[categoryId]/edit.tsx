@@ -15,12 +15,11 @@ import TimeEstimate from "../../../components/timeEstimate";
 import ServingSuggestion from "../../../components/servingSuggestion";
 import Intro from "../../../components/intro";
 import { useRouter } from "next/router";
-import { useParams } from "react-router";
 
 const { Header, Content, Footer } = Layout;
 
 const RecipeEditor: NextPage = () => {
-    const [picture, setPicture] = useState<string>("");
+    const [pic, setPic] = useState<{ src: string, imageId: string } | undefined>(undefined);
     const [title, setTitle] = useState<string>("");
     const [time, setTime] = useState<number>();
     const [serving, setServing] = useState<number>();
@@ -35,8 +34,8 @@ const RecipeEditor: NextPage = () => {
     let { categoryId } = router.query;
 
     const recipe: IRecipe = {
-        id: "",
-        picture: picture,
+        picture: pic ? pic.src : "",
+        imageId: pic ? pic.imageId : "",
         title: title,
         tags: tags,
         ingredients: ingredients,
@@ -46,7 +45,6 @@ const RecipeEditor: NextPage = () => {
     };
 
     const onSubmit = () => {
-        console.log(recipe.ingredients);
         dispatch(createRecipe({ jwtToken, recipe }));
         router.push("/");
     };
@@ -73,7 +71,7 @@ const RecipeEditor: NextPage = () => {
             <Content className={styles.content}>
                 <div>
                     <div className={styles.components}>
-                        <PicUploader setPic={setPicture} />
+                        <PicUploader setPic={setPic} />
                         <TitleEditor setTitle={setTitle} />
                     </div>
                     <div className={styles.servings}>
