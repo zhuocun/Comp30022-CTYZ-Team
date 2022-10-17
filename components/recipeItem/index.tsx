@@ -25,7 +25,7 @@ export const RecipeItem: React.FC<RecipeListProps> = ({
     const router = useRouter();
     const onDelete = () => {
         const recipeId = recipeItem?._id;
-        dispatch(deleteRecipe({ jwtToken, recipeId }))
+        dispatch(deleteRecipe({ jwtToken, recipeId }));
     };
     const leftActions: Action[] = [
         {
