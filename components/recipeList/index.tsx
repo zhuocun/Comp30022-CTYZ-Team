@@ -56,29 +56,6 @@ export const RecipeList: React.FC<RecipeListProps> = ({
             title: r.title,
         }))) : [];
 
-    const [loading, setLoading] = useState(false);
-    const [data, setData] = useState<DataType[]>([]);
-
-    const loadMoreData = () => {
-        if (loading) {
-            return;
-        }
-        setLoading(true);
-        fetch('https://randomuser.me/api/?results=10&inc=title,picture')
-            .then(res => res.json())
-            .then(body => {
-                setData([...data, ...body.results]);
-                setLoading(false);
-            })
-            .catch(() => {
-                setLoading(false);
-            });
-    };
-
-    useEffect(() => {
-        loadMoreData();
-    }, []);
-
     const leftActions: Action[] = [
         {
             key: 'pin',
