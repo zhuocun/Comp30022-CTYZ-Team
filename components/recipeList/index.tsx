@@ -16,7 +16,6 @@ interface RecipeListProps {
 }
 
 export const RecipeList: React.FC<RecipeListProps> = ({
-    // loading,
     recipeList
 }) => {
     const router = useRouter();
@@ -55,6 +54,27 @@ export const RecipeList: React.FC<RecipeListProps> = ({
             picture: r.picture,
             title: r.title,
         }))) : [];
+
+    const [loading, setLoading] = useState(false);
+
+    const loadMoreData = () => {
+        if (loading) {
+            return;
+        }
+        setLoading(true);
+        fetch('https://randomuser.me/api/?results=10&inc=title,picture')
+            .then(res => res.json())
+            .then(body => {
+                setLoading(false);
+            })
+            .catch(() => {
+                setLoading(false);
+            });
+    };
+
+    useEffect(() => {
+        loadMoreData();
+    }, []);
 
     const leftActions: Action[] = [
         {
