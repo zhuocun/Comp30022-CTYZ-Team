@@ -1,8 +1,19 @@
-.recipeList :global .ant-table-thead > tr > th{
-    display: none !important;
+.recipeList{
+    border-bottom: 1px solid rgba(135, 97, 10, 0.128);
+    
 }
 
-.recipeList :global .ant-table-cell{
-    border: none !important;
+.img {
+    height: 100px;
+    padding-right: 10px;
 }
 
+.recipeName {
+    font-size: 20px;
+    height: auto;
+
+}
+
+.rate{
+    padding-left: 10px;
+}
