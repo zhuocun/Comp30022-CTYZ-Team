@@ -16,9 +16,9 @@ interface RecipeListProps {
 }
 
 export const RecipeItem: React.FC<RecipeListProps> = ({
-    loading,
-    recipeItem
-}) => {
+                                                          loading,
+                                                          recipeItem
+                                                      }) => {
     const dispatch = useReduxDispatch();
     const jwtToken = useReduxSelector((s) => s.authentication.jwtToken);
     const router = useRouter();
@@ -26,14 +26,6 @@ export const RecipeItem: React.FC<RecipeListProps> = ({
         const recipeId = recipeItem?._id;
         dispatch(deleteRecipe({ jwtToken, recipeId }));
     };
-    const leftActions: Action[] = [
-        {
-            key: "pin",
-            text: "delete",
-            color: "primary",
-            onClick: onDelete
-        }
-    ];
 
     return (
         <div>
@@ -51,6 +43,7 @@ export const RecipeItem: React.FC<RecipeListProps> = ({
                                 cancelText: "Cancel",
                                 confirmText: "Confirm",
                                 onConfirm: async () => {
+                                    onDelete();
                                     Toast.show({
                                         icon: "success",
                                         content: "Delete Successfully",
