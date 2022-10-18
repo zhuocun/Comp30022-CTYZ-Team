@@ -34,3 +34,13 @@
 	font-size: large;
 	font-weight: 490;
 }
+
+.save{
+	display:flex !important;
+	justify-content: center !important;
+	}
+	
+.saveButton{
+	color: #c98474;
+	border-radius: 10px;
+}

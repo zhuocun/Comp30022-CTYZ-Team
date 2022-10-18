@@ -33,3 +33,13 @@
     position: center !important;
     margin-left: 19%;
 }
+
+.save{
+    display:flex !important;
+    justify-content: center !important;
+}
+
+.saveButton{
+    color: #c98474;
+    border-radius: 10px;
+}
