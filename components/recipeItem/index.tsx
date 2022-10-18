@@ -37,8 +37,8 @@ export const RecipeItem: React.FC<RecipeListProps> = ({
                     rightActions={[
                         {
                             //这里是edit/update的button
-                            key: "update",
-                            text: "Edit",
+                            key: "cart",
+                            text: "Add to cart",
                             color: "light"
                         },
                         {

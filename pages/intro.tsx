@@ -14,7 +14,7 @@ const { Header, Content } = Layout;
 
 const demoSrc = "../loginImg.jpg";
 
-const OpenPage: NextPage = () => {
+const Intro: NextPage = () => {
     const jwtToken = useReduxSelector((s) => s.authentication.jwtToken);
     const dispatch = useReduxDispatch();
     const router = useRouter();
@@ -73,4 +73,4 @@ const OpenPage: NextPage = () => {
     );
 };
 
-export default OpenPage;
+export default Intro;

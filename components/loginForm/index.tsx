@@ -15,25 +15,19 @@ export const LoginForm: React.FC = () => {
     const dispatch = useReduxDispatch();
     const router = useRouter();
 
-    // useEffect(() => {
-    //     if (jwtToken !== null) {
-    //         router.push("/").then();
-    //     }
-    // }, [jwtToken]);
-
+    useEffect(() => {
+        if (jwtToken !== null) {
+            router.push("/").then();
+        }
+    }, [jwtToken]);
 
     const onFinish = (values) => {
-        console.log("Success:", values);
         dispatch(
             login({
                 email: values.username,
                 password: values.password
             })
         );
-    };
-
-    const onFinishFailed = (errorInfo) => {
-        console.log("Failed:", errorInfo);
     };
 
     return (
@@ -43,7 +37,6 @@ export const LoginForm: React.FC = () => {
                 remember: true
             }}
             onFinish={onFinish}
-            onFinishFailed={onFinishFailed}
             autoComplete="off"
             className={styles["login-form"]}
         >
@@ -75,25 +68,25 @@ export const LoginForm: React.FC = () => {
                 />
             </Form.Item>
 
-            <Row justify="center" align="middle" style={{height:"40px"}}>
-            <Form.Item
-                name="remember"
-                valuePropName="checked"
-            >
-                <Checkbox
-                    className={styles["remember"]}
-                    value="remember"
-                    icon={(checked) =>
-                        checked ? (
-                            <CheckCircleFill style={{ color: "#FF7F3F" }} />
-                        ) : (
-                            <CheckCircleOutline style={{ color: "#FF7F3F" }} />
-                        )
-                    }
+            <Row justify="center" align="middle" style={{ height: "40px" }}>
+                <Form.Item
+                    name="remember"
+                    valuePropName="checked"
                 >
-                    Remember me
-                </Checkbox>
-            </Form.Item>
+                    <Checkbox
+                        className={styles["remember"]}
+                        value="remember"
+                        icon={(checked) =>
+                            checked ? (
+                                <CheckCircleFill style={{ color: "#FF7F3F" }} />
+                            ) : (
+                                <CheckCircleOutline style={{ color: "#FF7F3F" }} />
+                            )
+                        }
+                    >
+                        Remember me
+                    </Checkbox>
+                </Form.Item>
             </Row>
 
             <Form.Item
