@@ -1,55 +1,60 @@
-.header{
-    background-color: #FFF9EB !important;
-}
-
-.content{
+/* @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500&family=Work+Sans:wght@330&display=swap'); */
+.content {
     background-color: #FFF9EB !important;
     height: 90vh !important;
 }
 
-
-.footer{
-
-    position:fixed !important;
-    left: 0px !important;
-    right: 0px !important;
-    bottom: 0px !important;
-    height: 250px;
-    border-top-left-radius: 20px !important;
-    border-top-right-radius: 20px !important;
-    background-color: #ffdb88 !important;
+.header{
+    background-color: #FFF9EB !important;
 }
 
-.navBar{
+.heading {
+    margin-top: 40px;
+    font-size: 30px;
+    font-weight: 650;
+    text-align: center;
+    margin-left: 40px;
+    margin-right: 40px;
+    padding: 0 10px!important;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.user{
     font-size: 20px !important;
     position: absolute !important;
     left: 15px !important;
 }
 
-.bigLogo{
-    height: 600px;
-
+.introText {
+    font-size: 17px;
+    font-weight: 400;
+    text-align: center;
+    margin-left: 40px;
+    margin-right: 40px;
+    padding: 0 50px;
+    line-height: 1.7;
+    margin-top: 18px!important;
+    font-family: 'Work Sans', sans-serif;
 }
 
-.signIn{
-    font-size: 20px !important;
-    height: 40% !important;
-    width: 80% !important;
-    background-color :#FFF9EB !important;
-    color: black !important;
-    border: 3px white solid !important;
-    border-radius: 10px !important;
-    margin: 8% 0% !important;
-    padding: 10px 0px !important;
+.button {
+    margin-top: 20px!important;
+    font-size: 17px;
+    font-weight: 600;
+    --background-color: #ffdb88 !important;
+    --border-radius: 25px !important;
+    --border-style: none !important;
+    width: 160px !important;
+    height: 50px !important;
 }
 
-.signUp{
-    font-size: 20px !important;
-    height: 30% !important;
-    width: 80% !important;
-    background-color :#FFF9EB !important;
-    color: black !important;
-    border: 3px white solid !important;
-    border-radius: 10px !important;
-    padding: 10px 0px;
+
+.img {
+    margin-top: 30px;
+}
+
+.horizontalLine {
+    border: none;
+    border-top: dotted #ffdb88 6px;
+    width: 10%;
 }

@@ -3,55 +3,71 @@ import { useReduxDispatch, useReduxSelector } from "../redux/hooks";
 import { useEffect } from "react";
 import { getRecipeList } from "../redux/reducers/recipeSlice";
 import React from "react";
-import { Layout, Row } from "antd";
+import { Layout, Image } from "antd";
 import styles from "../styles/openPage.module.css";
-import LogoLarge from "../public/logoLarge.svg";
-import { Button } from "antd";
-import { LeftOutline } from "antd-mobile-icons";
+import { Button, AutoCenter } from "antd-mobile";
+import { useRouter } from "next/router";
+import { UserOutlined } from "@ant-design/icons";
 import Link from "next/link";
 
-const { Header, Content, Footer } = Layout;
+const { Header, Content } = Layout;
+
+const demoSrc = "../loginImg.jpg";
 
 const OpenPage: NextPage = () => {
     const jwtToken = useReduxSelector((s) => s.authentication.jwtToken);
     const dispatch = useReduxDispatch();
+    const router = useRouter();
 
     useEffect(() => {
+        document.body.style.backgroundColor = "#FFF9EB";
         if (jwtToken) {
-            dispatch(getRecipeList({ jwtToken, keywords: undefined, categoryId: undefined }));
+            dispatch(
+                getRecipeList({
+                    jwtToken,
+                    keywords: undefined,
+                    categoryId: undefined
+                })
+            );
         }
     }, [jwtToken]);
 
     return (
         <Layout>
             <Header className={styles["header"]}>
-                <Link href="/">
-                    <span className={styles["navBar"]}>
-                        <LeftOutline />
-                    </span>
-                </Link>
-            </Header>
-            <Content className={styles.content}>
-                <Row className={styles.bigLogo} align="middle" justify="center">
-                    <LogoLarge />
-                </Row>
-            </Content>
-            <Footer className={styles.footer}>
-                <Row align="middle" justify="center">
+                <div>
                     <Link href="/login">
-                        <Button className={styles.signIn} type="primary">
-                            Sign In
-                        </Button>
+                        <span className={styles["user"]}>
+                            <UserOutlined />
+                        </span>
                     </Link>
-                </Row>
-                <Row align="middle" justify="center">
-                    <Link href="/register">
-                        <Button className={styles.signUp} type="primary">
-                            Sign Up
+                </div>
+            </Header>
+            <Content className={styles["content"]}>
+                <div>
+                    <h1 className={styles["heading"]}>
+                        Your Own Recipe Manager
+                    </h1>
+
+                    <Image
+                        className={styles["img"]}
+                        src={demoSrc}
+                        preview={false}
+                    />
+                    <hr className={styles["horizontalLine"]} />
+                    <p className={styles["introText"]}>
+                        Recipes that make an extraordinary taste on the tongue
+                    </p>
+                    <AutoCenter>
+                        <Button
+                            className={styles["button"]}
+                            onClick={() => router.push("/")}
+                        >
+                            LET'S COOK
                         </Button>
-                    </Link>
-                </Row>
-            </Footer>
+                    </AutoCenter>
+                </div>
+            </Content>
         </Layout>
     );
 };

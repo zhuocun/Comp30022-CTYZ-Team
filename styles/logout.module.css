@@ -8,6 +8,16 @@
     left: 15px !important;
 }
 
+.heading{
+    margin-top: 40px;
+    font-size: 30px;
+    font-weight: 650;
+    text-align: center;
+    margin-left: 40px;
+    margin-right: 40px;
+    padding: 0 10px!important;
+    font-family: 'Montserrat', sans-serif;
+}
 .logout :global .ant-layout{
     background-color: #FFF9EB;
 }
