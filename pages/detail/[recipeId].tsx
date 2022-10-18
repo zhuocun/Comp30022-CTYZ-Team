@@ -15,7 +15,8 @@ const { Header, Content, Footer } = Layout;
 
 const RecipeDetail: NextPage = () => {
     useEffect(() => {
-        document.body.style.backgroundColor = "#fff0cc";})
+        document.body.style.backgroundColor = "#fff0cc";
+    });
     const router = useRouter();
     const { recipeId } = router.query;
     const recipeList = useReduxSelector((s) => s.recipe.recipeList);
