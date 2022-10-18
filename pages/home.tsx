@@ -51,7 +51,7 @@ const Home: NextPage = () => {
                         <Category loading={loading} categoryList={categoryList} />
                     </div>
                 </Content>
-                <Button onClick={() => router.push("./recipes")}>My Recipes</Button>
+                {/* <Button onClick={() => router.push("./recipes")}>My Recipes</Button> */}
             </Layout>
         </div>
     );
