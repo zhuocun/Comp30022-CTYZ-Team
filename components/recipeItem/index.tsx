@@ -36,10 +36,6 @@ export const RecipeItem: React.FC<RecipeListProps> = ({
                             key: "delete",
                             text: "Delete",
                             color: "danger",
-<<<<<<< HEAD
-
-=======
->>>>>>> 313705fb0b4b6fdcae2bd087f05402e5718b9f7f
                             onClick: async () => {
                                 await Dialog.confirm({
                                     content: "Are u sure to delete😧",
@@ -54,10 +50,6 @@ export const RecipeItem: React.FC<RecipeListProps> = ({
                                         });
                                     }
                                 });
-<<<<<<< HEAD
-
-=======
->>>>>>> 313705fb0b4b6fdcae2bd087f05402e5718b9f7f
                             }
                         }
                     ]}
