@@ -16,6 +16,7 @@ const Category: NextPage = () => {
     const jwtToken = useReduxSelector(s => s.authentication.jwtToken);
     const dispatch = useReduxDispatch();
     useEffect(() => {
+        document.body.style.backgroundColor = "white";
         if (jwtToken) {
             dispatch(getRecipeList({ jwtToken, keywords: undefined, categoryId }));
         }

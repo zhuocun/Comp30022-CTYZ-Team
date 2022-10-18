@@ -1,7 +1,7 @@
 .category:active {
     box-shadow: rgba(0, 0, 0, 0.4) 0 2px 4px, rgba(0, 0, 0, 0.3) 0 7px 13px -3px, rgba(0, 0, 0, 0.2) 0 -3px 0 inset;
     -webkit-box-shadow: rgba(0, 0, 0, 0.4) 0 2px 4px, rgba(0, 0, 0, 0.3) 0 7px 13px -3px, rgba(0, 0, 0, 0.2) 0 -3px 0 inset;
-    border-radius: 10px !important;
+
 }
 
 .categories{
@@ -11,7 +11,7 @@
 .category{
     height: 90%;
     width: 95%;
-    
+    border-radius: 10px !important;
 }
 
 .img{
@@ -26,7 +26,7 @@
     background-color: white;
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: baseline;
     font-size: 1.2rem;
     padding: 1px;
     border-bottom-left-radius: 0.5rem;
