@@ -16,9 +16,9 @@ interface PropsType {
 const Category: React.FC<PropsType> = ({ categoryList, loading }) => {
     const categoryData: CategoryIntro[] = categoryList
         ? categoryList.map((c, index) => ({
-            key: index,
-            ...c
-        }))
+              key: index,
+              ...c
+          }))
         : [];
 
     return (
@@ -124,14 +124,6 @@ const Category: React.FC<PropsType> = ({ categoryList, loading }) => {
                     </Link>
                 </Col>
             </Row>
-            {/*<div className={styles["categories"]}>*/}
-            {/*    <Snack className={styles["category"]} />*/}
-            {/*    <Dessert className={styles["category"]} />*/}
-            {/*    <Breakfast className={styles["category"]} />*/}
-            {/*    <Lunch className={styles["category"]} />*/}
-            {/*    <Dinner className={styles["category"]} />*/}
-            {/*    <Vegetarian className={styles["category"]} />*/}
-            {/*</div>*/}
         </div>
     );
 };
