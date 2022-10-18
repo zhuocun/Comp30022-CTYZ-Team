@@ -32,7 +32,10 @@ export const createRecipe = createAsyncThunk(
                 methods: parameters.recipe?.methods,
                 ingredients: parameters.recipe?.ingredients,
                 tags: parameters.recipe?.tags,
-                picture: parameters.recipe?.picture
+                picture: parameters.recipe?.picture,
+                cookTime: parameters.recipe?.cookTime,
+                serve: parameters.recipe?.serve,
+                introduction: parameters.recipe?.introduction
             },
             {
                 headers: {
@@ -84,7 +87,8 @@ export const updateRecipe = createAsyncThunk(
                 tags: parameters.recipe?.tags,
                 picture: parameters.recipe?.picture,
                 imageId: parameters.recipe?.imageId,
-                favorite: parameters.recipe?.favorite
+                favorite: parameters.recipe?.favorite,
+                completed: parameters.recipe?.completed
             },
             {
                 headers: {

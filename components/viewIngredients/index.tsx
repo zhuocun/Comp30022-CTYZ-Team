@@ -1,15 +1,17 @@
-import React, { FC } from "react";
+import React from "react";
 import styles from "./index.module.css";
 
-const ViewIngredients: React.FC<{ingredients: string[]}> = ({ingredients}) => {
+const ViewIngredients: React.FC<{ ingredients: string[] | undefined }> = ({ ingredients }) => {
 
     const ingItems: JSX.Element[] = [];
-    for (const i of ingredients) {
-        ingItems.push(<li className= {styles["box"]} >{i}</li>);
+    if (ingredients) {
+        for (const i of ingredients) {
+            ingItems.push(<li className={styles["box"]}>{i}</li>);
+        }
     }
     return (
         <>
-            <div className= {styles["ingredients"]}>
+            <div className={styles["ingredients"]}>
                 <h1>Ingredients</h1>
                 <ul>
                     {ingItems}

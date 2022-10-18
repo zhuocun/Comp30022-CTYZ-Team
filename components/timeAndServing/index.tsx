@@ -1,8 +1,8 @@
-import React, { FC } from "react";
+import React from "react";
 import { Row, Col } from "antd";
 import styles from "./index.module.css";
 
-const TimeAndServing: React.FC<{time: number, servings: number}> = ({time, servings}) => {
+const TimeAndServing: React.FC<{ time: number | undefined, servings: number | undefined }> = ({ time, servings }) => {
     return (
         <>
             <Row className={styles["row"]}>

@@ -36,13 +36,17 @@ export const RecipeItem: React.FC<RecipeListProps> = ({
                             key: "delete",
                             text: "Delete",
                             color: "danger",
+<<<<<<< HEAD
 
+=======
+>>>>>>> 313705fb0b4b6fdcae2bd087f05402e5718b9f7f
                             onClick: async () => {
                                 await Dialog.confirm({
                                     content: "Are u sure to delete😧",
                                     cancelText: "Cancel",
                                     confirmText: "Confirm",
                                     onConfirm: async () => {
+                                        onDelete();
                                         Toast.show({
                                             icon: "success",
                                             content: "Delete Successfully",
@@ -50,7 +54,10 @@ export const RecipeItem: React.FC<RecipeListProps> = ({
                                         });
                                     }
                                 });
+<<<<<<< HEAD
 
+=======
+>>>>>>> 313705fb0b4b6fdcae2bd087f05402e5718b9f7f
                             }
                         }
                     ]}
@@ -86,7 +93,7 @@ export const RecipeItem: React.FC<RecipeListProps> = ({
                 </SwipeAction>
             </List>
 
-             <BackTop /> 
-       </div> 
+            <BackTop />
+        </div>
     );
 };

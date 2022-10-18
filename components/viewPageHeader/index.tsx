@@ -11,7 +11,7 @@ import { updateRecipe } from "../../redux/reducers/recipeSlice";
 
 const demoSrc = "https://cookingwithayeh.com/wp-content/uploads/2021/11/Spicy-Tuna-Crispy-Rice.jpg";
 const ViewPageHeader: React.FC<{
-    recipeId: string, title: string, picture: string | undefined, isFavorite: boolean
+    recipeId: string, title: string | undefined, picture: string | undefined, isFavorite: boolean | undefined
 }> = ({
           title,
           picture,
@@ -23,6 +23,12 @@ const ViewPageHeader: React.FC<{
     const onSetFavorite = () => {
         const recipe: IRecipe = {
             favorite: !isFavorite
+        };
+        dispatch(updateRecipe({ jwtToken, recipeId, recipe }));
+    };
+    const onSetHistory = () => {
+        const recipe: IRecipe = {
+            completed: (new Date()).toString()
         };
         dispatch(updateRecipe({ jwtToken, recipeId, recipe }));
     };
@@ -46,6 +52,7 @@ const ViewPageHeader: React.FC<{
             </div>
             <div className={styles["functions"]}>
                 <CarryOutOutlined
+                    onClick={onSetHistory}
                     className={styles["complete"]}
                     twoToneColor="yellow"
                 />
