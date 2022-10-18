@@ -18,23 +18,8 @@
     width: 118px;
 }
 
-.upload :global .ant-upload.ant-upload-select-picture-card {
-    margin: 0px!important;
-}
-
-.upload :global .ant-upload-list-picture-card-container {
-    margin: 0px!important;
-
-}
-
-.upload :global .ant-upload-list-picture-card .ant-upload-list-item-error {
-    border: 1px red solid !important;
-}
 
 .preview :global .ant-modal-body {
     padding: 0 !important;
 }
 
-.upload :global .ant-upload-list-picture .ant-upload-list-item{
-    border: 0px!important
-}
