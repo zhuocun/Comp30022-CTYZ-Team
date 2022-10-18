@@ -42,6 +42,7 @@ const OpenPage: NextPage = () => {
                         </span>
                     </Link>
                 </div>
+
             </Header>
             <Content className={styles["content"]}>
                 <div>
@@ -61,7 +62,7 @@ const OpenPage: NextPage = () => {
                     <AutoCenter>
                         <Button
                             className={styles["button"]}
-                            onClick={() => router.push("/")}
+                            onClick={() => router.push("/login")}
                         >
                             LET'S COOK
                         </Button>
