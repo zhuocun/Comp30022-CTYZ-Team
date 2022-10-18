@@ -17,7 +17,7 @@ export const AuthLayout: React.FC<PropsType> = (props) => {
         <Layout className={props.isLogin === true ? styles["user-layout-container_login"] : styles["user-layout-container_register"]}>
             <Header className={styles["header"]}>
                 <div>
-                    <Link href="/">
+                    <Link href="/openPage">
                         <span className={styles["navBar"]}>
                             <LeftOutline />
                         </span>
