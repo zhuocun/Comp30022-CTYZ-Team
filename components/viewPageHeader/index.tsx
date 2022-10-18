@@ -3,7 +3,7 @@ import styles from "./index.module.css";
 import Link from "next/link";
 import ECookLogo from "/public/logo.svg";
 import { CarryOutOutlined, HeartOutlined } from "@ant-design/icons";
-import { LeftOutline, SendOutline } from "antd-mobile-icons";
+import { LeftOutline, FillinOutline } from "antd-mobile-icons";
 
 import { Image, ImageViewer } from "antd-mobile";
 import { useReduxDispatch, useReduxSelector } from "../../redux/hooks";
@@ -44,8 +44,8 @@ const ViewPageHeader: React.FC<{
                 </Link>
                 <ECookLogo />
                 <Link href="/">
-                    <span className={styles["share"]}>
-                        <SendOutline />
+                    <span className={styles["update"]}>
+                        <FillinOutline />
                     </span>
                 </Link>
             </div>

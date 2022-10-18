@@ -1,11 +1,15 @@
 .register-form {
     margin-left: auto !important;
     margin-right: auto !important;
-    background: #FFF9EB !important ;
+    background-color: #FFF9EB !important ;
     border: #fff solid 5px !important;
     border-radius: 10px !important;
     width: 95% !important;
     padding: 5% 10% 0% !important;
+    background-image: url("/people.jpg");
+    background-repeat: no-repeat;
+    background-size:390px 300px;
+    background-position:90% 60%;
 }
 
 .title{
@@ -13,14 +17,14 @@
     text-align: left !important;
 }
 .input {
-    border: 0px !important;
+    border: 2px #ffdb8868 solid !important;
     border-radius: 5px !important;
 }
 
 .submit{
     background-color: #FFDB88 !important;
     color: black !important;
-    border: 2px solid white !important;
+    border: 2px solid rgb(255, 255, 255) !important;
     border-radius: 5px !important;
     height: 120% !important;
     width: 170px !important;
