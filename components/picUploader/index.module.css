@@ -1,6 +1,31 @@
 .upload{
     border-radius: 10px !important;
-    background-color: #FFF9EB !important;
-    color: #999999 !important;
+    background-color: #FFF9EB !important; 
     border: 2px solid white;
+    width: auto;
+
+}
+
+.upload :global .ant-upload{
+    color: #716e6e91;;
+    width: 102px;
+    background-color: #FFF9EB;
+    border: 0px;
+    font-weight: 500;
+    font-size: medium;
+    height: 110px;
+    width:118px;
+}
+
+.upload :global .ant-upload.ant-upload-select-picture-card{
+    margin: 0px;
+}
+
+.upload :global .ant-upload-list-picture-card-container{
+    margin: 0px;
+
+}
+
+.upload :global .ant-upload-list-picture-card .ant-upload-list-item-error{
+    border: 0px;
 }

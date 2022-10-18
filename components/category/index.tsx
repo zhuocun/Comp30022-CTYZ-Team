@@ -26,24 +26,6 @@ const Category: React.FC<PropsType> = ({ categoryList, loading }) => {
             <Row className={styles.row} gutter={[8, 16]}>
                 <Col className={styles.col} span={12}>
                     <Link href={`category/${categoryData[0]?._id}`}>
-<<<<<<< HEAD
-                        {/* <Card
-                            hoverable
-                            style={{ width: 240 }}
-                            cover={
-                                <img
-                                    alt="example"
-                                    src="https://os.alipayobjects.com/rmsportal/QBnOOoLaAfKPirc.png"
-                                />
-                            }
-                        >
-                            <Meta
-                                title="Europe Street beat"
-                                description="www.instagram.com"
-                            />
-                        </Card> */}
-=======
->>>>>>> 313705fb0b4b6fdcae2bd087f05402e5718b9f7f
                         <Box className={styles["category"]}>
                             <img
                                 className={styles["img"]}
