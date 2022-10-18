@@ -27,24 +27,25 @@ const RecipeDetail: NextPage = () => {
         return (
             <Layout>
                 <Header className={styles["header"]}>
-                    <ViewPageHeader title={recipe.title} picture={recipe.picture}/>
+                    <ViewPageHeader title={recipe.title} picture={recipe.picture} recipeId={recipe._id}
+                                    isFavorite={recipe.favorite} />
                 </Header>
                 <Content className={styles.content}>
                     <ViewTags tagIds={recipe.tags} />
                     <div className={styles["timeAndServing"]}>
-                        <TimeAndServing time={-2} servings={-2}/>
+                        <TimeAndServing time={-2} servings={-2} />
                     </div>
-                    <ViewIngredients ingredients={recipe.ingredients}/>
-                    <ViewMethods methods={recipe.methods}/>
+                    <ViewIngredients ingredients={recipe.ingredients} />
+                    <ViewMethods methods={recipe.methods} />
                     <div className={styles["backStory"]}>
-                        <BackStory backStory={"null"}/>
+                        <BackStory backStory={"null"} />
                     </div>
                 </Content>
                 <Footer className={styles.footer}></Footer>
             </Layout>
         );
     } else {
-        return <>null</>
+        return <>null</>;
     }
 };
 
