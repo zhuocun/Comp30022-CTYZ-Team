@@ -1,8 +1,16 @@
 import React, { Dispatch, SetStateAction, useState } from "react";
 import styles from "./index.module.css";
 import { useReduxSelector } from "../../redux/hooks";
-import { Upload, UploadFile, UploadProps } from "antd";
+import { Modal,Upload, UploadFile, UploadProps } from "antd";
 import { RcFile } from "antd/lib/upload";
+
+const getBase64 = (file: RcFile): Promise<string> =>
+new Promise((resolve, reject) => {
+  const reader = new FileReader();
+  reader.readAsDataURL(file);
+  reader.onload = () => resolve(reader.result as string);
+  reader.onerror = error => reject(error);
+});
 
 const PicUploader: React.FC<{ setPic: Dispatch<SetStateAction<{ src: string, imageId: string } | undefined>> }> =
     ({ setPic }) => {
@@ -13,23 +21,23 @@ const PicUploader: React.FC<{ setPic: Dispatch<SetStateAction<{ src: string, ima
             setFileList(newFileList);
             setPic(newFileList[0]?.response?.image);
         };
+        
+    const [previewOpen, setPreviewOpen] = useState(false);
+    const [previewImage, setPreviewImage] = useState('');
 
-        const onPreview = async (file: UploadFile) => {
-            let src = file.url as string;
-            if (!src) {
-                src = await new Promise(resolve => {
-                    const reader = new FileReader();
-                    reader.readAsDataURL(file.originFileObj as RcFile);
-                    reader.onload = () => resolve(reader.result as string);
-                });
-            }
-            const image = new Image();
-            image.src = src;
-            const imgWindow = window.open(src);
-            imgWindow?.document.write(image.outerHTML);
-        };
+    const handlePreview = async (file: UploadFile) => {
+        if (!file.url && !file.preview) {
+        file.preview = await getBase64(file.originFileObj as RcFile);
+        }
+
+        setPreviewImage(file.url || (file.preview as string));
+        setPreviewOpen(true);
+    };
+
+    const handleCancel = () => setPreviewOpen(false);
 
         return (
+            <>
             <Upload
                 headers={{
                     Authorization: jwtToken ? `Bearer ${jwtToken}` : ""
@@ -39,11 +47,15 @@ const PicUploader: React.FC<{ setPic: Dispatch<SetStateAction<{ src: string, ima
                 listType="picture-card"
                 fileList={fileList}
                 onChange={onChange}
-                onPreview={onPreview}
+                onPreview={handlePreview}
                 multiple={false}
                 className={styles.upload}>
                 {fileList ? fileList.length < 1 && "+ Upload" : "+ Upload"}
             </Upload>
+             <Modal open={previewOpen} footer={null} onCancel={handleCancel}  className={styles["preview"]}>
+             <img alt="example" style={{ width: '100%' }} src={previewImage}/>
+           </Modal>
+           </>
         );
     };
 

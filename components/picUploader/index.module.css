@@ -1,6 +1,7 @@
-.upload{
+.upload {
     border-radius: 10px !important;
     background-color: #FFF9EB !important; 
+
     border: 2px solid white;
     width: auto;
 
@@ -28,4 +29,9 @@
 
 .upload :global .ant-upload-list-picture-card .ant-upload-list-item-error{
     border: 0px;
+}
+
+
+.preview :global .ant-modal-body {
+    padding: 0 !important;
 }
