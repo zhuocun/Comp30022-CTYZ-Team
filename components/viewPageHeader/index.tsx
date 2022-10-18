@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import styles from "./index.module.css";
 import Link from "next/link";
 import ECookLogo from "/public/logo.svg";
@@ -8,18 +8,16 @@ import { Image } from "antd";
 import { useReduxDispatch, useReduxSelector } from "../../redux/hooks";
 import { updateRecipe } from "../../redux/reducers/recipeSlice";
 
-
-const demoSrc = "https://cookingwithayeh.com/wp-content/uploads/2021/11/Spicy-Tuna-Crispy-Rice.jpg";
+const demoSrc =
+    "https://cookingwithayeh.com/wp-content/uploads/2021/11/Spicy-Tuna-Crispy-Rice.jpg";
 const ViewPageHeader: React.FC<{
-    recipeId: string, title: string | undefined, picture: string | undefined, isFavorite: boolean | undefined
-}> = ({
-          title,
-          picture,
-          recipeId,
-          isFavorite
-      }) => {
+    recipeId: string,
+    title: string | undefined,
+    picture: string | undefined,
+    isFavorite: boolean | undefined
+}> = ({ title, picture, recipeId, isFavorite }) => {
     const dispatch = useReduxDispatch();
-    const jwtToken = useReduxSelector(s => s.authentication.jwtToken);
+    const jwtToken = useReduxSelector((s) => s.authentication.jwtToken);
     const onSetFavorite = () => {
         const recipe: IRecipe = {
             favorite: !isFavorite
@@ -28,10 +26,13 @@ const ViewPageHeader: React.FC<{
     };
     const onSetHistory = () => {
         const recipe: IRecipe = {
-            completed: (new Date()).toString()
+            completed: new Date().toString()
         };
         dispatch(updateRecipe({ jwtToken, recipeId, recipe }));
     };
+
+    const [visible, setVisible] = useState(false);
+
     return (
         <>
             <div className={styles["navigation"]}>
@@ -48,7 +49,22 @@ const ViewPageHeader: React.FC<{
                 </Link>
             </div>
             <div style={{ userSelect: "none" }} className={styles["img"]}>
-                <Image src={picture ? picture : demoSrc} className={styles["image"]} />
+                <Image
+                    src={picture ? picture : demoSrc}
+                    className={styles["image"]}
+                    preview={{ visible: false }}
+                    onClick={() => setVisible(true)}
+                />
+                <div style={{ display: "none" }}>
+                    <Image.PreviewGroup
+                        preview={{
+                            visible,
+                            onVisibleChange: (vis) => setVisible(vis)
+                        }}
+                    >
+                        <Image src={picture ? picture : demoSrc} />
+                    </Image.PreviewGroup>
+                </div>
             </div>
             <div className={styles["functions"]}>
                 <CarryOutOutlined
@@ -57,11 +73,12 @@ const ViewPageHeader: React.FC<{
                     twoToneColor="yellow"
                 />
 
-                <div className={styles["title"]}>
-                    {title}
-                </div>
+                <div className={styles["title"]}>{title}</div>
 
-                <HeartOutlined onClick={onSetFavorite} className={styles["favorite"]} />
+                <HeartOutlined
+                    onClick={onSetFavorite}
+                    className={styles["favorite"]}
+                />
             </div>
         </>
     );
