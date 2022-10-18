@@ -1,7 +1,7 @@
 import { NextPage } from "next";
 import React, { useEffect } from "react";
 import { SearchBar } from "../components/searchBar";
-import { Button, Layout } from "antd";
+import { Layout } from "antd";
 import styles from "../styles/homepage.module.css";
 import Link from "next/link";
 import { ShoppingCartOutlined, UserOutlined } from "@ant-design/icons";
