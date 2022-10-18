@@ -4,7 +4,8 @@ import Link from "next/link";
 import ECookLogo from "/public/logo.svg";
 import { CarryOutOutlined, HeartOutlined } from "@ant-design/icons";
 import { LeftOutline, SendOutline } from "antd-mobile-icons";
-import { Image } from "antd";
+
+import { Image, ImageViewer } from "antd-mobile";
 import { useReduxDispatch, useReduxSelector } from "../../redux/hooks";
 import { updateRecipe } from "../../redux/reducers/recipeSlice";
 
@@ -50,21 +51,22 @@ const ViewPageHeader: React.FC<{
             </div>
             <div style={{ userSelect: "none" }} className={styles["img"]}>
                 <Image
+                    onClick={() => {
+                        setVisible(true);
+                    }}
                     src={picture ? picture : demoSrc}
                     className={styles["image"]}
-                    preview={{ visible: false }}
-                    onClick={() => setVisible(true)}
+                    width={'auto'}
+                    height={260}
+                    fit="cover"
                 />
-                <div style={{ display: "none" }}>
-                    <Image.PreviewGroup
-                        preview={{
-                            visible,
-                            onVisibleChange: (vis) => setVisible(vis)
-                        }}
-                    >
-                        <Image src={picture ? picture : demoSrc} />
-                    </Image.PreviewGroup>
-                </div>
+                <ImageViewer
+                    image={picture ? picture : demoSrc}
+                    visible={visible}
+                    onClose={() => {
+                        setVisible(false);
+                    }}
+                />
             </div>
             <div className={styles["functions"]}>
                 <CarryOutOutlined

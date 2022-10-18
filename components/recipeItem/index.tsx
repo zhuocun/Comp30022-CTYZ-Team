@@ -1,8 +1,9 @@
 import React from "react";
-import { Skeleton, BackTop, Image } from "antd";
+import { Skeleton, BackTop } from "antd";
 import { List, SwipeAction, Toast, Dialog } from "antd-mobile";
 import { useRouter } from "next/router";
 import styles from "./index.module.css";
+import { Image } from "antd-mobile";
 import { useReduxDispatch, useReduxSelector } from "../../redux/hooks";
 import { deleteRecipe } from "../../redux/reducers/recipeSlice";
 
@@ -63,7 +64,7 @@ export const RecipeItem: React.FC<RecipeListProps> = ({
                             className={styles["recipeList"]}
                             key={recipeItem?._id}
                             prefix={
-                                <img
+                                <Image
                                     className={styles.img}
                                     src={
                                         recipeItem?.picture
@@ -73,6 +74,7 @@ export const RecipeItem: React.FC<RecipeListProps> = ({
                                     width={150}
                                     height={107}
                                     alt="logo"
+                                    fit="cover"
                                 />
                             }
                             onClick={() =>

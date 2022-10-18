@@ -16,16 +16,6 @@
     font-size: 20px !important;
 }
 
-.img{
-    height: 260px !important;
-    width: auto !important;
-    display: flex !important;
-    justify-content: center;
-    align-items: center;
-    overflow: hidden;
-
-}
-
 .img .image{
     flex-shrink: 0;
     min-width: 100%;
