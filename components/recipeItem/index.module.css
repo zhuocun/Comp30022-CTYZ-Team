@@ -12,3 +12,7 @@
 .recipeList :global .adm-list-item-content{
     border-top:none!important;
 }
+
+.recipeList :hover{
+    color: black !important;
+}

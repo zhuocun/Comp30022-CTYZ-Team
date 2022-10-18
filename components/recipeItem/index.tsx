@@ -16,11 +16,11 @@ interface RecipeListProps {
 }
 
 export const RecipeItem: React.FC<RecipeListProps> = ({
-                                                          loading,
-                                                          recipeItem
-                                                      }) => {
+    loading,
+    recipeItem
+}) => {
     const dispatch = useReduxDispatch();
-    const jwtToken = useReduxSelector(s => s.authentication.jwtToken);
+    const jwtToken = useReduxSelector((s) => s.authentication.jwtToken);
     const router = useRouter();
     const onDelete = () => {
         const recipeId = recipeItem?._id;
@@ -33,6 +33,12 @@ export const RecipeItem: React.FC<RecipeListProps> = ({
                 <SwipeAction
                     className={styles["delete"]}
                     rightActions={[
+                        {
+                            //这里是edit/update的button
+                            key: "update",
+                            text: "Edit",
+                            color: "light"
+                        },
                         {
                             key: "delete",
                             text: "Delete",

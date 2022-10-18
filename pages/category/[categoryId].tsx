@@ -39,7 +39,7 @@ const Category: NextPage = () => {
                             <LeftOutline />
                         </span>
                     </Link>
-
+            
                     <h1 className={styles.pageTitle}>What to eat?</h1>
                     <Link href={editRoute}>
                         <span className={styles["addNew"]}>
