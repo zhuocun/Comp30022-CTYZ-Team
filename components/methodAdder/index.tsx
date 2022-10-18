@@ -22,7 +22,6 @@ const formItemLayoutWithOutLabel = {
 const MethodAdder: React.FC<{
     setMethod: Dispatch<SetStateAction<string[]>>
 }> = ({ setMethod }) => {
-
     const onFinish = (values: { steps: string[] }) => {
         setMethod(values.steps);
     };
@@ -58,9 +57,7 @@ const MethodAdder: React.FC<{
                     </Form.Item>
                 </Form.Item>
                 */}
-                <Form.List
-                    name="steps"
-                >
+                <Form.List name="steps">
                     {(fields, { add, remove }, { errors }) => (
                         <>
                             {fields.map((field, index) => (
@@ -68,26 +65,37 @@ const MethodAdder: React.FC<{
                                     <div>
                                         <Form.Item
                                             {...field}
-                                            validateTrigger={["onChange", "onBlur"]}
+                                            validateTrigger={[
+                                                "onChange",
+                                                "onBlur"
+                                            ]}
                                             rules={[
                                                 {
                                                     required: true,
                                                     whitespace: true,
-                                                    message: "Please insert a step or delete this field."
+                                                    message:
+                                                        "Please insert a step or delete this field."
                                                 }
                                             ]}
                                         >
                                             <TextArea
                                                 className={styles.input}
-                                                placeholder={"Step " + (index + 1)}
-                                                autoSize maxLength={200}
-                                                style={{ background: "#69643100" }}
+                                                placeholder={
+                                                    "Step " + (index + 1)
+                                                }
+                                                autoSize
+                                                maxLength={200}
+                                                style={{
+                                                    background: "#69643100"
+                                                }}
                                             />
                                         </Form.Item>
                                         {fields.length > 0 ? (
                                             <MinusCircleOutlined
                                                 className={styles.deleteButton}
-                                                onClick={() => remove(field.name)}
+                                                onClick={() =>
+                                                    remove(field.name)
+                                                }
                                             />
                                         ) : null}
                                     </div>
@@ -101,7 +109,6 @@ const MethodAdder: React.FC<{
                                     style={{
                                         width: "60%"
                                     }}
-
                                 >
                                     + ADD STEPS
                                 </Button>
@@ -110,8 +117,10 @@ const MethodAdder: React.FC<{
                         </>
                     )}
                 </Form.List>
-                <Form.Item>
-                    <Button htmlType="submit">Save</Button>
+                <Form.Item className={styles.save}>
+                    <Button className={styles.saveButton} htmlType="submit">
+                        Save
+                    </Button>
                 </Form.Item>
             </Form.Item>
         </Form>

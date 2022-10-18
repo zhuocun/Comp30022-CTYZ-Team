@@ -19,7 +19,7 @@ export const RecipeItem: React.FC<RecipeListProps> = ({
                                                           recipeItem
                                                       }) => {
     const dispatch = useReduxDispatch();
-    const jwtToken = useReduxSelector((s) => s.authentication.jwtToken);
+    const jwtToken = useReduxSelector(s => s.authentication.jwtToken);
     const router = useRouter();
     const onDelete = () => {
         const recipeId = recipeItem?._id;
@@ -63,7 +63,7 @@ export const RecipeItem: React.FC<RecipeListProps> = ({
                             className={styles["recipeList"]}
                             key={recipeItem?._id}
                             prefix={
-                                <Image
+                                <img
                                     className={styles.img}
                                     src={
                                         recipeItem?.picture

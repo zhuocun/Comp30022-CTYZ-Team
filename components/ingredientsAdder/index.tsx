@@ -19,8 +19,7 @@ const formItemLayoutWithOutLabel = {
 const IngredientAdder: React.FC<{
     setIngredient: Dispatch<SetStateAction<string[]>>
 }> = ({ setIngredient }) => {
-
-    const onFinish = (values: {ingredients: string[]}) => {
+    const onFinish = (values: { ingredients: string[] }) => {
         setIngredient(values.ingredients);
     };
 
@@ -65,21 +64,26 @@ const IngredientAdder: React.FC<{
                                         {
                                             required: true,
                                             whitespace: true,
-                                            message: "Please insert an ingredient or delete this field."
+                                            message:
+                                                "Please insert an ingredient or delete this field."
                                         }
                                     ]}
                                 >
                                     <Input
-                                        placeholder={"Ingredient " + (index + 1)}
+                                        placeholder={
+                                            "Ingredient " + (index + 1)
+                                        }
                                         className={styles.input}
                                     />
                                 </Form.Item>
-                                {/* </Form.Item> */}
-                                <MinusCircleOutlined onClick={() => remove(field.name)}
-                                                     className={styles.deleteButton} />
+
+                                <MinusCircleOutlined
+                                    onClick={() => remove(field.name)}
+                                    className={styles.deleteButton}
+                                />
                             </Form.Item>
                         ))}
-                        {/* <div className={styles.a}> */}
+
                         <Form.Item>
                             <Button
                                 className={styles.addButton}
@@ -96,8 +100,10 @@ const IngredientAdder: React.FC<{
                     </>
                 )}
             </Form.List>
-            <Form.Item>
-                <Button htmlType="submit">Save</Button>
+            <Form.Item className={styles.save}>
+                <Button className={styles.saveButton} htmlType="submit">
+                    Save
+                </Button>
             </Form.Item>
         </Form>
     );

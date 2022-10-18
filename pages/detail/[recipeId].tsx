@@ -9,11 +9,13 @@ import TimeAndServing from "../../components/timeAndServing";
 import ViewIngredients from "../../components/viewIngredients";
 import ViewMethods from "../../components/viewMethods";
 import BackStory from "../../components/backStory";
-import React from "react";
+import React, { useEffect } from "react";
 
 const { Header, Content, Footer } = Layout;
 
 const RecipeDetail: NextPage = () => {
+    useEffect(() => {
+        document.body.style.backgroundColor = "#fff0cc";})
     const router = useRouter();
     const { recipeId } = router.query;
     const recipeList = useReduxSelector((s) => s.recipe.recipeList);
