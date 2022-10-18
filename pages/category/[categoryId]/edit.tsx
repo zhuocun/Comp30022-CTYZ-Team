@@ -1,27 +1,29 @@
 import { Button, Layout } from "antd";
 import React, { useState } from "react";
-import TagEditor from "../components/tagEditor";
-import TitleEditor from "../components/titleEditor";
-import PicUploader from "../components/picUploader";
-import IngredientAdder from "../components/ingredientsAdder";
-import MethodAdder from "../components/methodAdder";
-import styles from "../styles/recipeEditor.module.css";
+import TagEditor from "../../../components/tagEditor";
+import TitleEditor from "../../../components/titleEditor";
+import PicUploader from "../../../components/picUploader";
+import IngredientAdder from "../../../components/ingredientsAdder";
+import MethodAdder from "../../../components/methodAdder";
+import styles from "../../../styles/recipeEditor.module.css";
 import { NextPage } from "next";
 import { CheckOutline, CloseOutline } from "antd-mobile-icons";
-import ECookLogo from "../public/logo.svg";
-import { useReduxDispatch, useReduxSelector } from "../redux/hooks";
-import { createRecipe } from "../redux/reducers/recipeSlice";
-import TimeEstimate from "../components/timeEstimate";
-import ServingSuggestion from "../components/servingSuggestion";
-import Intro from "../components/intro";
+import ECookLogo from "../../../public/logo.svg";
+import { useReduxDispatch, useReduxSelector } from "../../../redux/hooks";
+import { createRecipe } from "../../../redux/reducers/recipeSlice";
+import TimeEstimate from "../../../components/timeEstimate";
+import ServingSuggestion from "../../../components/servingSuggestion";
+import Intro from "../../../components/intro";
 import { useRouter } from "next/router";
-import { background } from "@chakra-ui/react";
 
 const { Header, Content, Footer } = Layout;
 
 const RecipeEditor: NextPage = () => {
-    const [picture, setPicture] = useState<string>("");
+    const [pic, setPic] = useState<{ src: string, imageId: string } | undefined>(undefined);
     const [title, setTitle] = useState<string>("");
+    const [intro, setIntro] = useState<string>("");
+    const [cookTime, setCookTime] = useState<number>();
+    const [serve, setServe] = useState<number>();
     const [tags, setTags] = useState<string[]>([]);
     const [ingredients, setIngredients] = useState<string[]>([]);
     const [methods, setMethods] = useState<string[]>([]);
@@ -29,21 +31,24 @@ const RecipeEditor: NextPage = () => {
     const jwtToken = useReduxSelector(s => s.authentication.jwtToken);
 
     const dispatch = useReduxDispatch();
-
     const router = useRouter();
+    let { categoryId } = router.query;
 
     const recipe: IRecipe = {
-        id: "",
-        picture: picture,
+        picture: pic ? pic.src : "",
+        imageId: pic ? pic.imageId : "",
         title: title,
         tags: tags,
         ingredients: ingredients,
         methods: methods,
-        category: "63302ddf7b1ea4c130f10c21"
+        category: typeof categoryId === "string" ? categoryId : undefined,
+        favorite: false,
+        cookTime: cookTime,
+        serve: serve,
+        introduction: intro
     };
 
     const onSubmit = () => {
-        console.log(recipe.ingredients);
         dispatch(createRecipe({ jwtToken, recipe }));
         router.push("/");
     };
@@ -53,18 +58,16 @@ const RecipeEditor: NextPage = () => {
             <Header className={styles.header}>
                 <div className={styles.navigation}>
                     <Button
-                        style={{ background: "transparent", border: "0px"}}
+                        style={{ background: "transparent", border: "0px" }}
                         icon={<CloseOutline style={{ fontSize: "28px" }} />}
                         onClick={() => router.push("/")}
                     >
-
                     </Button>
                     <ECookLogo />
                     <Button
-                        style={{ background: "transparent", border: "0px"}}
+                        style={{ background: "transparent", border: "0px" }}
                         icon={<CheckOutline style={{ fontSize: "28px" }} />}
                         onClick={onSubmit}>
-
                     </Button>
                 </div>
             </Header>
@@ -72,17 +75,17 @@ const RecipeEditor: NextPage = () => {
             <Content className={styles.content}>
                 <div>
                     <div className={styles.components}>
-                        <PicUploader setPic={setPicture} />
+                        <PicUploader setPic={setPic} />
                         <TitleEditor setTitle={setTitle} />
                     </div>
                     <div className={styles.servings}>
-                        <TimeEstimate/>
-                        <ServingSuggestion/>
+                        <TimeEstimate setCookTime={setCookTime} />
+                        <ServingSuggestion setServing={setServe} />
                     </div>
                     <div>
                         <TagEditor setTag={setTags} />
                     </div>
-                    <div className={styles.intro}><Intro/></div>
+                    <div className={styles.intro}><Intro setIntro={setIntro} /></div>
                     <div className={styles.ingredients}>
                         <IngredientAdder setIngredient={setIngredients} />
                     </div>

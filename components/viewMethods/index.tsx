@@ -1,13 +1,21 @@
-import React, { FC } from "react";
+import React from "react";
 import styles from "./index.module.css";
 
-const viewMethods: FC = () => {
+const viewMethods: React.FC<{ methods: string[] | undefined }> = ({ methods }) => {
+
+    const methodItems: JSX.Element[] = [];
+    if (methods) {
+        for (const m of methods) {
+            methodItems.push(<li className={styles["box"]}>{m}</li>);
+        }
+    }
+
     return (
         <>
-            <div className= {styles["ingredients"]}>
+            <div className={styles["ingredients"]}>
                 <h1>Method</h1>
                 <ol>
-                    <li className= {styles["box"]} >100mL milk</li>
+                    {methodItems}
                 </ol>
             </div>
         </>

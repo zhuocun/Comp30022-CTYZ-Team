@@ -7,6 +7,7 @@ interface RecipeState {
     recipe: IRecipe | null;
     recipeList: IRecipeListRes[] | null;
     recipeCache: IRecipe | null;
+    tags: ITag[] | null;
 }
 
 const initialState: RecipeState = {
@@ -14,7 +15,8 @@ const initialState: RecipeState = {
     error: null,
     recipe: null,
     recipeList: null,
-    recipeCache: null
+    recipeCache: null,
+    tags: null
 };
 
 export const createRecipe = createAsyncThunk(
@@ -30,7 +32,10 @@ export const createRecipe = createAsyncThunk(
                 methods: parameters.recipe?.methods,
                 ingredients: parameters.recipe?.ingredients,
                 tags: parameters.recipe?.tags,
-                picture: parameters.recipe?.picture
+                picture: parameters.recipe?.picture,
+                cookTime: parameters.recipe?.cookTime,
+                serve: parameters.recipe?.serve,
+                introduction: parameters.recipe?.introduction
             },
             {
                 headers: {
@@ -52,7 +57,7 @@ export const getRecipeList = createAsyncThunk(
         }
     ) => {
         let url = `https://itproject-online-cookbook.herokuapp.com/api/v1/recipe?`;
-        url += parameters.keywords ? `&keywords=${parameters.keywords}` : "";
+        url += parameters.keywords ? `title=${parameters.keywords}` : "";
         url += parameters.categoryId ? `&category=${parameters.categoryId}` : "";
         const axiosResponse = await axios.get(
             url,
@@ -71,15 +76,23 @@ export const updateRecipe = createAsyncThunk(
     async (parameters: {
         jwtToken: string | null, recipeId: string | null, recipe: IRecipe | null
     }) => {
-        const axiosResponse = await axios.put(
-            ``,
+        const axiosResponse = await axios.patch(
+            `https://itproject-online-cookbook.herokuapp.com/api/v1/recipe/${parameters.recipeId}`,
             {
                 recipeId: parameters.recipeId,
-                recipe: parameters.recipe
+                title: parameters.recipe?.title,
+                ingredients: parameters.recipe?.ingredients,
+                methods: parameters.recipe?.methods,
+                category: parameters.recipe?.category,
+                tags: parameters.recipe?.tags,
+                picture: parameters.recipe?.picture,
+                imageId: parameters.recipe?.imageId,
+                favorite: parameters.recipe?.favorite,
+                completed: parameters.recipe?.completed
             },
             {
                 headers: {
-                    tokens: `${parameters.jwtToken}`
+                    Authorization: `Bearer ${parameters.jwtToken}`
                 }
             }
         );
@@ -90,17 +103,35 @@ export const updateRecipe = createAsyncThunk(
 export const deleteRecipe = createAsyncThunk(
     "recipe/deleteRecipe",
     async (parameters: {
-        jwtToken: string | null, recipeId: string | null
+        jwtToken: string | null, recipeId: string | undefined
     }) => {
         const axiosResponse = await axios.delete(
-            ``,
+            `https://itproject-online-cookbook.herokuapp.com/api/v1/recipe/${parameters.recipeId}`,
             {
                 headers: {
-                    tokens: `${parameters.jwtToken}`
+                    Authorization: `Bearer ${parameters.jwtToken}`
                 }
             }
         );
         return axiosResponse;
+    }
+);
+
+export const getAllTags = createAsyncThunk(
+    "tag/getTags",
+    async (
+        jwtToken: string | null
+    ) => {
+        let url = `https://itproject-online-cookbook.herokuapp.com/api/v1/tag`;
+        const axiosResponse = await axios.get(
+            url,
+            {
+                headers: {
+                    Authorization: `Bearer ${jwtToken}`
+                }
+            }
+        );
+        return axiosResponse.data.tags;
     }
 );
 
@@ -168,6 +199,21 @@ export const recipeSlice = createSlice({
             state.recipeList = action.payload;
         },
         [getRecipeList.rejected.type]: (
+            state,
+            action
+        ) => {
+            state.loading = false;
+            state.error = action.payload;
+        },
+        [getAllTags.pending.type]: (state) => {
+            state.loading = true;
+        },
+        [getAllTags.fulfilled.type]: (state, action: PayloadAction<ITag[] | null>) => {
+            state.loading = false;
+            state.error = null;
+            state.tags = action.payload;
+        },
+        [getAllTags.rejected.type]: (
             state,
             action
         ) => {

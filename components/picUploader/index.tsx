@@ -1,44 +1,49 @@
 import React, { Dispatch, SetStateAction, useState } from "react";
-import { ImageUploader } from "antd-mobile";
-import { PictureOutline } from "antd-mobile-icons";
 import styles from "./index.module.css";
-import { ImageUploadItem } from "antd-mobile/es/components/image-uploader";
+import { useReduxSelector } from "../../redux/hooks";
+import { Upload, UploadFile, UploadProps } from "antd";
+import { RcFile } from "antd/lib/upload";
 
-const PicUploader: React.FC<{ setPic: Dispatch<SetStateAction<string>> }> =
+const PicUploader: React.FC<{ setPic: Dispatch<SetStateAction<{ src: string, imageId: string } | undefined>> }> =
     ({ setPic }) => {
-        const [fileList, setFileList] = useState<ImageUploadItem[]>();
+        const [fileList, setFileList] = useState<UploadFile[]>();
+        const jwtToken = useReduxSelector(s => s.authentication.jwtToken);
 
-        const upload = async (file: File): Promise<{ url: string }> => {
-            setPic(URL.createObjectURL(file));
-            return {
-                url: URL.createObjectURL(file)
-            };
+        const onChange: UploadProps["onChange"] = ({ fileList: newFileList }) => {
+            setFileList(newFileList);
+            setPic(newFileList[0]?.response?.image);
+        };
+
+        const onPreview = async (file: UploadFile) => {
+            let src = file.url as string;
+            if (!src) {
+                src = await new Promise(resolve => {
+                    const reader = new FileReader();
+                    reader.readAsDataURL(file.originFileObj as RcFile);
+                    reader.onload = () => resolve(reader.result as string);
+                });
+            }
+            const image = new Image();
+            image.src = src;
+            const imgWindow = window.open(src);
+            imgWindow?.document.write(image.outerHTML);
         };
 
         return (
-            <ImageUploader
-                value={fileList}
-                onChange={setFileList}
-                maxCount={1}
-                upload={upload}
+            <Upload
+                headers={{
+                    Authorization: jwtToken ? `Bearer ${jwtToken}` : ""
+                }}
+                action={`https://itproject-online-cookbook.herokuapp.com/api/v1/recipe/image`}
+                method={"POST"}
+                listType="picture-card"
+                fileList={fileList}
+                onChange={onChange}
+                onPreview={onPreview}
+                multiple={false}
                 className={styles.upload}>
-
-                <div
-                    style={{
-                        width: 100,
-                        height: 80,
-                        borderRadius: 40,
-                        display: "flex",
-                        justifyContent: "center",
-                        alignItems: "center"
-
-                    }}
-                >
-                    <PictureOutline style={{ fontSize: 32 }} />
-                </div>
-
-            </ImageUploader>
-
+                {fileList ? fileList.length < 1 && "+ Upload" : "+ Upload"}
+            </Upload>
         );
     };
 

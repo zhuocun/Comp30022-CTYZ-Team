@@ -1,0 +1,14 @@
+.recipeList{
+    border-bottom: 1px solid rgba(135, 97, 10, 0.128);
+    font-size: 22px;
+    font-weight: 500;
+    padding: 0;
+}
+
+.img {
+    padding-right: 10px;
+}
+
+.recipeList :global .adm-list-item-content{
+    border-top:none!important;
+}

@@ -1,5 +1,5 @@
 import { NextPage } from "next";
-import { RecipeList } from "../components/recipeList";
+import { RecipeItem } from "../components/recipeItem";
 import { useReduxDispatch, useReduxSelector } from "../redux/hooks";
 import { useEffect } from "react";
 import { getRecipeList } from "../redux/reducers/recipeSlice";
@@ -19,11 +19,18 @@ const Recipes: NextPage = () => {
     const dispatch = useReduxDispatch();
 
     useEffect(() => {
-        document.body.style.backgroundColor = 'white';
+        document.body.style.backgroundColor = "white";
         if (jwtToken) {
             dispatch(getRecipeList({ jwtToken, keywords: undefined, categoryId: undefined }));
         }
     }, [jwtToken]);
+
+    const recipeItems: JSX.Element[] = [];
+    if (recipeList) {
+        for (const r of recipeList) {
+            recipeItems.push(<RecipeItem loading={loading} recipeItem={r} />)
+        }
+    }
 
     return (
         <Layout>
@@ -48,7 +55,7 @@ const Recipes: NextPage = () => {
                     <SearchBar isHome={false} />
                 </div>
                 <div className={styles.recipeList}>
-                    <RecipeList loading={loading} recipeList={recipeList} />
+                    {recipeItems}
                 </div>
             </Content>
         </Layout>

@@ -10,8 +10,6 @@ import { useRouter } from "next/router";
 import { useReduxDispatch, useReduxSelector } from "../redux/hooks";
 import { getCategories } from "../redux/reducers/categorySlice";
 
-
-
 const { Header, Content } = Layout;
 
 const Home: NextPage = () => {
@@ -21,12 +19,12 @@ const Home: NextPage = () => {
     const categoryList = useReduxSelector(s => s.category.categoryList);
     const dispatch = useReduxDispatch();
     useEffect(() => {
-        document.body.style.backgroundColor = '#fff0cc';
+        document.body.style.backgroundColor = "#fff0cc";
         if (jwtToken) {
             dispatch(getCategories({ jwtToken }));
         }
     }, [jwtToken]);
-    
+
     return (
         <div style={{ minHeight: "inherit" }} className={styles["body"]}>
             <Layout className={styles["fullPage"]}>
@@ -52,7 +50,6 @@ const Home: NextPage = () => {
                     <div className={styles["category"]}>
                         <Category loading={loading} categoryList={categoryList} />
                     </div>
-            
                 </Content>
                 <Button onClick={() => router.push("./recipes")}>My Recipes</Button>
             </Layout>

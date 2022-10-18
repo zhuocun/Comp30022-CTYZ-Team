@@ -97,7 +97,7 @@ const IngredientAdder: React.FC<{
                 )}
             </Form.List>
             <Form.Item>
-                <Button htmlType="submit">Finish</Button>
+                <Button htmlType="submit">Save</Button>
             </Form.Item>
         </Form>
     );
