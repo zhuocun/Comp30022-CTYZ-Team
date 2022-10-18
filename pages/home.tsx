@@ -1,22 +1,52 @@
 import { NextPage } from "next";
 import React, { useEffect } from "react";
 import { SearchBar } from "../components/searchBar";
+<<<<<<< HEAD
 import { Layout } from "antd";
+=======
+import { Col, Layout, Row } from "antd";
+>>>>>>> 4226d02250b84fdf3f4a19c8e8cf632080aa39b7
 import styles from "../styles/homepage.module.css";
 import Link from "next/link";
 import { ShoppingCartOutlined, UserOutlined } from "@ant-design/icons";
-import Category from "../components/category";
-import { useRouter } from "next/router";
+import CategoryItem from "../components/category";
 import { useReduxDispatch, useReduxSelector } from "../redux/hooks";
 import { getCategories } from "../redux/reducers/categorySlice";
 
 const { Header, Content } = Layout;
 
 const Home: NextPage = () => {
-    const router = useRouter();
     const jwtToken = useReduxSelector(s => s.authentication.jwtToken);
     const loading = useReduxSelector(s => s.category.loading);
     const categoryList = useReduxSelector(s => s.category.categoryList);
+    const categoryItem: JSX.Element[] = [];
+    if (categoryList) {
+        let count = 0;
+        for (let i = 0; i < categoryList.length; i++) {
+            if (i + 1 < categoryList.length) {
+                categoryItem.push(
+                    <Row>
+                        <Col span={11} style={{ marginLeft: "5%", marginTop: "7%" }}>
+                            <CategoryItem loading={loading} categoryItem={categoryList[i]} />
+                        </Col>
+                        <Col span={11} style={{ marginLeft: "1%", marginTop: "7%" }}>
+                            <CategoryItem loading={loading} categoryItem={categoryList[i + 1]} />
+                        </Col>
+                    </Row>
+                );
+                i++;
+            } else {
+                categoryItem.push(
+                    <Row>
+                        <Col span={11} style={{ marginLeft: "5%", marginTop: "7%" }}>
+                            <CategoryItem loading={loading} categoryItem={categoryList[i]} />
+                        </Col>
+                    </Row>
+                );
+            }
+        }
+        count++;
+    }
     const dispatch = useReduxDispatch();
     useEffect(() => {
         document.body.style.backgroundColor = "#fff0cc";
@@ -48,7 +78,7 @@ const Home: NextPage = () => {
                         <SearchBar isHome={true} />
                     </div>
                     <div className={styles["category"]}>
-                        <Category loading={loading} categoryList={categoryList} />
+                        {categoryItem}
                     </div>
                 </Content>
                 {/* <Button onClick={() => router.push("./recipes")}>My Recipes</Button> */}
