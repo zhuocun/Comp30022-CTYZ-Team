@@ -1,7 +1,5 @@
 import { NextPage } from "next";
-import { useReduxDispatch, useReduxSelector } from "../redux/hooks";
 import { useEffect } from "react";
-import { getRecipeList } from "../redux/reducers/recipeSlice";
 import React from "react";
 import { Layout, Image } from "antd";
 import styles from "../styles/openPage.module.css";
@@ -15,22 +13,11 @@ const { Header, Content } = Layout;
 const demoSrc = "../loginImg.jpg";
 
 const Intro: NextPage = () => {
-    const jwtToken = useReduxSelector((s) => s.authentication.jwtToken);
-    const dispatch = useReduxDispatch();
     const router = useRouter();
 
     useEffect(() => {
         document.body.style.backgroundColor = "#FFF9EB";
-        if (jwtToken) {
-            dispatch(
-                getRecipeList({
-                    jwtToken,
-                    keywords: undefined,
-                    categoryId: undefined
-                })
-            );
-        }
-    }, [jwtToken]);
+    }, []);
 
     return (
         <Layout>
