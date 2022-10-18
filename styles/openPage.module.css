@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500&family=Work+Sans:wght@330&display=swap');
+/* @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500&family=Work+Sans:wght@330&display=swap'); */
 .content {
     background-color: #FFF9EB !important;
     height: 90vh !important;
@@ -6,12 +6,6 @@
 
 .header{
     background-color: #FFF9EB !important;
-    font-size: 20px!important;
-    display: flex !important;
-    padding: 10px 10px !important;
-    align-items: baseline !important;
-	font-size: 20px !important;
-    
 }
 
 .heading {
@@ -23,6 +17,12 @@
     margin-right: 40px;
     padding: 0 10px!important;
     font-family: 'Montserrat', sans-serif;
+}
+
+.user{
+    font-size: 20px !important;
+    position: absolute !important;
+    left: 15px !important;
 }
 
 .introText {
@@ -57,11 +57,4 @@
     border: none;
     border-top: dotted #ffdb88 6px;
     width: 10%;
-    /* margin: 100px auto 100px auto; */
-}
-
-.user{
-    --background-color: #FFF9EB !important;
-    font-size: 20px !important;
-    --border-style: none !important;
 }

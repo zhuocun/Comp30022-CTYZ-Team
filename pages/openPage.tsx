@@ -8,6 +8,7 @@ import styles from "../styles/openPage.module.css";
 import { Button, AutoCenter } from "antd-mobile";
 import { useRouter } from "next/router";
 import { UserOutlined } from "@ant-design/icons";
+import Link from "next/link";
 
 const { Header, Content } = Layout;
 
@@ -34,11 +35,14 @@ const OpenPage: NextPage = () => {
     return (
         <Layout>
             <Header className={styles["header"]}>
-                <Button className={styles["user"]} onClick={() => router.push("/login")}>
-                    <span className={styles["user"]}>
-                        <UserOutlined />
-                    </span>
-                </Button>
+                <div>
+                    <Link href="/login">
+                        <span className={styles["user"]}>
+                            <UserOutlined />
+                        </span>
+                    </Link>
+                </div>
+
             </Header>
             <Content className={styles["content"]}>
                 <div>
@@ -46,7 +50,11 @@ const OpenPage: NextPage = () => {
                         Your Own Recipe Manager
                     </h1>
 
-                    <Image className={styles["img"]} src={demoSrc} preview={false}/>
+                    <Image
+                        className={styles["img"]}
+                        src={demoSrc}
+                        preview={false}
+                    />
                     <hr className={styles["horizontalLine"]} />
                     <p className={styles["introText"]}>
                         Recipes that make an extraordinary taste on the tongue
