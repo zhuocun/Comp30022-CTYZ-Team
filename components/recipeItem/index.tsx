@@ -63,7 +63,7 @@ export const RecipeItem: React.FC<RecipeListProps> = ({
                             className={styles["recipeList"]}
                             key={recipeItem?._id}
                             prefix={
-                                <Image
+                                <img
                                     className={styles.img}
                                     src={
                                         recipeItem?.picture
