@@ -15,18 +15,36 @@ const ViewPageHeader: React.FC<{
     recipeId: string,
     title: string | undefined,
     picture: string | undefined,
-    isFavorite: boolean | undefined
-}> = ({ title, picture, recipeId, isFavorite }) => {
+    isFavorite: boolean | undefined,
+    tagIds: string[] | undefined
+}> = ({ title, picture, recipeId, isFavorite, tagIds }) => {
     const dispatch = useReduxDispatch();
-    const jwtToken = useReduxSelector((s) => s.authentication.jwtToken);
+    const tagList = useReduxSelector(s => s.recipe.tags);
+    const jwtToken = useReduxSelector(s => s.authentication.jwtToken);
+    const tagItems: string[] = [];
+    if (tagList && tagIds) {
+        for (const tagId of tagIds) {
+            let targetTag: string = "";
+            for (const t of Array.from(tagList)) {
+                if (t._id === tagId) {
+                    targetTag = t.name;
+                    console.log(targetTag);
+                    break;
+                }
+            }
+            tagItems.push(targetTag);
+        }
+    }
     const onSetFavorite = () => {
         const recipe: IRecipe = {
+            tags: tagItems,
             favorite: !isFavorite
         };
         dispatch(updateRecipe({ jwtToken, recipeId, recipe }));
     };
     const onSetHistory = () => {
         const recipe: IRecipe = {
+            tags: tagItems,
             completed: new Date().toString()
         };
         dispatch(updateRecipe({ jwtToken, recipeId, recipe }));
@@ -56,7 +74,7 @@ const ViewPageHeader: React.FC<{
                     }}
                     src={picture ? picture : demoSrc}
                     className={styles["image"]}
-                    width={'auto'}
+                    width={"auto"}
                     height={260}
                     fit="cover"
                 />

@@ -1,7 +1,7 @@
 import { NextPage } from "next";
 import { useReduxSelector } from "../../redux/hooks";
 import { useRouter } from "next/router";
-import { Layout } from "antd";
+import { Col, Layout } from "antd";
 import styles from "../../styles/viewPage.module.css";
 import ViewPageHeader from "../../components/viewPageHeader";
 import ViewTags from "../../components/viewTags";
@@ -26,12 +26,13 @@ const RecipeDetail: NextPage = () => {
             r._id === recipeId ? recipe = r : null;
         }
     }
+
     if (recipe) {
         return (
             <Layout>
                 <Header className={styles["header"]}>
                     <ViewPageHeader title={recipe.title} picture={recipe.picture} recipeId={recipe._id}
-                                    isFavorite={recipe.favorite} />
+                                    isFavorite={recipe.favorite} tagIds={recipe.tags}/>
                 </Header>
                 <Content className={styles.content}>
                     <ViewTags tagIds={recipe.tags} />

@@ -13,10 +13,10 @@ const CategoryItem: React.FC<PropsType> = ({ categoryItem, loading }) => {
     return (
         <div className={styles["categories"]}>
             <Link href={`category/${categoryItem?._id}`}>
-                <Box className={styles["category"]}>
+                <Box className={styles["category"]} boxSize={164}>
                     <img
                         className={styles["img"]}
-                        src={
+                        src={categoryItem?.picture ? categoryItem.picture :
                             "https://cdn.broadsheet.com.au/cache/47/a2/47a2d923be188058c559282a338944a5.jpg"
                         }
                         alt={categoryItem?.name}

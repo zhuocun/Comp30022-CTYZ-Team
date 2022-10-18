@@ -165,7 +165,7 @@ export const recipeSlice = createSlice({
             state.loading = true;
         },
         [updateRecipe.fulfilled.type]: (state, action) => {
-            state.loading = false;
+            state.loading = true;
             state.error = null;
             state.recipe = action.payload;
         },
@@ -180,7 +180,7 @@ export const recipeSlice = createSlice({
             state.loading = true;
         },
         [deleteRecipe.fulfilled.type]: (state, action) => {
-            state.loading = false;
+            state.loading = true;
             state.error = null;
             state.recipe = action.payload;
         },

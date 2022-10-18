@@ -29,7 +29,7 @@ const Category: NextPage = () => {
     }
     const router = useRouter();
     const { categoryId } = router.query;
-    const editRoute = "/category/" + categoryId + "/edit";
+    const editRoute = "/category/" + categoryId + "/create";
     return (
         <>
             <Header className={styles["header"]}>

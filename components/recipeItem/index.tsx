@@ -5,7 +5,7 @@ import { useRouter } from "next/router";
 import styles from "./index.module.css";
 import { Image } from "antd-mobile";
 import { useReduxDispatch, useReduxSelector } from "../../redux/hooks";
-import { deleteRecipe } from "../../redux/reducers/recipeSlice";
+import { deleteRecipe, getRecipeList } from "../../redux/reducers/recipeSlice";
 
 const demoSrc =
     "https://gw.alipayobjects.com/zos/rmsportal/mqaQswcyDLcXyDKnZfES.png";
@@ -16,15 +16,17 @@ interface RecipeListProps {
 }
 
 export const RecipeItem: React.FC<RecipeListProps> = ({
-    loading,
-    recipeItem
-}) => {
+                                                          loading,
+                                                          recipeItem
+                                                      }) => {
     const dispatch = useReduxDispatch();
     const jwtToken = useReduxSelector((s) => s.authentication.jwtToken);
     const router = useRouter();
+    const { categoryId } = router.query;
     const onDelete = () => {
         const recipeId = recipeItem?._id;
         dispatch(deleteRecipe({ jwtToken, recipeId }));
+        dispatch(getRecipeList({ jwtToken, keywords: undefined, categoryId }));
     };
 
     return (
