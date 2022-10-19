@@ -62,7 +62,7 @@ const Home: NextPage = () => {
                         </span>
                         </Link>
                         <h1 className={styles.pageTitle}>What to eat?</h1>
-                        <Link href="/shoppingList">
+                        <Link href="/cart">
                         <span className={styles["shoppingList"]}>
                             <ShoppingCartOutlined />
                         </span>

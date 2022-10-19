@@ -1,7 +1,7 @@
 .checkbox :global .adm-checkbox-icon{
     background-color: white !important;
     border-color: #ffdb88 !important;
-    border-radius: 0px !important;
+    border-radius: 0 !important;
     border: 2px solid;
 
 }
@@ -10,6 +10,6 @@
     
 }
 .checkbox :global .adm-checkbox .adm-checkbox-icon{
-    border-radius: 0px;
+    border-radius: 0;
 }
 
