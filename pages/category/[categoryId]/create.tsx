@@ -60,7 +60,7 @@ const RecipeEditor: NextPage = () => {
                     <Button
                         style={{ background: "transparent", border: "0px" }}
                         icon={<CloseOutline style={{ fontSize: "28px" }} />}
-                        onClick={() => router.push("/")}
+                        onClick={() => router.back()}
                     >
                     </Button>
                     <ECookLogo />

@@ -49,7 +49,7 @@ const ShoppingCart: NextPage = () => {
             </Header>
             <Content>
                 <div className={styles.recipeList}>
-                    <CartList cartItems={cartItems} />
+                    <CartList cartItems={cartItems}  />
                 </div>
             </Content>
         </Layout>

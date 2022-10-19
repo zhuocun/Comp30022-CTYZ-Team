@@ -8,6 +8,7 @@ import { LeftOutline, FillinOutline } from "antd-mobile-icons";
 import { Image, ImageViewer } from "antd-mobile";
 import { useReduxDispatch, useReduxSelector } from "../../redux/hooks";
 import { updateRecipe } from "../../redux/reducers/recipeSlice";
+import { Router, useRouter } from "next/router";
 
 const demoSrc =
     "https://cookingwithayeh.com/wp-content/uploads/2021/11/Spicy-Tuna-Crispy-Rice.jpg";
@@ -58,14 +59,16 @@ const ViewPageHeader: React.FC<{
 
     };
 
+    const router = useRouter()
+
     return (
         <>
             <div className={styles["navigation"]}>
-                <Link href="/">
+                {/* <Link href="/"> */}
                     <span className={styles["return"]}>
-                        <LeftOutline />
+                        <LeftOutline onClick={() => router.back()} />
                     </span>
-                </Link>
+                {/* </Link> */}
                 <ECookLogo />
                 <Link href="/">
                     <span className={styles["update"]}>

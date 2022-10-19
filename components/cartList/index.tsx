@@ -20,13 +20,11 @@ export const CartList: React.FC<{ cartItems: ICartItem[] | null }> = (
 
     return (
         <>
-            <Checkbox.Group>
-                <List>
-                    {items.map((cartItem) => (
-                        <CartItem key={cartItem._id} cartItem={cartItem} />
-                    ))}
-                </List>
-            </Checkbox.Group>
+            <List>
+                {items.map((cartItem) => (
+                    <CartItem key={cartItem._id} cartItem={cartItem} />
+                ))}
+            </List>
         </>
     );
 };
