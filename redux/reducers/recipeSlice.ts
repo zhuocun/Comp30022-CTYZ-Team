@@ -6,7 +6,6 @@ interface RecipeState {
     error: string | null;
     recipe: IRecipe | null;
     recipeList: IRecipeListRes[] | null;
-    recipeCache: IRecipe | null;
     tags: ITag[] | null;
 }
 
@@ -15,7 +14,6 @@ const initialState: RecipeState = {
     error: null,
     recipe: null,
     recipeList: null,
-    recipeCache: null,
     tags: null
 };
 

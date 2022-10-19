@@ -6,6 +6,7 @@ import styles from "./index.module.css";
 import { Image } from "antd-mobile";
 import { useReduxDispatch, useReduxSelector } from "../../redux/hooks";
 import { deleteRecipe, getRecipeList } from "../../redux/reducers/recipeSlice";
+import { addToCart } from "../../redux/reducers/cartSlice";
 
 const demoSrc =
     "https://gw.alipayobjects.com/zos/rmsportal/mqaQswcyDLcXyDKnZfES.png";
@@ -22,11 +23,15 @@ export const RecipeItem: React.FC<RecipeListProps> = ({
     const dispatch = useReduxDispatch();
     const jwtToken = useReduxSelector((s) => s.authentication.jwtToken);
     const router = useRouter();
+    const recipeId = recipeItem?._id;
     const { categoryId } = router.query;
     const onDelete = () => {
-        const recipeId = recipeItem?._id;
         dispatch(deleteRecipe({ jwtToken, recipeId }));
         dispatch(getRecipeList({ jwtToken, keywords: undefined, categoryId }));
+    };
+
+    const onAddToCart = () => {
+        dispatch(addToCart({ jwtToken, recipeId }));
     };
 
     return (
@@ -36,10 +41,10 @@ export const RecipeItem: React.FC<RecipeListProps> = ({
                     className={styles["delete"]}
                     rightActions={[
                         {
-                            //这里是edit/update的button
                             key: "cart",
                             text: "Add to cart",
-                            color: "light"
+                            color: "light",
+                            onClick: onAddToCart
                         },
                         {
                             key: "delete",
