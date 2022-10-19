@@ -72,7 +72,7 @@ export const getRecipeList = createAsyncThunk(
 export const updateRecipe = createAsyncThunk(
     "recipe/updateRecipe",
     async (parameters: {
-        jwtToken: string | null, recipeId: string | null, recipe: IRecipe | null
+        jwtToken: string | null, recipeId: string | undefined, recipe: IRecipe | null
     }) => {
         const axiosResponse = await axios.patch(
             `https://itproject-online-cookbook.herokuapp.com/api/v1/recipe/${parameters.recipeId}`,
