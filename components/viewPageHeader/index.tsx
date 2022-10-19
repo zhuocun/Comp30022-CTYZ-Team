@@ -41,6 +41,11 @@ const ViewPageHeader: React.FC<{
             favorite: !isFavorite
         };
         dispatch(updateRecipe({ jwtToken, recipeId, recipe }));
+        if(favorite == true){
+            setFavorite(false);
+        }else{
+            setFavorite(true);
+        }
     };
     const onSetHistory = () => {
         const recipe: IRecipe = {
@@ -48,9 +53,19 @@ const ViewPageHeader: React.FC<{
             completed: new Date().toString()
         };
         dispatch(updateRecipe({ jwtToken, recipeId, recipe }));
+
+        if(history == true){
+            setHistory(false);
+        }else{
+            setHistory(true);
+        }
+   
     };
 
     const [visible, setVisible] = useState(false);
+    const [favorite, setFavorite] = useState((isFavorite) => (isFavorite === null) ? false : isFavorite)
+    const [history, setHistory] = useState((completed) => (completed === null) ? false : completed)
+
 
     return (
         <>
@@ -91,7 +106,7 @@ const ViewPageHeader: React.FC<{
                     onClick={onSetHistory}
                     className={styles["complete"]}
                     twoToneColor="yellow"
-                    style = {{color:isFavorite?"red":"black"}}
+                    style = {{color:history?"red":"black"}}
                 />
 
                 <div className={styles["title"]}>{title}</div>
@@ -99,7 +114,7 @@ const ViewPageHeader: React.FC<{
                 <HeartOutlined
                     onClick={onSetFavorite}
                     className={styles["favorite"]}
-                    style = {{color:isFavorite?"red":"black"}}
+                    style = {{color:favorite?"red":"black"}}
                 />
             </div>
         </>
