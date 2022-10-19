@@ -50,7 +50,7 @@ export const RecipeItem: React.FC<RecipeListProps> = ({
                         {
                             key: "remove",
                             text: "Remove",
-                            color: "light",
+                            color: "warning",
                             onClick: removeFromCart
                         }
                     ] : []}
