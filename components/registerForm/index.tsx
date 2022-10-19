@@ -42,6 +42,19 @@ export const RegisterForm: React.FC = () => {
         >
             <h2 className={styles["title"]}> Sign Up </h2>
             <Form.Item
+                name="name"
+                // hasFeedback
+                rules={[
+                    {
+                        required: true,
+                        message: "Please input your name!"
+                    }
+                ]}
+            >
+                <Input placeholder="Username" className={styles["input"]}/>
+            </Form.Item>
+
+            <Form.Item
                 name="email"
                 rules={[
                     {
@@ -65,21 +78,10 @@ export const RegisterForm: React.FC = () => {
                 ]}
             >
                 <Input.Password placeholder="Password" className={styles["input"]}/>
-                <p className={styles["warning"]}>Password with at list 6 character</p>
+                
             </Form.Item>
 
-            <Form.Item
-                name="name"
-                // hasFeedback
-                rules={[
-                    {
-                        required: true,
-                        message: "Please input your name!"
-                    }
-                ]}
-            >
-                <Input placeholder="Username" className={styles["input"]}/>
-            </Form.Item>
+            <p className={styles["warning"]}>Password with at list 6 character</p>
 
             <Form.Item
             >
