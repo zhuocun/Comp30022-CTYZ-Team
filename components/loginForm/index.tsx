@@ -47,6 +47,10 @@ export const LoginForm: React.FC = () => {
                     {
                         required: true,
                         message: "Please input your email!"
+                    },
+                    {
+                        type:"email",
+                        message:"Invalid email"
                     }
                 ]}
             >

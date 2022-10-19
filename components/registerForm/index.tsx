@@ -3,6 +3,7 @@ import React from "react";
 import styles from "./index.module.css";
 import axios from "axios";
 import { useRouter } from "next/router";
+import { EmailIcon } from "@chakra-ui/icons";
 
 export const RegisterForm: React.FC = () => {
     const router = useRouter();
@@ -60,6 +61,10 @@ export const RegisterForm: React.FC = () => {
                     {
                         required: true,
                         message: "Please input your email!"
+                    },
+                    {
+                        type:"email",
+                        message:"The input is not valid email"
                     }
                 ]}
                 
@@ -74,14 +79,13 @@ export const RegisterForm: React.FC = () => {
                     {
                         required: true,
                         message: "Please input your password!"
-                    }
+                    },
+                    {min:6, message: "Password with at least 6 character"}
                 ]}
             >
                 <Input.Password placeholder="Password" className={styles["input"]}/>
                 
             </Form.Item>
-
-            <p className={styles["warning"]}>Password with at list 6 character</p>
 
             <Form.Item
             >
