@@ -55,18 +55,18 @@ const ViewPageHeader: React.FC<{
         };
         dispatch(updateRecipe({ jwtToken, recipeId, recipe }));
 
-        if(history == true){
-            setHistory(false);
-        }else{
-            setHistory(true);
-        }
-        console.log(history)
+        // if(history == true){
+        //     setHistory(false);
+        // }else{
+        //     setHistory(true);
+        // }
+        // console.log(history)
    
     };
 
     const [visible, setVisible] = useState(false);
-    const [favorite, setFavorite] = useState((isFavorite) => (isFavorite == null) ? false : isFavorite)
-    const [history, setHistory] = useState((completed) => (completed == null) ? false : completed)
+    const [favorite, setFavorite] = useState(() => (isFavorite == null) ? false : isFavorite)
+    // const [history, setHistory] = useState((completed) => (completed == null) ? false : completed)
 
 
     return (
@@ -108,7 +108,7 @@ const ViewPageHeader: React.FC<{
                     onClick={onSetHistory}
                     className={styles["complete"]}
                     twoToneColor="yellow"
-                    style = {{color:history?"red":"black"}}
+                    style = {{color:favorite?"red":"black"}}
                 />
 
                 <div className={styles["title"]}>{title}</div>
