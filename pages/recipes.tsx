@@ -28,7 +28,7 @@ const Recipes: NextPage = () => {
     const recipeItems: JSX.Element[] = [];
     if (recipeList) {
         for (const r of recipeList) {
-            recipeItems.push(<RecipeItem loading={loading} recipeItem={r} />)
+            recipeItems.push(<RecipeItem loading={loading} recipeItem={r} isRecipeList={true}/>)
         }
     }
 
