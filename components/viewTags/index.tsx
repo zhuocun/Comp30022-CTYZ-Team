@@ -11,7 +11,6 @@ const viewTags: React.FC<{ tagIds: string[] | undefined }> = ({ tagIds }) => {
     const jwtToken = useReduxSelector(s => s.authentication.jwtToken);
     const tagItems: JSX.Element[] = [];
     if (tagList && tagIds) {
-        console.log(tagList);
         for (const tagId of tagIds) {
             let targetTag: string = "";
             for (const t of Array.from(tagList)) {

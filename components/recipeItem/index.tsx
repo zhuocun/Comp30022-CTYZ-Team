@@ -1,10 +1,12 @@
 import React from "react";
-import { Skeleton, BackTop, Image } from "antd";
+import { Skeleton, BackTop } from "antd";
 import { List, SwipeAction, Toast, Dialog } from "antd-mobile";
 import { useRouter } from "next/router";
 import styles from "./index.module.css";
+import { Image } from "antd-mobile";
 import { useReduxDispatch, useReduxSelector } from "../../redux/hooks";
-import { deleteRecipe } from "../../redux/reducers/recipeSlice";
+import { deleteRecipe, getRecipeList } from "../../redux/reducers/recipeSlice";
+import { addToCart } from "../../redux/reducers/cartSlice";
 
 const demoSrc =
     "https://gw.alipayobjects.com/zos/rmsportal/mqaQswcyDLcXyDKnZfES.png";
@@ -12,26 +14,54 @@ const demoSrc =
 interface RecipeListProps {
     recipeItem: IRecipeListRes | null;
     loading: boolean;
+    isRecipeList: boolean;
 }
 
 export const RecipeItem: React.FC<RecipeListProps> = ({
                                                           loading,
-                                                          recipeItem
+                                                          recipeItem,
+                                                          isRecipeList,
                                                       }) => {
     const dispatch = useReduxDispatch();
-    const jwtToken = useReduxSelector(s => s.authentication.jwtToken);
+    const jwtToken = useReduxSelector((s) => s.authentication.jwtToken);
     const router = useRouter();
+    const recipeId = recipeItem?._id;
+    const { categoryId } = router.query;
     const onDelete = () => {
-        const recipeId = recipeItem?._id;
         dispatch(deleteRecipe({ jwtToken, recipeId }));
+        dispatch(getRecipeList({ jwtToken, keywords: undefined, categoryId }));
     };
+
+    const onAddToCart = () => {
+        dispatch(addToCart({ jwtToken, recipeId }));
+    };
+
+    const removeFromCart = () => {
+        dispatch(addToCart({ jwtToken, recipeId }));
+    };
+
 
     return (
         <div>
             <List>
                 <SwipeAction
                     className={styles["delete"]}
+                    leftActions = {isRecipeList?[]:[
+                        {
+                            key: "remove",
+                            text: "Remove",
+                            color: "light",
+                            onClick: removeFromCart
+                        }
+                    ]}
+                    
                     rightActions={[
+                        {
+                            key: "cart",
+                            text: "Add to cart",
+                            color: "light",
+                            onClick: onAddToCart
+                        },
                         {
                             key: "delete",
                             text: "Delete",
@@ -73,6 +103,7 @@ export const RecipeItem: React.FC<RecipeListProps> = ({
                                     width={150}
                                     height={107}
                                     alt="logo"
+                                    fit="cover"
                                 />
                             }
                             onClick={() =>

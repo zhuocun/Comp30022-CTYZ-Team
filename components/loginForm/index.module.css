@@ -1,11 +1,15 @@
 .login-form {
     margin-left: auto !important;
     margin-right: auto !important;
-    background: #FFDB88 !important ;
+    background-color: #FFDB88!important ;
 	border: #fff solid 5px !important;
 	border-radius: 10px !important;
     width: 95% !important;
     padding: 5% 10% !important;
+    background-image: url("/login.jpg");
+    background-repeat: no-repeat;
+    background-size:360px 350px;
+    background-position:60% 60%;
 }
 
 .title{
@@ -15,7 +19,7 @@
 }
 
 .input{
-    border: 0px !important;
+    border: 0 !important;
     border-radius: 5px !important;
 }
 
@@ -34,7 +38,6 @@
     border: 2px solid white !important;
     border-radius: 5px !important;
     height: 120% !important;
-    width: 172px !important;
     position: relative !important;
     bottom:20% !important;
     font-size: medium !important;

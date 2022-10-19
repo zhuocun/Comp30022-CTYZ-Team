@@ -6,4 +6,5 @@ interface ICategory {
     createdAt: string;
     updatedAt: string;
     __v: number;
+    picture: string;
 }

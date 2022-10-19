@@ -1,0 +1,29 @@
+.header {
+	background-color: #ffdb88 !important;
+	padding: 0 0 0 0 !important;
+}
+
+.headerNav { 
+    align-items: center !important;
+	font-size: 20px !important;
+    --height:64px;
+}
+
+.pageTitle{
+	font-weight: 400;
+	font-size: 24px;
+	text-align: center;
+	font-family: 'Caveat', cursive;
+}
+
+.recipeList{
+	border: 0px;
+}
+
+.hearderNav {
+    --height:52px!important;
+}
+
+.logo{
+    padding-top: 24px !important;
+}

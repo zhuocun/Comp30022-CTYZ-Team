@@ -29,7 +29,7 @@ const Category: NextPage = () => {
     }
     const router = useRouter();
     const { categoryId } = router.query;
-    const editRoute = "/category/" + categoryId + "/edit";
+    const editRoute = "/category/" + categoryId + "/create";
     return (
         <>
             <Header className={styles["header"]}>
@@ -39,7 +39,7 @@ const Category: NextPage = () => {
                             <LeftOutline />
                         </span>
                     </Link>
-
+            
                     <h1 className={styles.pageTitle}>What to eat?</h1>
                     <Link href={editRoute}>
                         <span className={styles["addNew"]}>

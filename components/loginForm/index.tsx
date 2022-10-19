@@ -21,19 +21,13 @@ export const LoginForm: React.FC = () => {
         }
     }, [jwtToken]);
 
-
     const onFinish = (values) => {
-        console.log("Success:", values);
         dispatch(
             login({
                 email: values.username,
                 password: values.password
             })
         );
-    };
-
-    const onFinishFailed = (errorInfo) => {
-        console.log("Failed:", errorInfo);
     };
 
     return (
@@ -43,21 +37,20 @@ export const LoginForm: React.FC = () => {
                 remember: true
             }}
             onFinish={onFinish}
-            onFinishFailed={onFinishFailed}
             autoComplete="off"
             className={styles["login-form"]}
         >
             <h2 className={styles["title"]}> Login </h2>
             <Form.Item
-                name="username"
+                name="email"
                 rules={[
                     {
                         required: true,
-                        message: "Please input your username!"
+                        message: "Please input your email!"
                     }
                 ]}
             >
-                <Input placeholder="Username" className={styles["input"]} />
+                <Input placeholder="Email" className={styles["input"]} />
             </Form.Item>
 
             <Form.Item
@@ -75,25 +68,25 @@ export const LoginForm: React.FC = () => {
                 />
             </Form.Item>
 
-            <Row justify="center" align="middle" style={{height:"40px"}}>
-            <Form.Item
-                name="remember"
-                valuePropName="checked"
-            >
-                <Checkbox
-                    className={styles["remember"]}
-                    value="remember"
-                    icon={(checked) =>
-                        checked ? (
-                            <CheckCircleFill style={{ color: "#FF7F3F" }} />
-                        ) : (
-                            <CheckCircleOutline style={{ color: "#FF7F3F" }} />
-                        )
-                    }
+            <Row justify="center" align="middle" style={{ height: "40px" }}>
+                <Form.Item
+                    name="remember"
+                    valuePropName="checked"
                 >
-                    Remember me
-                </Checkbox>
-            </Form.Item>
+                    <Checkbox
+                        className={styles["remember"]}
+                        value="remember"
+                        icon={(checked) =>
+                            checked ? (
+                                <CheckCircleFill style={{ color: "#FF7F3F" }} />
+                            ) : (
+                                <CheckCircleOutline style={{ color: "#FF7F3F" }} />
+                            )
+                        }
+                    >
+                        Remember me
+                    </Checkbox>
+                </Form.Item>
             </Row>
 
             <Form.Item

@@ -1,0 +1,68 @@
+.header{
+    background-color: #FFF9EB;
+}
+
+.header .navBar{
+    font-size: 20px !important;
+    position: absolute !important;
+    left: 15px !important;
+}
+
+.heading{
+    margin-top: 40px;
+    font-size: 30px;
+    font-weight: 650;
+    text-align: center;
+    margin-left: 40px;
+    margin-right: 40px;
+    padding: 0 10px!important;
+    font-family: 'Montserrat', sans-serif;
+}
+.logout :global .ant-layout{
+    background-color: #FFF9EB;
+}
+.logout :global .ant-btn-dashed:hover{
+    border-color: rgba(228, 154, 154, 0.47) !important;
+    color: red !important;
+}
+
+.logout :global .ant-btn-dashed:focus{
+    border-color: rgba(228, 154, 154, 0.47) !important;
+    color: red !important;
+    --antd-wave-shadow-color: red;
+}
+
+.logout :global .ant-btn-dashed{
+    border-color: white !important;
+    border: 2px white dashed !important;
+    color: black !important;
+    background: #ffdb88;
+    border-radius: 10px !important;
+    height: 40px;
+}
+
+.logout{
+    background-image: url("/seeyou.jpg");
+    background-size: 300px 500px;
+    background-position: 50% 0%;
+    background-repeat: no-repeat;
+    position:relative;
+    top: 50px;
+    padding: 30px;
+    padding-top: 500px;
+    background-color: #FFF9EB;
+}
+
+.content{
+    font-size: 30px;
+    position: relative;
+    background-color: #FFF9EB;
+
+}
+
+.seeu{
+    display:flex;
+    justify-content: center;
+    position: relative;
+    top: 30px;
+}

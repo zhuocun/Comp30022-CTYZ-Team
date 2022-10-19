@@ -1,7 +1,7 @@
 import { NextPage } from "next";
 import { useReduxSelector } from "../../redux/hooks";
 import { useRouter } from "next/router";
-import { Layout } from "antd";
+import { Col, Layout } from "antd";
 import styles from "../../styles/viewPage.module.css";
 import ViewPageHeader from "../../components/viewPageHeader";
 import ViewTags from "../../components/viewTags";
@@ -9,11 +9,14 @@ import TimeAndServing from "../../components/timeAndServing";
 import ViewIngredients from "../../components/viewIngredients";
 import ViewMethods from "../../components/viewMethods";
 import BackStory from "../../components/backStory";
-import React from "react";
+import React, { useEffect } from "react";
 
 const { Header, Content, Footer } = Layout;
 
 const RecipeDetail: NextPage = () => {
+    useEffect(() => {
+        document.body.style.backgroundColor = "#fff0cc";
+    });
     const router = useRouter();
     const { recipeId } = router.query;
     const recipeList = useReduxSelector((s) => s.recipe.recipeList);
@@ -23,12 +26,13 @@ const RecipeDetail: NextPage = () => {
             r._id === recipeId ? recipe = r : null;
         }
     }
+
     if (recipe) {
         return (
             <Layout>
                 <Header className={styles["header"]}>
                     <ViewPageHeader title={recipe.title} picture={recipe.picture} recipeId={recipe._id}
-                                    isFavorite={recipe.favorite} />
+                                    isFavorite={recipe.favorite} tagIds={recipe.tags}/>
                 </Header>
                 <Content className={styles.content}>
                     <ViewTags tagIds={recipe.tags} />

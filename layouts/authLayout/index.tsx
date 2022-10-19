@@ -14,10 +14,10 @@ interface PropsType {
 
 export const AuthLayout: React.FC<PropsType> = (props) => {
     return (
-        <Layout className={props.isLogin === true ? styles["user-layout-container_login"] : styles["user-layout-container_register"]}>
+        <Layout className={props.isLogin ? styles["user-layout-container_login"] : styles["user-layout-container_register"]}>
             <Header className={styles["header"]}>
                 <div>
-                    <Link href="/">
+                    <Link href="/intro">
                         <span className={styles["navBar"]}>
                             <LeftOutline />
                         </span>

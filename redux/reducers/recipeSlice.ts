@@ -6,7 +6,6 @@ interface RecipeState {
     error: string | null;
     recipe: IRecipe | null;
     recipeList: IRecipeListRes[] | null;
-    recipeCache: IRecipe | null;
     tags: ITag[] | null;
 }
 
@@ -15,7 +14,6 @@ const initialState: RecipeState = {
     error: null,
     recipe: null,
     recipeList: null,
-    recipeCache: null,
     tags: null
 };
 
@@ -165,7 +163,7 @@ export const recipeSlice = createSlice({
             state.loading = true;
         },
         [updateRecipe.fulfilled.type]: (state, action) => {
-            state.loading = false;
+            state.loading = true;
             state.error = null;
             state.recipe = action.payload;
         },
@@ -180,7 +178,7 @@ export const recipeSlice = createSlice({
             state.loading = true;
         },
         [deleteRecipe.fulfilled.type]: (state, action) => {
-            state.loading = false;
+            state.loading = true;
             state.error = null;
             state.recipe = action.payload;
         },

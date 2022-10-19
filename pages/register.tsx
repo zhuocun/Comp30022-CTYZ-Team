@@ -3,6 +3,7 @@ import { AuthLayout } from "../layouts/authLayout";
 import { RegisterForm } from "../components/registerForm";
 import { NextPage } from "next";
 import styles from "../styles/registerPage.module.css";
+import loginImg from "../public/loginImg.jpg";
 
 const Register: NextPage = () => {
     return (

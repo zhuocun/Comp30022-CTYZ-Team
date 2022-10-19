@@ -31,26 +31,6 @@ const IngredientAdder: React.FC<{
             autoComplete="off"
         >
             <h1 className={styles.title}>Ingredients</h1>
-            {/*
-            <Form.Item>
-                <Form.Item
-                    className={styles.defaultInput}
-                    name="Ingredient 1"
-                    rules={[
-                        {
-                            required: true,
-                            message: "Insert at least one ingredient."
-                        }
-                    ]}
-                >
-                    <Input
-                        required={true}
-                        placeholder={"Ingredient 1"}
-                        className={styles.input}
-                    />
-                </Form.Item>
-            </Form.Item>
-            */}
 
             <Form.List name="ingredients">
                 {(fields, { add, remove }, { errors }) => (
