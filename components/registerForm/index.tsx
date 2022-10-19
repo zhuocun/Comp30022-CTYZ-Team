@@ -19,7 +19,7 @@ export const RegisterForm: React.FC = () => {
                 email: values.email,
                 password: values.password
             });
-            router.push("/Login/").then();
+            router.push("/login/").then();
         } catch (error) {
             alert("Register failed");
         }
