@@ -42,15 +42,15 @@ export const LoginForm: React.FC = () => {
         >
             <h2 className={styles["title"]}> Login </h2>
             <Form.Item
-                name="username"
+                name="email"
                 rules={[
                     {
                         required: true,
-                        message: "Please input your username!"
+                        message: "Please input your email!"
                     }
                 ]}
             >
-                <Input placeholder="Username" className={styles["input"]} />
+                <Input placeholder="Email" className={styles["input"]} />
             </Form.Item>
 
             <Form.Item

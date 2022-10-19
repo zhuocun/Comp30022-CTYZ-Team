@@ -91,6 +91,7 @@ const ViewPageHeader: React.FC<{
                     onClick={onSetHistory}
                     className={styles["complete"]}
                     twoToneColor="yellow"
+                    style = {{color:isFavorite?"red":"black"}}
                 />
 
                 <div className={styles["title"]}>{title}</div>
@@ -98,6 +99,7 @@ const ViewPageHeader: React.FC<{
                 <HeartOutlined
                     onClick={onSetFavorite}
                     className={styles["favorite"]}
+                    style = {{color:isFavorite?"red":"black"}}
                 />
             </div>
         </>
