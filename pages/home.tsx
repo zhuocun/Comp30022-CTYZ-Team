@@ -15,6 +15,7 @@ const Home: NextPage = () => {
     const jwtToken = useReduxSelector(s => s.authentication.jwtToken);
     const loading = useReduxSelector(s => s.category.loading);
     const categoryList = useReduxSelector(s => s.category.categoryList);
+    const cartItems = useReduxSelector(s => s.cart.cartItems);
     const categoryItem: JSX.Element[] = [];
     if (categoryList) {
         let count = 0;
@@ -64,7 +65,7 @@ const Home: NextPage = () => {
                         <h1 className={styles.pageTitle}>What to eat?</h1>
                         <Link href="/cart">
                         <span className={styles["shoppingList"]}>
-                            <ShoppingCartOutlined />
+                            <ShoppingCartOutlined /> {cartItems?.length}
                         </span>
                         </Link>
                     </div>

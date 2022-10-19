@@ -29,6 +29,23 @@ export const addToCart = createAsyncThunk(
     }
 );
 
+export const deleteCartItem = createAsyncThunk(
+    "cart/deleteCartItem",
+    async (parameters: {
+        jwtToken: string | null, cartItemId: string
+    }) => {
+        const axiosResponse = await axios.delete(
+            `https://itproject-online-cookbook.herokuapp.com/api/v1/cart/`,
+            {
+                headers: {
+                    Authorization: `Bearer ${parameters.jwtToken}`
+                }
+            }
+        );
+        return axiosResponse.data;
+    }
+);
+
 export const getCart = createAsyncThunk(
     "cart/getCart",
     async (jwtToken: string | null) => {

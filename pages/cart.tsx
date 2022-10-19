@@ -7,7 +7,7 @@ import styles from "../styles/recipes.module.css";
 import Link from "next/link";
 import { LeftOutline, DeleteOutline } from "antd-mobile-icons";
 import { useReduxDispatch, useReduxSelector } from "../redux/hooks";
-import { getCart } from "../redux/reducers/cartSlice";
+import { deleteCartItem, getCart } from "../redux/reducers/cartSlice";
 
 const { Header, Content } = Layout;
 
@@ -16,7 +16,14 @@ const ShoppingCart: NextPage = () => {
     const loading = useReduxSelector((s) => s.cart.loading);
     const cartItems = useReduxSelector((s) => s.cart.cartItems);
     const dispatch = useReduxDispatch();
-
+    const onDelete = () => {
+        if (cartItems) {
+            for (const c of cartItems) {
+                dispatch(deleteCartItem({ jwtToken, cartItemId: c._id }));
+            }
+        }
+        dispatch(getCart(jwtToken));
+    };
     useEffect(() => {
         document.body.style.backgroundColor = "white";
         if (jwtToken) {
@@ -35,11 +42,9 @@ const ShoppingCart: NextPage = () => {
                     </Link>
 
                     <h1 className={styles.pageTitle}>What to buy?</h1>
-                    <Link href="/edit">
-                        <span className={styles["addNew"]}>
-                        <DeleteOutline />
-                        </span>
-                    </Link>
+                    <span className={styles["addNew"]}>
+                        <DeleteOutline onClick={onDelete} />
+                    </span>
                 </div>
             </Header>
             <Content>

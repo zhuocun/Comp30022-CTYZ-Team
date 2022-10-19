@@ -24,7 +24,7 @@ const Category: NextPage = () => {
     const recipeItems: JSX.Element[] = [];
     if (recipeList) {
         for (const r of recipeList) {
-            recipeItems.push(<RecipeItem loading={loading} recipeItem={r} />);
+            recipeItems.push(<RecipeItem loading={loading} recipeItem={r} isFavList={false}/>);
         }
     }
     const router = useRouter();

@@ -21,7 +21,7 @@ const FavoriteList: NextPage = () => {
     }
     const recipeItems: JSX.Element[] = [];
     for (const r of favoriteList) {
-        recipeItems.push(<RecipeItem loading={loading} recipeItem={r} isRecipeList={false}/>);
+        recipeItems.push(<RecipeItem loading={loading} recipeItem={r} isFavList={true}/>);
     }
 
     const dispatch = useReduxDispatch();
