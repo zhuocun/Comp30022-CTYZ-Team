@@ -14,13 +14,13 @@ const demoSrc =
 interface RecipeListProps {
     recipeItem: IRecipeListRes | null;
     loading: boolean;
-    isRecipeList: boolean;
+    isFavList: boolean;
 }
 
 export const RecipeItem: React.FC<RecipeListProps> = ({
                                                           loading,
                                                           recipeItem,
-                                                          isRecipeList,
+                                                          isFavList
                                                       }) => {
     const dispatch = useReduxDispatch();
     const jwtToken = useReduxSelector((s) => s.authentication.jwtToken);
@@ -46,15 +46,15 @@ export const RecipeItem: React.FC<RecipeListProps> = ({
             <List>
                 <SwipeAction
                     className={styles["delete"]}
-                    leftActions = {isRecipeList?[]:[
+                    leftActions={isFavList ? [
                         {
                             key: "remove",
                             text: "Remove",
                             color: "warning",
                             onClick: removeFromCart
                         }
-                    ]}
-                    
+                    ] : []}
+
                     rightActions={[
                         {
                             key: "cart",
