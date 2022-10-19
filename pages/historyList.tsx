@@ -21,7 +21,7 @@ const HistoryList: NextPage = () => {
     }
     const recipeItems: JSX.Element[] = [];
     for (const r of historyList) {
-        recipeItems.push(<RecipeItem loading={loading} recipeItem={r} />);
+        recipeItems.push(<RecipeItem loading={loading} recipeItem={r} isRecipeList={false} />);
     }
     const dispatch = useReduxDispatch();
     useEffect(() => {
