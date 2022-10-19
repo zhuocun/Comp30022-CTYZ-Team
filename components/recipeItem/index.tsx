@@ -5,7 +5,7 @@ import { useRouter } from "next/router";
 import styles from "./index.module.css";
 import { Image } from "antd-mobile";
 import { useReduxDispatch, useReduxSelector } from "../../redux/hooks";
-import { deleteRecipe, getRecipeList } from "../../redux/reducers/recipeSlice";
+import { deleteRecipe, getRecipeList, updateRecipe } from "../../redux/reducers/recipeSlice";
 import { addToCart } from "../../redux/reducers/cartSlice";
 
 const demoSrc =
@@ -27,6 +27,21 @@ export const RecipeItem: React.FC<RecipeListProps> = ({
     const router = useRouter();
     const recipeId = recipeItem?._id;
     const { categoryId } = router.query;
+    const tagList = useReduxSelector(s => s.recipe.tags);
+    const tagIds = recipeItem?.tags;
+    const tagItems: string[] = [];
+    if (tagList && tagIds) {
+        for (const tagId of tagIds) {
+            let targetTag: string = "";
+            for (const t of Array.from(tagList)) {
+                if (t._id === tagId) {
+                    targetTag = t.name;
+                    break;
+                }
+            }
+            tagItems.push(targetTag);
+        }
+    }
     const onDelete = () => {
         dispatch(deleteRecipe({ jwtToken, recipeId }));
         dispatch(getRecipeList({ jwtToken, keywords: undefined, categoryId }));
@@ -36,8 +51,13 @@ export const RecipeItem: React.FC<RecipeListProps> = ({
         dispatch(addToCart({ jwtToken, recipeId }));
     };
 
-    const removeFromCart = () => {
-        dispatch(addToCart({ jwtToken, recipeId }));
+    const onRemove = () => {
+        const recipe: IRecipe = {
+            tags: tagItems,
+            favorite: false
+        };
+        dispatch(updateRecipe({ jwtToken, recipeId: recipeItem?._id, recipe }));
+        dispatch(getRecipeList({ jwtToken, keywords: undefined, categoryId: undefined }));
     };
 
 
@@ -51,7 +71,7 @@ export const RecipeItem: React.FC<RecipeListProps> = ({
                             key: "remove",
                             text: "Remove",
                             color: "warning",
-                            onClick: removeFromCart
+                            onClick: onRemove
                         }
                     ] : []}
 

@@ -8,6 +8,7 @@ import { ShoppingCartOutlined, UserOutlined } from "@ant-design/icons";
 import CategoryItem from "../components/category";
 import { useReduxDispatch, useReduxSelector } from "../redux/hooks";
 import { getCategories } from "../redux/reducers/categorySlice";
+import { getCart } from "../redux/reducers/cartSlice";
 
 const { Header, Content } = Layout;
 
@@ -49,6 +50,7 @@ const Home: NextPage = () => {
         document.body.style.backgroundColor = "#fff0cc";
         if (jwtToken) {
             dispatch(getCategories({ jwtToken }));
+            dispatch(getCart(jwtToken));
         }
     }, [jwtToken]);
 

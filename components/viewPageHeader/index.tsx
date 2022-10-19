@@ -32,7 +32,6 @@ const ViewPageHeader: React.FC<{
             for (const t of Array.from(tagList)) {
                 if (t._id === tagId) {
                     targetTag = t.name;
-                    console.log(targetTag);
                     break;
                 }
             }
