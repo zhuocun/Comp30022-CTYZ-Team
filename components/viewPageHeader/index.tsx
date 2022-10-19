@@ -20,8 +20,6 @@ const ViewPageHeader: React.FC<{
     isCompleted: boolean | undefined
 }> = ({ title, picture, recipeId, isFavorite, isCompleted, tagIds }) => {
     const dispatch = useReduxDispatch();
-    const [visible, setVisible] = useState(false);
-    const [favorite, setFavorite] = useState(isFavorite);
     const [history, setHistory] = useState(isCompleted);
     const tagList = useReduxSelector(s => s.recipe.tags);
     const jwtToken = useReduxSelector(s => s.authentication.jwtToken);
@@ -44,18 +42,33 @@ const ViewPageHeader: React.FC<{
             favorite: !isFavorite
         };
         dispatch(updateRecipe({ jwtToken, recipeId, recipe }));
-        setFavorite(!favorite);
+        if (favorite == true) {
+            setFavorite(false);
+        } else {
+            setFavorite(true);
+        }
+        console.log(favorite);
     };
     const onSetHistory = () => {
-        if (!history) {
-            const recipe: IRecipe = {
-                tags: tagItems,
-                completed: new Date().toString()
-            };
-            dispatch(updateRecipe({ jwtToken, recipeId, recipe }));
-            setHistory(true);
-        }
+
+        const recipe: IRecipe = {
+            tags: tagItems,
+            completed: new Date().toString()
+        };
+        dispatch(updateRecipe({ jwtToken, recipeId, recipe }));
+
+        // if(history == true){
+        //     setHistory(false);
+        // }else{
+        //     setHistory(true);
+        // }
+        // console.log(history)
+   
     };
+
+    const [visible, setVisible] = useState(false);
+    const [favorite, setFavorite] = useState(() => (isFavorite == null) ? false : isFavorite)
+    // const [history, setHistory] = useState((completed) => (completed == null) ? false : completed)
 
 
     return (
@@ -97,7 +110,9 @@ const ViewPageHeader: React.FC<{
                     onClick={onSetHistory}
                     className={styles["complete"]}
                     twoToneColor="yellow"
-                    style={{ color: history ? "red" : "black" }}
+
+                    style = {{color:favorite?"red":"black"}}
+
                 />
 
                 <div className={styles["title"]}>{title}</div>
