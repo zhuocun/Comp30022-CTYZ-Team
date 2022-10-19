@@ -16,9 +16,11 @@ const ViewPageHeader: React.FC<{
     title: string | undefined,
     picture: string | undefined,
     isFavorite: boolean | undefined,
-    tagIds: string[] | undefined
-}> = ({ title, picture, recipeId, isFavorite, tagIds }) => {
+    tagIds: string[] | undefined,
+    isCompleted: boolean | undefined
+}> = ({ title, picture, recipeId, isFavorite, isCompleted, tagIds }) => {
     const dispatch = useReduxDispatch();
+    const [history, setHistory] = useState(isCompleted);
     const tagList = useReduxSelector(s => s.recipe.tags);
     const jwtToken = useReduxSelector(s => s.authentication.jwtToken);
     const tagItems: string[] = [];
@@ -41,14 +43,15 @@ const ViewPageHeader: React.FC<{
             favorite: !isFavorite
         };
         dispatch(updateRecipe({ jwtToken, recipeId, recipe }));
-        if(favorite == true){
+        if (favorite == true) {
             setFavorite(false);
-        }else{
+        } else {
             setFavorite(true);
         }
-        console.log(favorite)
+        console.log(favorite);
     };
     const onSetHistory = () => {
+
         const recipe: IRecipe = {
             tags: tagItems,
             completed: new Date().toString()
@@ -108,7 +111,9 @@ const ViewPageHeader: React.FC<{
                     onClick={onSetHistory}
                     className={styles["complete"]}
                     twoToneColor="yellow"
+
                     style = {{color:favorite?"red":"black"}}
+
                 />
 
                 <div className={styles["title"]}>{title}</div>
@@ -116,7 +121,7 @@ const ViewPageHeader: React.FC<{
                 <HeartOutlined
                     onClick={onSetFavorite}
                     className={styles["favorite"]}
-                    style = {{color:favorite?"red":"black"}}
+                    style={{ color: favorite ? "red" : "black" }}
                 />
             </div>
         </>

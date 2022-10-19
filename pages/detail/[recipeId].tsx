@@ -32,7 +32,8 @@ const RecipeDetail: NextPage = () => {
             <Layout>
                 <Header className={styles["header"]}>
                     <ViewPageHeader title={recipe.title} picture={recipe.picture} recipeId={recipe._id}
-                                    isFavorite={recipe.favorite} tagIds={recipe.tags}/>
+                                    isFavorite={recipe.favorite} tagIds={recipe.tags}
+                                    isCompleted={recipe.completed?.length !== 0} />
                 </Header>
                 <Content className={styles.content}>
                     <ViewTags tagIds={recipe.tags} />
