@@ -46,6 +46,7 @@ const ViewPageHeader: React.FC<{
         }else{
             setFavorite(true);
         }
+        console.log(favorite)
     };
     const onSetHistory = () => {
         const recipe: IRecipe = {
@@ -59,12 +60,13 @@ const ViewPageHeader: React.FC<{
         }else{
             setHistory(true);
         }
+        console.log(history)
    
     };
 
     const [visible, setVisible] = useState(false);
-    const [favorite, setFavorite] = useState((isFavorite) => (isFavorite === null) ? false : isFavorite)
-    const [history, setHistory] = useState((completed) => (completed === null) ? false : completed)
+    const [favorite, setFavorite] = useState((isFavorite) => (isFavorite == null) ? false : isFavorite)
+    const [history, setHistory] = useState((completed) => (completed == null) ? false : completed)
 
 
     return (
