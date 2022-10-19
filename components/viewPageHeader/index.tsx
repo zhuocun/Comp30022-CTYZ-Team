@@ -21,6 +21,8 @@ const ViewPageHeader: React.FC<{
 }> = ({ title, picture, recipeId, isFavorite, isCompleted, tagIds }) => {
     const dispatch = useReduxDispatch();
     const [history, setHistory] = useState(isCompleted);
+    const [visible, setVisible] = useState(false);
+    const [favorite, setFavorite] = useState(isFavorite);
     const tagList = useReduxSelector(s => s.recipe.tags);
     const jwtToken = useReduxSelector(s => s.authentication.jwtToken);
     const tagItems: string[] = [];
@@ -42,34 +44,19 @@ const ViewPageHeader: React.FC<{
             favorite: !isFavorite
         };
         dispatch(updateRecipe({ jwtToken, recipeId, recipe }));
-        if (favorite == true) {
-            setFavorite(false);
-        } else {
-            setFavorite(true);
-        }
-        console.log(favorite);
+        setFavorite(!favorite);
     };
     const onSetHistory = () => {
+        if (!history) {
+            const recipe: IRecipe = {
+                tags: tagItems,
+                completed: new Date().toString()
+            };
+            dispatch(updateRecipe({ jwtToken, recipeId, recipe }));
+            setHistory(true);
+        }
 
-        const recipe: IRecipe = {
-            tags: tagItems,
-            completed: new Date().toString()
-        };
-        dispatch(updateRecipe({ jwtToken, recipeId, recipe }));
-
-        // if(history == true){
-        //     setHistory(false);
-        // }else{
-        //     setHistory(true);
-        // }
-        // console.log(history)
-   
     };
-
-    const [visible, setVisible] = useState(false);
-    const [favorite, setFavorite] = useState(() => (isFavorite == null) ? false : isFavorite)
-    // const [history, setHistory] = useState((completed) => (completed == null) ? false : completed)
-
 
     return (
         <>
@@ -111,7 +98,7 @@ const ViewPageHeader: React.FC<{
                     className={styles["complete"]}
                     twoToneColor="yellow"
 
-                    style = {{color:favorite?"red":"black"}}
+                    style={{ color: history ? "red" : "black" }}
 
                 />
 

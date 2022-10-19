@@ -26,14 +26,14 @@ const RecipeDetail: NextPage = () => {
             r._id === recipeId ? recipe = r : null;
         }
     }
-
+    console.log(recipe?.completed);
     if (recipe) {
         return (
             <Layout>
                 <Header className={styles["header"]}>
                     <ViewPageHeader title={recipe.title} picture={recipe.picture} recipeId={recipe._id}
                                     isFavorite={recipe.favorite} tagIds={recipe.tags}
-                                    isCompleted={recipe.completed?.length !== 0} />
+                                    isCompleted={recipe.completed !== undefined} />
                 </Header>
                 <Content className={styles.content}>
                     <ViewTags tagIds={recipe.tags} />
