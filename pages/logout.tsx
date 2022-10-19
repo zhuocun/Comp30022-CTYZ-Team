@@ -1,16 +1,22 @@
 import React, { useEffect } from "react";
-import { AuthLayout } from "../layouts/authLayout";
 import { Button, Layout } from "antd";
 import { NextPage } from "next";
 import styles from "../styles/logout.module.css";
 import Link from "next/link";
 import { LeftOutline } from "antd-mobile-icons";
+import { useReduxDispatch } from "../redux/hooks";
+import { authenticationSlice } from "../redux/reducers/authSlice";
+
 const { Header, Content } = Layout;
 
 const Logout: NextPage = () => {
     useEffect(() => {
         document.body.style.backgroundColor = "#FFF9EB";
     });
+    const dispatch = useReduxDispatch();
+    const onLogout = () => {
+        dispatch(authenticationSlice.actions.logout());
+    };
     return (
         <Layout>
             <Header className={styles["header"]}>
@@ -27,8 +33,8 @@ const Logout: NextPage = () => {
                     <h1 className={styles["heading"]}>See U Soon...</h1>
                 </div>
                 <div className={styles["logout"]}>
-                    <Link href="./openPage">
-                        <Button type="dashed" block>
+                    <Link href="./intro">
+                        <Button type="dashed" block onClick={onLogout}>
                             Log out
                         </Button>
                     </Link>

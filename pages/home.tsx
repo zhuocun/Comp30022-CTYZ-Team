@@ -59,7 +59,7 @@ const Home: NextPage = () => {
             <Layout className={styles["fullPage"]}>
                 <Header className={styles["header"]}>
                     <div className={styles["headerNav"]}>
-                        <Link href="/intro">
+                        <Link href="/logout">
                         <span className={styles["user"]}>
                             <UserOutlined />
                         </span>
