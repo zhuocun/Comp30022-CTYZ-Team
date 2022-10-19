@@ -22,10 +22,10 @@ const Home: NextPage = () => {
             if (i + 1 < categoryList.length) {
                 categoryItem.push(
                     <Row>
-                        <Col span={11} style={{ marginLeft: "5%", marginTop: "7%" }}>
+                        <Col span={11} style={{ marginLeft: "auto", marginTop: "7%" }}>
                             <CategoryItem loading={loading} categoryItem={categoryList[i]} />
                         </Col>
-                        <Col span={11} style={{ marginLeft: "1%", marginTop: "7%" }}>
+                        <Col span={11} style={{ marginRight: "auto", marginTop: "7%" }}>
                             <CategoryItem loading={loading} categoryItem={categoryList[i + 1]} />
                         </Col>
                     </Row>
@@ -34,7 +34,7 @@ const Home: NextPage = () => {
             } else {
                 categoryItem.push(
                     <Row>
-                        <Col span={11} style={{ marginLeft: "5%", marginTop: "7%" }}>
+                        <Col span={11} style={{ marginLeft: "auto", marginTop: "7%" }}>
                             <CategoryItem loading={loading} categoryItem={categoryList[i]} />
                         </Col>
                     </Row>

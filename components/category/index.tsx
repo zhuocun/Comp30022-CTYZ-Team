@@ -13,7 +13,7 @@ const CategoryItem: React.FC<PropsType> = ({ categoryItem, loading }) => {
     return (
         <div className={styles["categories"]}>
             <Link href={`category/${categoryItem?._id}`}>
-                <Box className={styles["category"]} boxSize={164}>
+                <Box className={styles["category"]} boxSize={"40vw"}>
                     <img
                         className={styles["img"]}
                         src={categoryItem?.picture ? categoryItem.picture :
