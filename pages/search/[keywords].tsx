@@ -28,10 +28,9 @@ const SearchResult: NextPage = () => {
     const recipeItems: JSX.Element[] = [];
     if (recipeList) {
         for (const r of recipeList) {
-            recipeItems.push(<RecipeItem loading={loading} recipeItem={r} isRecipeList={true} />);
+            recipeItems.push(<RecipeItem loading={loading} recipeItem={r} isFavList={false} />);
         }
     }
-
     
   const back = () => {router.back()}
 
@@ -41,7 +40,6 @@ const SearchResult: NextPage = () => {
                 <NavBar
                     className={styles["headerNav"]}
                     onBack = {back}
-
                 >
                     <ECookLogo className={styles.logo}/>
                 </NavBar>
