@@ -24,7 +24,7 @@ export const LoginForm: React.FC = () => {
     const onFinish = (values) => {
         dispatch(
             login({
-                email: values.username,
+                email: values.email,
                 password: values.password
             })
         );
