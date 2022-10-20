@@ -1,6 +1,7 @@
 import React from "react";
-import { Button } from "antd";
+import { Button, Tag } from "antd";
 import { useRouter } from "next/router";
+import styles from "./index.module.css";
 
 const TagBar: React.FC<{ tags: ITag[] | null }> = ({ tags }) => {
     const tagButton: JSX.Element[] = [];
@@ -17,7 +18,7 @@ const TagBar: React.FC<{ tags: ITag[] | null }> = ({ tags }) => {
 
     if (tags) {
         return (
-            <div style={{ marginLeft: 20 }}>
+            <div className={styles["tags"]} style={{ marginLeft: 20 }}>
                 {tagButton}
             </div>
         );
