@@ -27,10 +27,6 @@ export const RegisterForm: React.FC = () => {
         }
     };
 
-    const onFinishFailed = (errorInfo) => {
-        console.log("Failed:", errorInfo);
-    };
-
     return (
         <Form
             name="basic"
@@ -38,7 +34,6 @@ export const RegisterForm: React.FC = () => {
                 remember: true
             }}
             onFinish={onFinish}
-            onFinishFailed={onFinishFailed}
             autoComplete="off"
             className={styles["register-form"]}
         >

@@ -9,6 +9,7 @@ import { LeftOutline, DeleteOutline } from "antd-mobile-icons";
 import { useReduxDispatch, useReduxSelector } from "../redux/hooks";
 import { deleteCartItem, getCart } from "../redux/reducers/cartSlice";
 import openNotification from "../utils/Notification";
+import { TAxiosRes } from "../interfaces/axiosRes";
 
 const { Header, Content } = Layout;
 
@@ -22,11 +23,11 @@ const ShoppingCart: NextPage = () => {
                 c === cartItems[cartItems.length - 1] ? dispatch(deleteCartItem({
                         jwtToken,
                         cartItemId: c._id
-                    })).then((r: any) => {
+                    })).then((r: TAxiosRes) => {
                         dispatch(getCart(jwtToken));
-                        !r.error ?
-                            openNotification("Delete successfully! :)", "success") :
-                            openNotification("Delete Failed :(", "error");
+                        !r.payload.error ?
+                            openNotification("Deleting Successful! :)", "success") :
+                            openNotification("Deleting Failed :(", "error");
                     }) :
                     dispatch(deleteCartItem({ jwtToken, cartItemId: c._id }));
             }

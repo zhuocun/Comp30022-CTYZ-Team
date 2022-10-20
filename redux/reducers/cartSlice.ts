@@ -42,7 +42,7 @@ export const deleteCartItem = createAsyncThunk(
                 }
             }
         );
-        return axiosResponse.data;
+        return axiosResponse;
     }
 );
 

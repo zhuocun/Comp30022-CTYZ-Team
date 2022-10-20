@@ -58,7 +58,7 @@ export const RecipeItem: React.FC<RecipeListProps> = ({
             jwtToken,
             recipeId
         })).then((r: TAxiosRes) => {
-                r.payload ? openNotification("Operation successful! :)", "success") :
+                r.payload ? openNotification("Operation Successful! :)", "success") :
                     openNotification("Operation Failed! :(", "error");
             }
         )
