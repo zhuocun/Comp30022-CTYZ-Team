@@ -8,7 +8,6 @@ import MethodAdder from "../../../components/methodAdder";
 import styles from "../../../styles/recipeEditor.module.css";
 import { NextPage } from "next";
 import { CheckOutline, CloseOutline } from "antd-mobile-icons";
-import ECookLogo from "../../../public/logo.svg";
 import { useReduxDispatch, useReduxSelector } from "../../../redux/hooks";
 import { createRecipe } from "../../../redux/reducers/recipeSlice";
 import TimeEstimate from "../../../components/timeEstimate";
@@ -61,7 +60,6 @@ const RecipeEditor: NextPage = () => {
             } catch (err) {
                 openNotification("Creating Failed :(", "error");
             }
-
         });
     };
 
@@ -75,7 +73,7 @@ const RecipeEditor: NextPage = () => {
                         onClick={() => router.back()}
                     >
                     </Button>
-                    <ECookLogo />
+                    <h1 className={styles.pageTitle}>What to eat?</h1>
                     <Button
                         style={{ background: "transparent", border: "0px" }}
                         icon={<CheckOutline style={{ fontSize: "28px" }} />}
