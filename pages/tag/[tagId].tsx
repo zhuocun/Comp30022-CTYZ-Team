@@ -2,7 +2,7 @@ import { NextPage } from "next";
 import { RecipeItem } from "../../components/recipeItem";
 import { useReduxDispatch, useReduxSelector } from "../../redux/hooks";
 import React, { useEffect } from "react";
-import { getRecipeList } from "../../redux/reducers/recipeSlice";
+import { getRecipeByTag } from "../../redux/reducers/recipeSlice";
 import { useRouter } from "next/router";
 import { Layout } from "antd";
 import styles from "../../styles/search.module.css";
@@ -13,16 +13,15 @@ const { Header, Content } = Layout;
 
 const SearchResult: NextPage = () => {
     const router = useRouter();
-    const { keywords } = router.query;
+    const { tagId } = router.query;
     const jwtToken = useReduxSelector((s) => s.authentication.jwtToken);
     const loading = useReduxSelector((s) => s.recipe.loading);
     const recipeList = useReduxSelector((s) => s.recipe.recipeList);
     const dispatch = useReduxDispatch();
-
     useEffect(() => {
         document.body.style.backgroundColor = "white";
-        dispatch(getRecipeList({ jwtToken, keywords, categoryId: undefined }));
-    }, [jwtToken, keywords]);
+        dispatch(getRecipeByTag({ jwtToken, tagId }));
+    }, [jwtToken]);
     const recipeItems: JSX.Element[] = [];
     if (recipeList) {
         for (const r of recipeList) {

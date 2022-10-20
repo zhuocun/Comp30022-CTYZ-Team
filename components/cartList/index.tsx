@@ -1,9 +1,6 @@
 import React from "react";
-import { Checkbox, List } from "antd-mobile";
+import { List } from "antd-mobile";
 import CartItem from "./cartItem";
-import { Spin } from "antd";
-import { useReduxSelector } from "../../redux/hooks";
-
 
 export const CartList: React.FC<{ cartItems: ICartItem[] | null }> = (
     {
@@ -19,12 +16,10 @@ export const CartList: React.FC<{ cartItems: ICartItem[] | null }> = (
     }
 
     return (
-        <>
-            <List>
-                {items.map((cartItem) => (
-                    <CartItem key={cartItem._id} cartItem={cartItem} />
-                ))}
-            </List>
-        </>
+        <List>
+            {items.map((cartItem) => (
+                <CartItem key={cartItem._id} cartItem={cartItem} />
+            ))}
+        </List>
     );
 };
