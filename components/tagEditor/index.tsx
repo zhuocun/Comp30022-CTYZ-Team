@@ -4,7 +4,6 @@ import styles from "./index.module.css";
 
 const TagEditor: React.FC<{ setTag: Dispatch<SetStateAction<string[]>> }> =
     ({ setTag }) => {
-
         return (
             <div className={styles.editTags}>
                 <TagsInput
@@ -13,10 +12,8 @@ const TagEditor: React.FC<{ setTag: Dispatch<SetStateAction<string[]>> }> =
                     placeHolder="➕Tags"
                 />
             </div>
-
         );
     };
-
 export default TagEditor;
 
 

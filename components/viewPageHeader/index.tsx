@@ -1,14 +1,13 @@
 import React, { useState } from "react";
 import styles from "./index.module.css";
-import Link from "next/link";
 import ECookLogo from "/public/logo.svg";
 import { CarryOutOutlined, HeartOutlined } from "@ant-design/icons";
-import { LeftOutline, FillinOutline } from "antd-mobile-icons";
+import { LeftOutline } from "antd-mobile-icons";
 
 import { Image, ImageViewer } from "antd-mobile";
 import { useReduxDispatch, useReduxSelector } from "../../redux/hooks";
 import { updateRecipe } from "../../redux/reducers/recipeSlice";
-import { Router, useRouter } from "next/router";
+import { useRouter } from "next/router";
 
 const demoSrc =
     "https://cookingwithayeh.com/wp-content/uploads/2021/11/Spicy-Tuna-Crispy-Rice.jpg";
@@ -59,22 +58,16 @@ const ViewPageHeader: React.FC<{
 
     };
 
-    const router = useRouter()
+    const router = useRouter();
 
     return (
         <>
             <div className={styles["navigation"]}>
-                {/* <Link href="/"> */}
                     <span className={styles["return"]}>
                         <LeftOutline onClick={() => router.back()} />
                     </span>
-                {/* </Link> */}
                 <ECookLogo />
-                <Link href="/">
-                    <span className={styles["update"]}>
-                        <FillinOutline />
-                    </span>
-                </Link>
+                <span className={styles["update"]}></span>
             </div>
             <div style={{ userSelect: "none" }} className={styles["img"]}>
                 <Image

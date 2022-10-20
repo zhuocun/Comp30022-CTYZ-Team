@@ -25,7 +25,7 @@ export const addToCart = createAsyncThunk(
                 }
             }
         );
-        return axiosResponse.data;
+        return axiosResponse;
     }
 );
 

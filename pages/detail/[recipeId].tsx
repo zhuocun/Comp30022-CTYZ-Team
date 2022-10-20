@@ -1,7 +1,7 @@
 import { NextPage } from "next";
 import { useReduxSelector } from "../../redux/hooks";
 import { useRouter } from "next/router";
-import { Col, Layout } from "antd";
+import { Layout } from "antd";
 import styles from "../../styles/viewPage.module.css";
 import ViewPageHeader from "../../components/viewPageHeader";
 import ViewTags from "../../components/viewTags";
@@ -26,7 +26,6 @@ const RecipeDetail: NextPage = () => {
             r._id === recipeId ? recipe = r : null;
         }
     }
-    console.log(recipe?.completed);
     if (recipe) {
         return (
             <Layout>

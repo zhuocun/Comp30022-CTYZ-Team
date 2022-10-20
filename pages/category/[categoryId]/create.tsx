@@ -15,6 +15,7 @@ import TimeEstimate from "../../../components/timeEstimate";
 import ServingSuggestion from "../../../components/servingSuggestion";
 import Intro from "../../../components/intro";
 import { useRouter } from "next/router";
+import openNotification from "../../../utils/Notification";
 
 const { Header, Content, Footer } = Layout;
 
@@ -49,7 +50,19 @@ const RecipeEditor: NextPage = () => {
     };
 
     const onSubmit = () => {
-        dispatch(createRecipe({ jwtToken, recipe })).then(() => router.push("/"));
+        dispatch(createRecipe({ jwtToken, recipe })).then((r: any) => {
+            try {
+                if (!r.error) {
+                    openNotification("Creating successful! :)", "success");
+                    router.push("/");
+                } else {
+                    openNotification("Creating Failed :(", "error");
+                }
+            } catch (err) {
+                openNotification("Creating Failed :(", "error");
+            }
+
+        });
     };
 
     return (

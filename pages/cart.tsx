@@ -8,21 +8,29 @@ import Link from "next/link";
 import { LeftOutline, DeleteOutline } from "antd-mobile-icons";
 import { useReduxDispatch, useReduxSelector } from "../redux/hooks";
 import { deleteCartItem, getCart } from "../redux/reducers/cartSlice";
+import openNotification from "../utils/Notification";
 
 const { Header, Content } = Layout;
 
 const ShoppingCart: NextPage = () => {
     const jwtToken = useReduxSelector((s) => s.authentication.jwtToken);
-    const loading = useReduxSelector((s) => s.cart.loading);
     const cartItems = useReduxSelector((s) => s.cart.cartItems);
     const dispatch = useReduxDispatch();
     const onDelete = () => {
         if (cartItems) {
             for (const c of cartItems) {
-                dispatch(deleteCartItem({ jwtToken, cartItemId: c._id }));
+                c === cartItems[cartItems.length - 1] ? dispatch(deleteCartItem({
+                        jwtToken,
+                        cartItemId: c._id
+                    })).then((r: any) => {
+                        dispatch(getCart(jwtToken));
+                        !r.error ?
+                            openNotification("Delete successfully! :)", "success") :
+                            openNotification("Delete Failed :(", "error");
+                    }) :
+                    dispatch(deleteCartItem({ jwtToken, cartItemId: c._id }));
             }
         }
-        dispatch(getCart(jwtToken));
     };
     useEffect(() => {
         document.body.style.backgroundColor = "white";
@@ -49,7 +57,7 @@ const ShoppingCart: NextPage = () => {
             </Header>
             <Content>
                 <div className={styles.recipeList}>
-                    <CartList cartItems={cartItems}  />
+                    <CartList cartItems={cartItems} />
                 </div>
             </Content>
         </Layout>

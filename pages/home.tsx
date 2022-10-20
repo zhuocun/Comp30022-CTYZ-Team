@@ -41,7 +41,7 @@ const Home: NextPage = () => {
                             <UserOutlined />
                         </span>
                         </Link>
-                        <h1 className={styles.pageTitle}>What to eat?</h1>
+                        <h1 style={{marginLeft: 17}} className={styles.pageTitle}>What to eat?</h1>
                         <Link href="/cart">
                         <span className={styles["shoppingList"]}>
                             <ShoppingCartOutlined /> {cartItems?.length}

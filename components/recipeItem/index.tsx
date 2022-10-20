@@ -7,6 +7,8 @@ import { Image } from "antd-mobile";
 import { useReduxDispatch, useReduxSelector } from "../../redux/hooks";
 import { deleteRecipe, getRecipeList, updateRecipe } from "../../redux/reducers/recipeSlice";
 import { addToCart } from "../../redux/reducers/cartSlice";
+import { TAxiosRes } from "../../interfaces/axiosRes";
+import openNotification from "../../utils/Notification";
 
 const demoSrc =
     "https://gw.alipayobjects.com/zos/rmsportal/mqaQswcyDLcXyDKnZfES.png";
@@ -52,7 +54,15 @@ export const RecipeItem: React.FC<RecipeListProps> = ({
     };
 
     const onAddToCart = () => {
-        dispatch(addToCart({ jwtToken, recipeId }));
+        dispatch(addToCart({
+            jwtToken,
+            recipeId
+        })).then((r: TAxiosRes) => {
+                r.payload ? openNotification("Operation successful! :)", "success") :
+                    openNotification("Operation Failed! :(", "error");
+            }
+        )
+        ;
     };
 
     const onRemove = () => {

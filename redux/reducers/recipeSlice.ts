@@ -41,7 +41,7 @@ export const createRecipe = createAsyncThunk(
                 }
             }
         );
-        return axiosResponse.data;
+        return axiosResponse;
     }
 );
 
