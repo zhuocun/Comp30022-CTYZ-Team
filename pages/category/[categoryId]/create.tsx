@@ -49,8 +49,7 @@ const RecipeEditor: NextPage = () => {
     };
 
     const onSubmit = () => {
-        dispatch(createRecipe({ jwtToken, recipe }));
-        router.push("/");
+        dispatch(createRecipe({ jwtToken, recipe })).then(() => router.push("/"));
     };
 
     return (

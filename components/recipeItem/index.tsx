@@ -43,8 +43,12 @@ export const RecipeItem: React.FC<RecipeListProps> = ({
         }
     }
     const onDelete = () => {
-        dispatch(deleteRecipe({ jwtToken, recipeId }));
-        dispatch(getRecipeList({ jwtToken, keywords: undefined, categoryId }));
+        dispatch(deleteRecipe({ jwtToken, recipeId })).then(() => dispatch(getRecipeList({
+                jwtToken,
+                keywords: undefined,
+                categoryId
+            }))
+        );
     };
 
     const onAddToCart = () => {
@@ -56,10 +60,12 @@ export const RecipeItem: React.FC<RecipeListProps> = ({
             tags: tagItems,
             favorite: false
         };
-        dispatch(updateRecipe({ jwtToken, recipeId: recipeItem?._id, recipe }));
-        dispatch(getRecipeList({ jwtToken, keywords: undefined, categoryId: undefined }));
+        dispatch(updateRecipe({
+            jwtToken,
+            recipeId: recipeItem?._id,
+            recipe
+        })).then(() => dispatch(getRecipeList({ jwtToken, keywords: undefined, categoryId: undefined })));
     };
-
 
     return (
         <div>
