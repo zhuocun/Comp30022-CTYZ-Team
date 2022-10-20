@@ -3,7 +3,7 @@ import React from "react";
 import styles from "./index.module.css";
 import axios from "axios";
 import { useRouter } from "next/router";
-import { EmailIcon } from "@chakra-ui/icons";
+import openNotification from "../../utils/Notification";
 
 export const RegisterForm: React.FC = () => {
     const router = useRouter();
@@ -20,9 +20,10 @@ export const RegisterForm: React.FC = () => {
                 email: values.email,
                 password: values.password
             });
+            openNotification("Registration Successful!", "success");
             router.push("/login/").then();
         } catch (error) {
-            alert("Register failed");
+            openNotification("Registration Failed", "error");
         }
     };
 
@@ -44,7 +45,6 @@ export const RegisterForm: React.FC = () => {
             <h2 className={styles["title"]}> Sign Up </h2>
             <Form.Item
                 name="name"
-                // hasFeedback
                 rules={[
                     {
                         required: true,
@@ -52,7 +52,7 @@ export const RegisterForm: React.FC = () => {
                     }
                 ]}
             >
-                <Input placeholder="Username" className={styles["input"]}/>
+                <Input placeholder="Username" className={styles["input"]} />
             </Form.Item>
 
             <Form.Item
@@ -63,15 +63,15 @@ export const RegisterForm: React.FC = () => {
                         message: "Please input your email!"
                     },
                     {
-                        type:"email",
-                        message:"The input is not valid email"
+                        type: "email",
+                        message: "The input is not valid email"
                     }
                 ]}
-                
+
             >
-                <Input placeholder="Email" className={styles["input"]}/>
+                <Input placeholder="Email" className={styles["input"]} />
             </Form.Item>
-            
+
 
             <Form.Item
                 name="password"
@@ -80,11 +80,11 @@ export const RegisterForm: React.FC = () => {
                         required: true,
                         message: "Please input your password!"
                     },
-                    {min:6, message: "Password with at least 6 character"}
+                    { min: 6, message: "Password with at least 6 character" }
                 ]}
             >
-                <Input.Password placeholder="Password" className={styles["input"]}/>
-                
+                <Input.Password placeholder="Password" className={styles["input"]} />
+
             </Form.Item>
 
             <Form.Item

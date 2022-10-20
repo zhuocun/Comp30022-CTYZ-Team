@@ -1,4 +1,4 @@
-import React, { Dispatch, SetStateAction, useState } from "react";
+import React, { Dispatch, SetStateAction } from "react";
 import { TagsInput } from "react-tag-input-component";
 import styles from "./index.module.css";
 
@@ -8,7 +8,6 @@ const TagEditor: React.FC<{ setTag: Dispatch<SetStateAction<string[]>> }> =
         return (
             <div className={styles.editTags}>
                 <TagsInput
-                    value={["dinner"]}
                     onChange={(e) => setTag(e)}
                     name="tags"
                     placeHolder="➕Tags"
@@ -17,7 +16,6 @@ const TagEditor: React.FC<{ setTag: Dispatch<SetStateAction<string[]>> }> =
 
         );
     };
-
 
 export default TagEditor;
 
