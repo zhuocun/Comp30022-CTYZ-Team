@@ -1,5 +1,4 @@
 import { NextPage } from "next";
-import { RecipeItem } from "../../components/recipeItem";
 import { useReduxDispatch, useReduxSelector } from "../../redux/hooks";
 import React, { useEffect } from "react";
 import { getRecipeList } from "../../redux/reducers/recipeSlice";
@@ -8,6 +7,7 @@ import { Layout } from "antd";
 import styles from "../../styles/search.module.css";
 import ECookLogo from "../../public/logo.svg";
 import { NavBar } from "antd-mobile";
+import recipesGenerator from "../../components/recipeItem/recipesGenerator";
 
 const { Header, Content } = Layout;
 
@@ -23,12 +23,7 @@ const SearchResult: NextPage = () => {
         document.body.style.backgroundColor = "white";
         dispatch(getRecipeList({ jwtToken, keywords, categoryId: undefined }));
     }, [jwtToken, keywords]);
-    const recipeItems: JSX.Element[] = [];
-    if (recipeList) {
-        for (const r of recipeList) {
-            recipeItems.push(<RecipeItem loading={loading} recipeItem={r} isFavList={false} />);
-        }
-    }
+    const recipeItems: JSX.Element[] = recipesGenerator(recipeList, loading, false);
 
     const back = () => {
         router.back();

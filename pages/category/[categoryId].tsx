@@ -2,12 +2,12 @@ import { NextPage } from "next";
 import { useRouter } from "next/router";
 import { useReduxDispatch, useReduxSelector } from "../../redux/hooks";
 import React, { useEffect } from "react";
-import { RecipeItem } from "../../components/recipeItem";
 import { getRecipeList } from "../../redux/reducers/recipeSlice";
 import styles from "../../styles/recipes.module.css";
 import Link from "next/link";
 import { EditSOutline, LeftOutline } from "antd-mobile-icons";
 import { Layout } from "antd";
+import recipesGenerator from "../../components/recipeItem/recipesGenerator";
 
 const { Header } = Layout;
 const Category: NextPage = () => {
@@ -21,12 +21,7 @@ const Category: NextPage = () => {
             dispatch(getRecipeList({ jwtToken, keywords: undefined, categoryId }));
         }
     }, [jwtToken]);
-    const recipeItems: JSX.Element[] = [];
-    if (recipeList) {
-        for (const r of recipeList) {
-            recipeItems.push(<RecipeItem loading={loading} recipeItem={r} isFavList={false}/>);
-        }
-    }
+    const recipeItems: JSX.Element[] = recipesGenerator(recipeList, loading, false);
     const router = useRouter();
     const { categoryId } = router.query;
     const editRoute = "/category/" + categoryId + "/create";
@@ -39,7 +34,7 @@ const Category: NextPage = () => {
                             <LeftOutline />
                         </span>
                     </Link>
-            
+
                     <h1 className={styles.pageTitle}>What to eat?</h1>
                     <Link href={editRoute}>
                         <span className={styles["addNew"]}>
