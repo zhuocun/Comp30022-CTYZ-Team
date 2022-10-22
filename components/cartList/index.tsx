@@ -1,11 +1,9 @@
 import React from "react";
-import { Checkbox, List } from "antd-mobile";
+import { List } from "antd-mobile";
 import CartItem from "./cartItem";
 
-
-export const CartList: React.FC<{ loading: boolean, cartItems: ICartItem[] | null }> = (
+export const CartList: React.FC<{ cartItems: ICartItem[] | null }> = (
     {
-        loading,
         cartItems
     }
 ) => {
@@ -18,14 +16,10 @@ export const CartList: React.FC<{ loading: boolean, cartItems: ICartItem[] | nul
     }
 
     return (
-        <>
-            <Checkbox.Group>
-                <List>
-                    {items.map((cartItem) => (
-                        <CartItem key={cartItem._id} cartItem={cartItem} />
-                    ))}
-                </List>
-            </Checkbox.Group>
-        </>
+        <List>
+            {items.map((cartItem) => (
+                <CartItem key={cartItem._id} cartItem={cartItem} />
+            ))}
+        </List>
     );
 };

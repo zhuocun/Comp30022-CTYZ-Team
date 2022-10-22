@@ -10,7 +10,7 @@ const TimeEstimate: React.FC<{
         <>
             <Input
                 onChange={(e) => (setCookTime(parseInt(e.target.value)))}
-                placeholder="🕒Time Estimate" allowClear
+                placeholder="🕒Time Estimate (min)" allowClear
                 className={styles.timeEstimate}
             />
         </>

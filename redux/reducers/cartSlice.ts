@@ -25,7 +25,24 @@ export const addToCart = createAsyncThunk(
                 }
             }
         );
-        return axiosResponse.data;
+        return axiosResponse;
+    }
+);
+
+export const deleteCartItem = createAsyncThunk(
+    "cart/deleteCartItem",
+    async (parameters: {
+        jwtToken: string | null, cartItemId: string
+    }) => {
+        const axiosResponse = await axios.delete(
+            `https://itproject-online-cookbook.herokuapp.com/api/v1/cart/`,
+            {
+                headers: {
+                    Authorization: `Bearer ${parameters.jwtToken}`
+                }
+            }
+        );
+        return axiosResponse;
     }
 );
 

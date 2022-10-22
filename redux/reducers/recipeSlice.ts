@@ -41,7 +41,7 @@ export const createRecipe = createAsyncThunk(
                 }
             }
         );
-        return axiosResponse.data;
+        return axiosResponse;
     }
 );
 
@@ -72,7 +72,7 @@ export const getRecipeList = createAsyncThunk(
 export const updateRecipe = createAsyncThunk(
     "recipe/updateRecipe",
     async (parameters: {
-        jwtToken: string | null, recipeId: string | null, recipe: IRecipe | null
+        jwtToken: string | null, recipeId: string | undefined, recipe: IRecipe | null
     }) => {
         const axiosResponse = await axios.patch(
             `https://itproject-online-cookbook.herokuapp.com/api/v1/recipe/${parameters.recipeId}`,
@@ -130,6 +130,25 @@ export const getAllTags = createAsyncThunk(
             }
         );
         return axiosResponse.data.tags;
+    }
+);
+
+export const getRecipeByTag = createAsyncThunk(
+    "recipe/getRecipeByTag",
+    async (parameters: {
+               jwtToken: string | null,
+               tagId: string | string[] | undefined
+           }
+    ) => {
+        const axiosResponse = await axios.get(
+            `https://itproject-online-cookbook.herokuapp.com/api/v1/tag/${parameters.tagId}`,
+            {
+                headers: {
+                    Authorization: `Bearer ${parameters.jwtToken}`
+                }
+            }
+        );
+        return axiosResponse.data.recipes;
     }
 );
 
@@ -212,6 +231,21 @@ export const recipeSlice = createSlice({
             state.tags = action.payload;
         },
         [getAllTags.rejected.type]: (
+            state,
+            action
+        ) => {
+            state.loading = false;
+            state.error = action.payload;
+        },
+        [getRecipeByTag.pending.type]: (state) => {
+            state.loading = true;
+        },
+        [getRecipeByTag.fulfilled.type]: (state, action: PayloadAction<ITag[] | null>) => {
+            state.loading = false;
+            state.error = null;
+            state.recipeList = action.payload;
+        },
+        [getRecipeByTag.rejected.type]: (
             state,
             action
         ) => {

@@ -1,13 +1,13 @@
 import React, { useState } from "react";
 import styles from "./index.module.css";
-import Link from "next/link";
 import ECookLogo from "/public/logo.svg";
 import { CarryOutOutlined, HeartOutlined } from "@ant-design/icons";
-import { LeftOutline, FillinOutline } from "antd-mobile-icons";
+import { LeftOutline } from "antd-mobile-icons";
 
 import { Image, ImageViewer } from "antd-mobile";
 import { useReduxDispatch, useReduxSelector } from "../../redux/hooks";
 import { updateRecipe } from "../../redux/reducers/recipeSlice";
+import { useRouter } from "next/router";
 
 const demoSrc =
     "https://cookingwithayeh.com/wp-content/uploads/2021/11/Spicy-Tuna-Crispy-Rice.jpg";
@@ -16,9 +16,13 @@ const ViewPageHeader: React.FC<{
     title: string | undefined,
     picture: string | undefined,
     isFavorite: boolean | undefined,
-    tagIds: string[] | undefined
-}> = ({ title, picture, recipeId, isFavorite, tagIds }) => {
+    tagIds: string[] | undefined,
+    isCompleted: boolean | undefined
+}> = ({ title, picture, recipeId, isFavorite, isCompleted, tagIds }) => {
     const dispatch = useReduxDispatch();
+    const [history, setHistory] = useState(isCompleted);
+    const [visible, setVisible] = useState(false);
+    const [favorite, setFavorite] = useState(isFavorite);
     const tagList = useReduxSelector(s => s.recipe.tags);
     const jwtToken = useReduxSelector(s => s.authentication.jwtToken);
     const tagItems: string[] = [];
@@ -28,7 +32,6 @@ const ViewPageHeader: React.FC<{
             for (const t of Array.from(tagList)) {
                 if (t._id === tagId) {
                     targetTag = t.name;
-                    console.log(targetTag);
                     break;
                 }
             }
@@ -41,31 +44,30 @@ const ViewPageHeader: React.FC<{
             favorite: !isFavorite
         };
         dispatch(updateRecipe({ jwtToken, recipeId, recipe }));
+        setFavorite(!favorite);
     };
     const onSetHistory = () => {
-        const recipe: IRecipe = {
-            tags: tagItems,
-            completed: new Date().toString()
-        };
-        dispatch(updateRecipe({ jwtToken, recipeId, recipe }));
+        if (!history) {
+            const recipe: IRecipe = {
+                tags: tagItems,
+                completed: new Date().toString()
+            };
+            dispatch(updateRecipe({ jwtToken, recipeId, recipe }));
+            setHistory(true);
+        }
+
     };
 
-    const [visible, setVisible] = useState(false);
+    const router = useRouter();
 
     return (
         <>
             <div className={styles["navigation"]}>
-                <Link href="/">
                     <span className={styles["return"]}>
-                        <LeftOutline />
+                        <LeftOutline onClick={() => router.back()} />
                     </span>
-                </Link>
                 <ECookLogo />
-                <Link href="/">
-                    <span className={styles["update"]}>
-                        <FillinOutline />
-                    </span>
-                </Link>
+                <span className={styles["update"]}></span>
             </div>
             <div style={{ userSelect: "none" }} className={styles["img"]}>
                 <Image
@@ -91,7 +93,9 @@ const ViewPageHeader: React.FC<{
                     onClick={onSetHistory}
                     className={styles["complete"]}
                     twoToneColor="yellow"
-                    style = {{color:isFavorite?"red":"black"}}
+
+                    style={{ color: history ? "red" : "black" }}
+
                 />
 
                 <div className={styles["title"]}>{title}</div>
@@ -99,7 +103,7 @@ const ViewPageHeader: React.FC<{
                 <HeartOutlined
                     onClick={onSetFavorite}
                     className={styles["favorite"]}
-                    style = {{color:isFavorite?"red":"black"}}
+                    style={{ color: favorite ? "red" : "black" }}
                 />
             </div>
         </>

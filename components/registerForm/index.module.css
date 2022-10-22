@@ -43,3 +43,11 @@
     border: 2px solid white !important;
     color: white !important;
 }
+
+.warning{
+    font-size: small;
+    margin: 0px;
+    color: rgba(81, 67, 67, 0.662);
+    position: relative;
+    top: -10px;
+}

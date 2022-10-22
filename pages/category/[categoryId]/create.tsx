@@ -8,13 +8,13 @@ import MethodAdder from "../../../components/methodAdder";
 import styles from "../../../styles/recipeEditor.module.css";
 import { NextPage } from "next";
 import { CheckOutline, CloseOutline } from "antd-mobile-icons";
-import ECookLogo from "../../../public/logo.svg";
 import { useReduxDispatch, useReduxSelector } from "../../../redux/hooks";
 import { createRecipe } from "../../../redux/reducers/recipeSlice";
 import TimeEstimate from "../../../components/timeEstimate";
 import ServingSuggestion from "../../../components/servingSuggestion";
 import Intro from "../../../components/intro";
 import { useRouter } from "next/router";
+import openNotification from "../../../utils/Notification";
 
 const { Header, Content, Footer } = Layout;
 
@@ -49,8 +49,18 @@ const RecipeEditor: NextPage = () => {
     };
 
     const onSubmit = () => {
-        dispatch(createRecipe({ jwtToken, recipe }));
-        router.push("/");
+        dispatch(createRecipe({ jwtToken, recipe })).then((r: any) => {
+            try {
+                if (!r.error) {
+                    openNotification("Creating successful! :)", "success");
+                    router.push("/");
+                } else {
+                    openNotification("Creating Failed :(", "error");
+                }
+            } catch (err) {
+                openNotification("Creating Failed :(", "error");
+            }
+        });
     };
 
     return (
@@ -60,10 +70,10 @@ const RecipeEditor: NextPage = () => {
                     <Button
                         style={{ background: "transparent", border: "0px" }}
                         icon={<CloseOutline style={{ fontSize: "28px" }} />}
-                        onClick={() => router.push("/")}
+                        onClick={() => router.back()}
                     >
                     </Button>
-                    <ECookLogo />
+                    <h1 className={styles.pageTitle}>What to eat?</h1>
                     <Button
                         style={{ background: "transparent", border: "0px" }}
                         icon={<CheckOutline style={{ fontSize: "28px" }} />}

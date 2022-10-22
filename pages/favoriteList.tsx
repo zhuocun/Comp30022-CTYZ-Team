@@ -1,11 +1,11 @@
 import { NextPage } from "next";
-import { RecipeItem } from "../components/recipeItem";
 import { useReduxDispatch, useReduxSelector } from "../redux/hooks";
 import { useEffect } from "react";
 import { getRecipeList } from "../redux/reducers/recipeSlice";
 import React from "react";
 import { Layout } from "antd";
 import styles from "../styles/list.module.css";
+import recipesGenerator from "../components/recipeItem/recipesGenerator";
 
 const { Header, Content } = Layout;
 
@@ -19,10 +19,7 @@ const FavoriteList: NextPage = () => {
             r.favorite ? favoriteList.push(r) : null;
         }
     }
-    const recipeItems: JSX.Element[] = [];
-    for (const r of favoriteList) {
-        recipeItems.push(<RecipeItem loading={loading} recipeItem={r} isRecipeList={false}/>);
-    }
+    const recipeItems: JSX.Element[] = recipesGenerator(favoriteList, loading, true);
 
     const dispatch = useReduxDispatch();
 

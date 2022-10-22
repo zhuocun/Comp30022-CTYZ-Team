@@ -32,12 +32,12 @@ const CartItem: FC<PropsWithChildren<{ cartItem: ICartItem }>> = ({
                         value={cartItem.ingredient}
                         onChange={toggleChecked}
                         style={{ "--icon-size": "18px" }}
+                        checked={checked}
                     />
                 </div>
             }
             style={{
                 textDecoration: checked ? "line-through" : "none"
-
             }}
             arrow={false}
         >

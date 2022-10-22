@@ -5,8 +5,10 @@ import { useRouter } from "next/router";
 import styles from "./index.module.css";
 import { Image } from "antd-mobile";
 import { useReduxDispatch, useReduxSelector } from "../../redux/hooks";
-import { deleteRecipe, getRecipeList } from "../../redux/reducers/recipeSlice";
+import { deleteRecipe, getRecipeList, updateRecipe } from "../../redux/reducers/recipeSlice";
 import { addToCart } from "../../redux/reducers/cartSlice";
+import { TAxiosRes } from "../../interfaces/axiosRes";
+import openNotification from "../../utils/Notification";
 
 const demoSrc =
     "https://gw.alipayobjects.com/zos/rmsportal/mqaQswcyDLcXyDKnZfES.png";
@@ -14,47 +16,81 @@ const demoSrc =
 interface RecipeListProps {
     recipeItem: IRecipeListRes | null;
     loading: boolean;
-    isRecipeList: boolean;
+    isFavList: boolean;
 }
 
 export const RecipeItem: React.FC<RecipeListProps> = ({
                                                           loading,
                                                           recipeItem,
-                                                          isRecipeList,
+                                                          isFavList
                                                       }) => {
     const dispatch = useReduxDispatch();
     const jwtToken = useReduxSelector((s) => s.authentication.jwtToken);
     const router = useRouter();
     const recipeId = recipeItem?._id;
     const { categoryId } = router.query;
+    const tagList = useReduxSelector(s => s.recipe.tags);
+    const tagIds = recipeItem?.tags;
+    const tagItems: string[] = [];
+    if (tagList && tagIds) {
+        for (const tagId of tagIds) {
+            let targetTag: string = "";
+            for (const t of Array.from(tagList)) {
+                if (t._id === tagId) {
+                    targetTag = t.name;
+                    break;
+                }
+            }
+            tagItems.push(targetTag);
+        }
+    }
     const onDelete = () => {
-        dispatch(deleteRecipe({ jwtToken, recipeId }));
-        dispatch(getRecipeList({ jwtToken, keywords: undefined, categoryId }));
+        dispatch(deleteRecipe({ jwtToken, recipeId })).then(() => dispatch(getRecipeList({
+                jwtToken,
+                keywords: undefined,
+                categoryId
+            }))
+        );
     };
 
     const onAddToCart = () => {
-        dispatch(addToCart({ jwtToken, recipeId }));
+        dispatch(addToCart({
+            jwtToken,
+            recipeId
+        })).then((r: TAxiosRes) => {
+                r.payload ? openNotification("Operation Successful! :)", "success") :
+                    openNotification("Operation Failed! :(", "error");
+            }
+        )
+        ;
     };
 
-    const removeFromCart = () => {
-        dispatch(addToCart({ jwtToken, recipeId }));
+    const onRemove = () => {
+        const recipe: IRecipe = {
+            tags: tagItems,
+            favorite: false
+        };
+        dispatch(updateRecipe({
+            jwtToken,
+            recipeId: recipeItem?._id,
+            recipe
+        })).then(() => dispatch(getRecipeList({ jwtToken, keywords: undefined, categoryId: undefined })));
     };
-
 
     return (
         <div>
             <List>
                 <SwipeAction
                     className={styles["delete"]}
-                    leftActions = {isRecipeList?[]:[
+                    leftActions={isFavList ? [
                         {
                             key: "remove",
                             text: "Remove",
                             color: "warning",
-                            onClick: removeFromCart
+                            onClick: onRemove
                         }
-                    ]}
-                    
+                    ] : []}
+
                     rightActions={[
                         {
                             key: "cart",

@@ -24,7 +24,7 @@ export const LoginForm: React.FC = () => {
     const onFinish = (values) => {
         dispatch(
             login({
-                email: values.username,
+                email: values.email,
                 password: values.password
             })
         );
@@ -47,6 +47,10 @@ export const LoginForm: React.FC = () => {
                     {
                         required: true,
                         message: "Please input your email!"
+                    },
+                    {
+                        type:"email",
+                        message:"Invalid email"
                     }
                 ]}
             >
