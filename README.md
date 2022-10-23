@@ -1,4 +1,10 @@
-## CTYZ-Team COMP30022 
+## Comp30022 IT Project-Emily's Cookbook
+
+## Product Background
+
+We have been tasked to design and develop an online cookbook system. The cookbook will store recipes and allow customisable categories/fields/tagging. It will also be shared amongst family and friends, allowing interactive edits/suggestions to be made by other users. Ultimately, this will be a personal cookbook system to accommodate one primary user.
+
+## How to run it
 
 First, run the development server:
 
@@ -30,3 +36,7 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+
+### Final product
+
+https://comp30022-ctyz-team.vercel.app/
