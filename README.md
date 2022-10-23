@@ -1,4 +1,4 @@
-## Comp30022 IT Project-Emily's Cookbook
+# Comp30022 IT Project-Emily's Cookbook (Team90 CTYZ)
 
 ## Product Background
 
@@ -37,6 +37,6 @@ The easiest way to deploy your Next.js app is to use the [Vercel Platform](https
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
 
-### Final product
+  ### Final product
 
-https://comp30022-ctyz-team.vercel.app/
+  https://comp30022-ctyz-team.vercel.app/
